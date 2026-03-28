@@ -1712,7 +1712,7 @@ function CFB26Schemes() {
                   {group.items.map(item => {
                     const on = (sel[group.id] || []).includes(item.id);
                     return (
-                      <button key={item.id} onClick={() => toggle(group.id, item.id)} style={{ padding: "7px 12px", borderRadius: 18, border: on ? "2px solid #c8960c" : "2px solid #1e2a3a", background: on ? "#121008" : "#0d1622", color: on ? "#b08010" : "#7f9fb2", fontSize: 11, fontWeight: on ? "bold" : "normal", cursor: "pointer", transition: "all 0.1s" }}>
+                      <button key={item.id} onClick={() => toggle(group.id, item.id)} style={{ padding: "7px 12px", borderRadius: 18, border: on ? "2px solid #c8960c" : "2px solid #1e2a3a", background: on ? "#121008" : "#0d1622", color: on ? "#f0c040" : "#e8eef4", fontSize: 11, fontWeight: on ? "bold" : "normal", cursor: "pointer", transition: "all 0.1s" }}>
                         {on ? "✓ " : ""}{item.label}
                       </button>
                     );
