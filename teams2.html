@@ -869,11 +869,11 @@ function getBlitz(f, flat) {
 }
 
 function blitzInfo(pct) {
-  if (pct <= 10) return { label: "Very Conservative", color: "#406050" };
-  if (pct <= 20) return { label: "Conservative",      color: "#486050" };
-  if (pct <= 30) return { label: "Moderate",          color: "#7a6020" };
-  if (pct <= 40) return { label: "Aggressive",        color: "#6a4028" };
-  return                 { label: "Max Pressure",     color: "#5a2828" };
+  if (pct <= 10) return { label: "Very Conservative", color: "#60906e" };
+  if (pct <= 20) return { label: "Conservative",      color: "#6a9870" };
+  if (pct <= 30) return { label: "Moderate",          color: "#a07830" };
+  if (pct <= 40) return { label: "Aggressive",        color: "#a06030" };
+  return                 { label: "Max Pressure",     color: "#aa5050" };
 }
 
 // Returns ALL matched formations with score, sorted — no slice
@@ -939,7 +939,7 @@ function BlitzBar({ pct, size = "normal" }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: size === "sm" ? 5 : 9 }}>
       {size !== "sm" && (
-        <span style={{ fontSize: "12px", color: "#6a8090", letterSpacing: "1px", textTransform: "uppercase", flexShrink: 0 }}>
+        <span style={{ fontSize: "12px", color: "#7f9fb2", letterSpacing: "1px", textTransform: "uppercase", flexShrink: 0 }}>
           Blitz %
         </span>
       )}
@@ -959,7 +959,7 @@ function WhySelected({ coreHits, suppHits }) {
   if (!coreHits.length && !suppHits.length) return null;
   return (
     <div style={{ marginTop: 8 }}>
-      <div style={{ fontSize: "12px", color: "#6a8090", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 8, fontFamily: "'IBM Plex Mono', monospace" }}>
+      <div style={{ fontSize: "12px", color: "#7f9fb2", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 8, fontFamily: "'IBM Plex Mono', monospace" }}>
         Why This Formation Was Selected
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
@@ -968,7 +968,7 @@ function WhySelected({ coreHits, suppHits }) {
             fontSize: 11, padding: "3px 8px", borderRadius: 12,
             background: "linear-gradient(135deg,#2a1800,#3a2200)",
             border: "1px solid #c8960c",
-            color: "#907020", fontWeight: "bold"
+            color: "#b08010", fontWeight: "bold"
           }}>
             ★ {TRAIT_LABELS[t] || t}
           </span>
@@ -984,10 +984,10 @@ function WhySelected({ coreHits, suppHits }) {
           </span>
         ))}
       </div>
-      <div style={{ fontSize: "11px", color: "#6a7d90", marginTop: 4 }}>
-        <span style={{ color: "#9a7020" }}>★ Core match</span>
-        <span style={{ margin: "0 8px", color: "#2a4055" }}>|</span>
-        <span style={{ color: "#607888" }}>+ Supporting match</span>
+      <div style={{ fontSize: "11px", color: "#7c9aaf", marginTop: 4 }}>
+        <span style={{ color: "#b8880c" }}>★ Core match</span>
+        <span style={{ margin: "0 8px", color: "#507890" }}>|</span>
+        <span style={{ color: "#7f9fb2" }}>+ Supporting match</span>
       </div>
     </div>
   );
@@ -1012,19 +1012,19 @@ function FormationCard({ fm, flat, onSelect, isSelected }) {
         <div style={{ display: "flex", alignItems: "center", gap: 9, flexWrap: "wrap" }}>
           <span style={{ fontSize: 11, fontWeight: "600", color: isSelected ? "#907020" : "#e8eef4", fontFamily: "'IBM Plex Mono', monospace" }}>{fm.name}</span>
           <span style={{ fontSize: "12px", background: `${PC[fm.priority]}18`, border: `1px solid ${PC[fm.priority]}55`, color: PC[fm.priority], padding: "1px 5px", borderRadius: 4, fontWeight: "bold" }}>{PL[fm.priority]}</span>
-          <span style={{ fontSize: "12px", background: "#0a0e18", border: "1px solid #1e2a3a", color: "#6a8090", padding: "1px 5px", borderRadius: 4 }}>{fm.personnel}</span>
+          <span style={{ fontSize: "12px", background: "#0a0e18", border: "1px solid #1e2a3a", color: "#7f9fb2", padding: "1px 5px", borderRadius: 4 }}>{fm.personnel}</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 9, flexShrink: 0 }}>
-          <span style={{ fontSize: 11, fontWeight: "bold", color: "#9a7020" }}>{fm.sc}pt</span>
+          <span style={{ fontSize: 11, fontWeight: "bold", color: "#b8880c" }}>{fm.sc}pt</span>
           <span style={{ fontSize: 11, fontWeight: "bold", color: bi.color }}>{blitz}%</span>
         </div>
       </div>
-      <div style={{ fontSize: "12px", color: "#567080", marginBottom: 8, fontFamily: "'IBM Plex Mono', monospace" }}>
+      <div style={{ fontSize: "12px", color: "#6888a0", marginBottom: 8, fontFamily: "'IBM Plex Mono', monospace" }}>
         📖 {fm.books.slice(0, 3).join(" · ")}{fm.books.length > 3 ? ` +${fm.books.length - 3}` : ""}
       </div>
       <WhySelected coreHits={fm.coreHits} suppHits={fm.suppHits} />
       {isSelected && (
-        <div style={{ marginTop: 6, fontSize: "11px", color: "#9a7020", fontFamily: "'IBM Plex Mono', monospace" }}>▼ Details below</div>
+        <div style={{ marginTop: 6, fontSize: "11px", color: "#b8880c", fontFamily: "'IBM Plex Mono', monospace" }}>▼ Details below</div>
       )}
     </div>
   );
@@ -1043,19 +1043,19 @@ function FormationDetail({ fm, flat }) {
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
           <div style={{ flex: 1 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" }}>
-              <span style={{ fontSize: 11, fontWeight: "bold", color: "#c8c4bc" }}>{fm.name}</span>
+              <span style={{ fontSize: 11, fontWeight: "bold", color: "#c5cdd5" }}>{fm.name}</span>
               <span style={{ background: PC[fm.priority], color: "#fff", fontSize: "12px", fontWeight: "bold", padding: "2px 8px", borderRadius: 6, letterSpacing: 1 }}>{PL[fm.priority]}</span>
-              <span style={{ fontSize: "12px", color: "#607888", fontFamily: "'IBM Plex Mono', monospace" }}>📖 {fm.books.join(" · ")}</span>
+              <span style={{ fontSize: "12px", color: "#7f9fb2", fontFamily: "'IBM Plex Mono', monospace" }}>📖 {fm.books.join(" · ")}</span>
             </div>
-            <div style={{ fontSize: 11, color: "#708090", lineHeight: 1.6, marginBottom: 16 }}>{fm.desc}</div>
+            <div style={{ fontSize: 11, color: "#7f9fb2", lineHeight: 1.6, marginBottom: 16 }}>{fm.desc}</div>
             <div style={{ background: "#080c15", border: "1px solid #1a3050", borderRadius: 5, padding: "10px 13px" }}>
-              <div style={{ fontSize: "12px", color: "#567080", letterSpacing: 1, textTransform: "uppercase", marginBottom: 2, fontFamily: "'IBM Plex Mono', monospace" }}>DC Logic</div>
-              <div style={{ fontSize: 11, color: "#607888", lineHeight: 1.65 }}>{fm.dcNote}</div>
+              <div style={{ fontSize: "12px", color: "#6888a0", letterSpacing: 1, textTransform: "uppercase", marginBottom: 2, fontFamily: "'IBM Plex Mono', monospace" }}>DC Logic</div>
+              <div style={{ fontSize: 11, color: "#7f9fb2", lineHeight: 1.65 }}>{fm.dcNote}</div>
             </div>
           </div>
           <div style={{ background: "#080c15", border: "1px solid #c8960c", borderRadius: 7, padding: "6px 10px", textAlign: "center", flexShrink: 0 }}>
-            <div style={{ fontSize: 11, fontWeight: "bold", color: "#9a7020" }}>{fm.sc}</div>
-            <div style={{ fontSize: "12px", color: "#9a7020", fontFamily: "'IBM Plex Mono', monospace" }}>MATCH</div>
+            <div style={{ fontSize: 11, fontWeight: "bold", color: "#b8880c" }}>{fm.sc}</div>
+            <div style={{ fontSize: "12px", color: "#b8880c", fontFamily: "'IBM Plex Mono', monospace" }}>MATCH</div>
           </div>
         </div>
       </div>
@@ -1069,7 +1069,7 @@ function FormationDetail({ fm, flat }) {
       <div style={{ padding: "16px 16px", borderBottom: "1px solid #1e2a3a", background: "#090f1a" }}>
         <BlitzBar pct={blitz} />
         {fm.blitzMods.filter(m => m.tags.some(t => flat.includes(t))).slice(0, 3).map((m, i) => (
-          <div key={i} style={{ fontSize: "11px", color: "#6a8090", marginTop: 3, display: "flex", gap: 8 }}>
+          <div key={i} style={{ fontSize: "11px", color: "#7f9fb2", marginTop: 3, display: "flex", gap: 8 }}>
             <span style={{ color: m.d >= 0 ? "#c49a2a" : "#305040", fontWeight: "bold" }}>{m.d >= 0 ? `+${m.d}%` : `${m.d}%`}</span>
             <span>— {m.tags.filter(t => flat.includes(t)).map(t => TRAIT_LABELS[t] || t).join(", ")}</span>
           </div>
@@ -1098,13 +1098,13 @@ function FormationDetail({ fm, flat }) {
           <div key={i} style={{ background: "#080c15", border: "1px solid #1e2a3a", borderLeft: `3px solid ${["#9a7020","#3a5a80","#4a3060","#284535"][i] || "#9a7020"}`, borderRadius: 5, padding: "14px 16px", marginBottom: 16 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontWeight: "bold", fontSize: 11, color: "#c8d0da" }}>{c.name}</span>
-                <span style={{ fontSize: "12px", background: "#111009", border: "1px solid #3a2800", color: "#9a7020", padding: "1px 5px", borderRadius: 4, fontFamily: "'IBM Plex Mono', monospace" }}>{c.tag}</span>
-                {i === 0 && <span style={{ fontSize: "12px", background: "#0a2010", border: "1px solid #2a6030", color: "#305040", padding: "1px 5px", borderRadius: 4, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>BASE</span>}
+                <span style={{ fontWeight: "bold", fontSize: 11, color: "#c5d0dc" }}>{c.name}</span>
+                <span style={{ fontSize: "12px", background: "#111009", border: "1px solid #3a2800", color: "#b8880c", padding: "1px 5px", borderRadius: 4, fontFamily: "'IBM Plex Mono', monospace" }}>{c.tag}</span>
+                {i === 0 && <span style={{ fontSize: "12px", background: "#0a2010", border: "1px solid #2a6030", color: "#558a68", padding: "1px 5px", borderRadius: 4, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>BASE</span>}
               </div>
               <span style={{ fontSize: 11 }}>
                 <span style={{ color: "#c49a2a" }}>{"★".repeat(c.rating)}</span>
-                <span style={{ color: "#1e2530" }}>{"★".repeat(5 - c.rating)}</span>
+                <span style={{ color: "#3a4e60" }}>{"★".repeat(5 - c.rating)}</span>
               </span>
             </div>
             <div style={{ fontSize: 11, color: "#b0c0d0", lineHeight: 1.65 }}>{c.detail || c.note}</div>
@@ -1113,10 +1113,10 @@ function FormationDetail({ fm, flat }) {
 
         {tab === "preSnap" && (
           <div>
-            <div style={{ fontSize: "12px", color: "#6a7d90", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>Every Snap — Before the Ball is Snapped</div>
+            <div style={{ fontSize: "12px", color: "#7c9aaf", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>Every Snap — Before the Ball is Snapped</div>
             {fm.preSnap.map((a, i) => (
               <div key={i} style={{ display: "flex", gap: 8, background: "#080c15", border: "1px solid #1e2a3a", borderRadius: 5, padding: "14px 16px", marginBottom: 8 }}>
-                <span style={{ color: "#9a7020", flexShrink: 0, marginTop: 1 }}>▸</span>
+                <span style={{ color: "#b8880c", flexShrink: 0, marginTop: 1 }}>▸</span>
                 <span style={{ fontSize: 11, color: "#b8c8d8", lineHeight: 1.55 }}>{a}</span>
               </div>
             ))}
@@ -1125,11 +1125,11 @@ function FormationDetail({ fm, flat }) {
 
         {tab === "coaching" && (
           <div>
-            <div style={{ fontSize: "12px", color: "#6a7d90", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>In-Game Coaching Setup</div>
+            <div style={{ fontSize: "12px", color: "#7c9aaf", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>In-Game Coaching Setup</div>
             {fm.coaching.map((c, i) => (
               <div key={i} style={{ background: "#080c15", border: "1px solid #1e2a3a", borderRadius: 5, padding: "14px 16px", marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 11, color: "#708090" }}>{c.label}</span>
-                <span style={{ fontSize: 11, fontWeight: "bold", color: "#907020", background: "#111009", border: "1px solid #3a2800", padding: "2px 8px", borderRadius: 5, flexShrink: 0, fontFamily: "'IBM Plex Mono', monospace" }}>{c.value}</span>
+                <span style={{ fontSize: 11, color: "#7f9fb2" }}>{c.label}</span>
+                <span style={{ fontSize: 11, fontWeight: "bold", color: "#b08010", background: "#111009", border: "1px solid #3a2800", padding: "2px 8px", borderRadius: 5, flexShrink: 0, fontFamily: "'IBM Plex Mono', monospace" }}>{c.value}</span>
               </div>
             ))}
           </div>
@@ -1137,15 +1137,15 @@ function FormationDetail({ fm, flat }) {
 
         {tab === "callsheet" && (
           <div>
-            <div style={{ fontSize: "12px", color: "#6a7d90", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>Down & Distance Quick Reference</div>
+            <div style={{ fontSize: "12px", color: "#7c9aaf", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>Down & Distance Quick Reference</div>
             {fm.callsheet.map((c, i) => (
               <div key={i} style={{ display: "grid", gridTemplateColumns: "95px 1fr", background: i % 2 === 0 ? "#080c15" : "#060910", border: "1px solid #1e2a3a", borderRadius: 4, marginBottom: 4, overflow: "hidden" }}>
                 <div style={{ padding: "10px 12px", background: "#050708", borderRight: "1px solid #1e2a3a", display: "flex", alignItems: "center" }}>
-                  <span style={{ fontSize: 11, fontWeight: "bold", color: "#9a7020", fontFamily: "'IBM Plex Mono', monospace" }}>{c.down}</span>
+                  <span style={{ fontSize: 11, fontWeight: "bold", color: "#b8880c", fontFamily: "'IBM Plex Mono', monospace" }}>{c.down}</span>
                 </div>
                 <div style={{ padding: "10px 13px" }}>
-                  <div style={{ fontSize: 15, fontWeight: "700", color: "#c8d0da", fontFamily: "'IBM Plex Mono', monospace" }}>{c.call}</div>
-                  {c.note && <div style={{ fontSize: 11, color: "#6a8090", fontStyle: "italic", marginTop: 1 }}>{c.note}</div>}
+                  <div style={{ fontSize: 15, fontWeight: "700", color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>{c.call}</div>
+                  {c.note && <div style={{ fontSize: 11, color: "#7f9fb2", fontStyle: "italic", marginTop: 1 }}>{c.note}</div>}
                 </div>
               </div>
             ))}
@@ -1882,8 +1882,8 @@ function TeamSchemeBuilder() {
 
   const S = {
     bg:"#080c12", card:"#0d1622", border:"#253545",
-    gold:"#9a7020", goldDim:"#7a6025",
-    text1:"#c8d0da", text2:"#6a8090", text3:"#4a5a6a",
+    gold:"#b8880c", goldDim:"#a07830",
+    text1:"#c5d0dc", text2:"#7f9fb2", text3:"#6888a0",
     mono:"'IBM Plex Mono', monospace",
     sans:"'IBM Plex Sans', system-ui, sans-serif",
   };
