@@ -1468,6 +1468,9 @@ function CFB26Schemes() {
 
 
   const [importMsg, setImportMsg] = useState(null);
+  const [compareA, setCompareA] = useState("3-3-5 Tite");
+  const [compareB, setCompareB] = useState("4-3 Multiple");
+  const [quickAdjOpen, setQuickAdjOpen] = useState(false);
 
   const changeBook = (book) => {
     setMyBook(book);
@@ -1606,6 +1609,155 @@ function CFB26Schemes() {
     setStep("plan");
   };
 
+  // ── COMPARE PLAYBOOKS SCREEN ─────────────────────────────────────────────────
+  if (step === "compare") {
+    const BOOK_NAMES = ["All", ...Object.keys(PLAYBOOKS)];
+
+    const getFormations = (book) => {
+      return Object.entries(FDB).filter(([name, d]) =>
+        book === "All" || d.books.includes(book) || d.books.includes("All")
+      ).map(([name, d]) => ({ name, ...d }));
+    };
+
+    const fmsA = getFormations(compareA);
+    const fmsB = getFormations(compareB);
+    const namesA = new Set(fmsA.map(f => f.name));
+    const namesB = new Set(fmsB.map(f => f.name));
+    const onlyA  = fmsA.filter(f => !namesB.has(f.name));
+    const onlyB  = fmsB.filter(f => !namesA.has(f.name));
+    const shared = fmsA.filter(f => namesB.has(f.name));
+
+    const PERS_ORDER = ["Prevent","Goal Line","Heavy","Base","Nickel","Dime"];
+    const groupFms = (fms) => {
+      const g = {};
+      fms.forEach(f => { g[f.personnel] = g[f.personnel] || []; g[f.personnel].push(f); });
+      return PERS_ORDER.filter(p => g[p]).map(p => ({ label: p, items: g[p] }));
+    };
+
+    const pbColor = (book) => book === "All" ? "#6888a0" : (PLAYBOOKS[book] && PLAYBOOKS[book].color) || "#6888a0";
+
+    return (
+      <div style={{ fontFamily: "'IBM Plex Sans', system-ui, sans-serif", background: "#080c12", minHeight: "100vh", color: "#c5d0dc", maxWidth: 720, margin: "0 auto" }}>
+        {/* Header */}
+        <div style={{ background: "linear-gradient(135deg,#07090f,#0c1220)", borderBottom: "2px solid #b8880c", padding: "13px 15px 12px", paddingTop: "calc(env(safe-area-inset-top) + 13px)", position: "sticky", top: 0, zIndex: 100 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div>
+              <div style={{ fontSize: 10, color: "#a07830", letterSpacing: "2px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 2 }}>CFB26 · DC Scheme Builder</div>
+              <div style={{ fontSize: 18, fontWeight: 700, color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>Compare Playbooks</div>
+            </div>
+            <button onClick={() => setStep("scout")} style={{ background: "transparent", border: "1px solid #2a3d52", borderRadius: 6, padding: "5px 10px", color: "#6888a0", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap", fontFamily: "'IBM Plex Mono', monospace" }}>← Back</button>
+          </div>
+        </div>
+
+        <div style={{ padding: "14px 14px 30px" }}>
+          {/* Selectors */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 8, alignItems: "center", marginBottom: 18 }}>
+            <div>
+              <div style={{ fontSize: 10, color: "#6888a0", letterSpacing: "1px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 6 }}>Playbook A</div>
+              <select value={compareA} onChange={e => setCompareA(e.target.value)} style={{ width: "100%", padding: "8px 10px", background: "#0d1622", border: `2px solid ${pbColor(compareA)}`, borderRadius: 7, color: pbColor(compareA), fontSize: 11, fontFamily: "'IBM Plex Mono', monospace", cursor: "pointer", outline: "none" }}>
+                {BOOK_NAMES.map(b => <option key={b} value={b}>{b}</option>)}
+              </select>
+            </div>
+            <div style={{ fontSize: 16, color: "#4a5a6a", textAlign: "center", paddingTop: 20 }}>vs</div>
+            <div>
+              <div style={{ fontSize: 10, color: "#6888a0", letterSpacing: "1px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 6 }}>Playbook B</div>
+              <select value={compareB} onChange={e => setCompareB(e.target.value)} style={{ width: "100%", padding: "8px 10px", background: "#0d1622", border: `2px solid ${pbColor(compareB)}`, borderRadius: 7, color: pbColor(compareB), fontSize: 11, fontFamily: "'IBM Plex Mono', monospace", cursor: "pointer", outline: "none" }}>
+                {BOOK_NAMES.map(b => <option key={b} value={b}>{b}</option>)}
+              </select>
+            </div>
+          </div>
+
+          {/* Summary stats */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 18 }}>
+            {[
+              { label: compareA + " only", count: onlyA.length, color: pbColor(compareA) },
+              { label: "Shared", count: shared.length, color: "#6888a0" },
+              { label: compareB + " only", count: onlyB.length, color: pbColor(compareB) },
+            ].map((s, i) => (
+              <div key={i} style={{ background: "#0d1622", border: `1px solid ${s.color}44`, borderTop: `3px solid ${s.color}`, borderRadius: 7, padding: "10px 12px", textAlign: "center" }}>
+                <div style={{ fontSize: 22, fontWeight: 700, color: s.color, fontFamily: "'IBM Plex Mono', monospace" }}>{s.count}</div>
+                <div style={{ fontSize: 10, color: "#6888a0", marginTop: 3, fontFamily: "'IBM Plex Mono', monospace" }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Exclusive to A */}
+          {onlyA.length > 0 && (
+            <div style={{ marginBottom: 18 }}>
+              <div style={{ fontSize: 10, letterSpacing: "2px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 10, display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ color: pbColor(compareA) }}>Exclusive to {compareA}</span>
+                <span style={{ background: "#0d1622", border: `1px solid ${pbColor(compareA)}`, borderRadius: 8, padding: "1px 7px", fontSize: 9, color: pbColor(compareA) }}>{onlyA.length}</span>
+              </div>
+              {groupFms(onlyA).map(group => (
+                <div key={group.label} style={{ marginBottom: 10 }}>
+                  <div style={{ fontSize: 9, color: "#6888a0", letterSpacing: "1px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 5 }}>{group.label}</div>
+                  {group.items.map(fm => (
+                    <div key={fm.name} style={{ background: "#0d1622", border: `1px solid #1e2d3d`, borderLeft: `3px solid ${pbColor(compareA)}`, borderRadius: 6, padding: "7px 11px", marginBottom: 5, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                      <span style={{ fontSize: 11, fontWeight: 600, color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>{fm.name}</span>
+                      <span style={{ fontSize: 10, color: PC[fm.priority], background: PC[fm.priority] + "22", padding: "1px 6px", borderRadius: 4 }}>{PL[fm.priority]}</span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Shared */}
+          {shared.length > 0 && (
+            <div style={{ marginBottom: 18 }}>
+              <div style={{ fontSize: 10, letterSpacing: "2px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 10, display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ color: "#7f9fb2" }}>In Both Playbooks</span>
+                <span style={{ background: "#0d1622", border: "1px solid #2a3d52", borderRadius: 8, padding: "1px 7px", fontSize: 9, color: "#6888a0" }}>{shared.length}</span>
+              </div>
+              {groupFms(shared).map(group => (
+                <div key={group.label} style={{ marginBottom: 10 }}>
+                  <div style={{ fontSize: 9, color: "#6888a0", letterSpacing: "1px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 5 }}>{group.label}</div>
+                  {group.items.map(fm => (
+                    <div key={fm.name} style={{ background: "#0d1622", border: "1px solid #1e2d3d", borderLeft: "3px solid #2a3d52", borderRadius: 6, padding: "7px 11px", marginBottom: 5, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                      <span style={{ fontSize: 11, fontWeight: 600, color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>{fm.name}</span>
+                      <span style={{ fontSize: 10, color: PC[fm.priority], background: PC[fm.priority] + "22", padding: "1px 6px", borderRadius: 4 }}>{PL[fm.priority]}</span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Exclusive to B */}
+          {onlyB.length > 0 && (
+            <div style={{ marginBottom: 18 }}>
+              <div style={{ fontSize: 10, letterSpacing: "2px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 10, display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ color: pbColor(compareB) }}>Exclusive to {compareB}</span>
+                <span style={{ background: "#0d1622", border: `1px solid ${pbColor(compareB)}`, borderRadius: 8, padding: "1px 7px", fontSize: 9, color: pbColor(compareB) }}>{onlyB.length}</span>
+              </div>
+              {groupFms(onlyB).map(group => (
+                <div key={group.label} style={{ marginBottom: 10 }}>
+                  <div style={{ fontSize: 9, color: "#6888a0", letterSpacing: "1px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 5 }}>{group.label}</div>
+                  {group.items.map(fm => (
+                    <div key={fm.name} style={{ background: "#0d1622", border: `1px solid #1e2d3d`, borderLeft: `3px solid ${pbColor(compareB)}`, borderRadius: 6, padding: "7px 11px", marginBottom: 5, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                      <span style={{ fontSize: 11, fontWeight: 600, color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>{fm.name}</span>
+                      <span style={{ fontSize: 10, color: PC[fm.priority], background: PC[fm.priority] + "22", padding: "1px 6px", borderRadius: 4 }}>{PL[fm.priority]}</span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Playbook descriptions */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginTop: 8 }}>
+            {[compareA, compareB].map(book => (
+              <div key={book} style={{ background: "#0d1622", border: `1px solid ${pbColor(book)}33`, borderLeft: `3px solid ${pbColor(book)}`, borderRadius: 7, padding: "10px 12px" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: pbColor(book), fontFamily: "'IBM Plex Mono', monospace", marginBottom: 4 }}>{book}</div>
+                <div style={{ fontSize: 10, color: "#7f9fb2", lineHeight: 1.55 }}>{book === "All" ? "All formations from every playbook." : (PLAYBOOKS[book] && PLAYBOOKS[book].desc) || ""}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // ── SCOUT SCREEN ─────────────────────────────────────────────────────────────
   if (step === "scout") return (
     <div style={{ fontFamily: "'Georgia',serif", background: "#080c12", minHeight: "100vh", color: "#c5d0dc", maxWidth: 720, margin: "0 auto" }}>
@@ -1615,9 +1767,14 @@ function CFB26Schemes() {
             <div style={{ fontSize: "10px", letterSpacing: "2px", color: "#a07830", textTransform: "uppercase", fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>CFB26 · Defensive Intelligence</div>
             <div style={{ fontSize: "18px", fontWeight: "700", color: "#c5d0dc", letterSpacing: "-0.3px", fontFamily: "'IBM Plex Mono', monospace" }}>DC Scheme Builder</div>
           </div>
-          <button onClick={() => setShowPB(v => !v)} style={{ padding: "5px 10px", background: "transparent", border: `1px solid ${myBook !== "All" ? "#b8880c" : showPB ? "#b8880c" : "#7aaac8"}`, borderRadius: 7, color: myBook !== "All" ? "#b8880c" : showPB ? "#b8880c" : "#6888a0", fontSize: 11, cursor: "pointer" }}>
-            📖 {myBook !== "All" ? myBook : "My Book"}
-          </button>
+          <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+            <button onClick={() => setStep("compare")} style={{ padding: "5px 10px", background: "transparent", border: "1px solid #2a3d52", borderRadius: 7, color: "#6888a0", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
+              ⚖ Compare
+            </button>
+            <button onClick={() => setShowPB(v => !v)} style={{ padding: "5px 10px", background: "transparent", border: `1px solid ${myBook !== "All" ? "#b8880c" : showPB ? "#b8880c" : "#2a3d52"}`, borderRadius: 7, color: myBook !== "All" ? "#b8880c" : showPB ? "#b8880c" : "#6888a0", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
+              📖 {myBook !== "All" ? myBook : "My Book"}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -1776,11 +1933,14 @@ function CFB26Schemes() {
             <div style={{ fontSize: "10px", letterSpacing: "2px", color: "#a07830", textTransform: "uppercase", fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>CFB26 · DC Scheme Builder</div>
             <div style={{ fontSize: "17px", fontWeight: "700", color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>Game Plan — {scored.length} Formation{scored.length !== 1 ? "s" : ""}{myBook !== "All" ? " · " + myBook : ""}</div>
           </div>
-          <div style={{ display: "flex", gap: 8, alignItems: "center", flexShrink: 0 }}>
+          <div style={{ display: "flex", gap: 6, alignItems: "center", flexShrink: 0 }}>
+              <button onClick={() => setQuickAdjOpen(v => !v)} style={{ background: quickAdjOpen ? "#1a1408" : "transparent", border: `1px solid ${quickAdjOpen ? "#b8880c" : "#2a3545"}`, borderRadius: 6, padding: "5px 10px", color: quickAdjOpen ? "#b8880c" : "#7f9fb2", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
+                ⚡ Adjust
+              </button>
               <button onClick={handleShare} style={{ background: "transparent", border: "1px solid #2a3545", borderRadius: 6, padding: "5px 10px", color: "#7898ae", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
                 {shareToast === "shared" ? "✓ Sent" : shareToast === "copied" ? "✓ Copied" : "⬆ Share"}
               </button>
-              <button onClick={() => { setStep("scout"); setSelFm(null); }} style={{ background: "transparent", border: "1px solid #2a3545", borderRadius: 6, padding: "5px 10px", color: "#7898ae", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>← Edit Scout</button>
+              <button onClick={() => { setStep("scout"); setSelFm(null); setQuickAdjOpen(false); }} style={{ background: "transparent", border: "1px solid #2a3545", borderRadius: 6, padding: "5px 10px", color: "#7898ae", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>← Edit</button>
             </div>
         </div>
 
@@ -1920,6 +2080,53 @@ function CFB26Schemes() {
           <button onClick={() => { setStep("scout"); setSel({}); setScored([]); setSelFm(null); setActiveP(null); }} style={{ background: "transparent", border: "1px solid #1e2a3a", borderRadius: 17, padding: "7px 20px", color: "#7c9aaf", fontSize: 11, cursor: "pointer" }}>🔁 New Opponent</button>
         </div>
       </div>
+
+      {/* ── QUICK ADJUST OVERLAY ── */}
+      {quickAdjOpen && (
+        <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 200, background: "linear-gradient(to top, #07090f, #0a0f1a)", borderTop: "2px solid #b8880c", padding: "14px 16px 32px", maxWidth: 720, margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+            <div>
+              <div style={{ fontSize: 10, color: "#a07830", letterSpacing: "2px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 2 }}>⚡ In-Game Adjust</div>
+              <div style={{ fontSize: 12, color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>Tap a new trait — game plan updates instantly</div>
+            </div>
+            <button onClick={() => setQuickAdjOpen(false)} style={{ background: "transparent", border: "1px solid #2a3d52", borderRadius: 6, padding: "5px 10px", color: "#6888a0", fontSize: 11, cursor: "pointer" }}>✕ Close</button>
+          </div>
+          <div style={{ maxHeight: 260, overflowY: "auto" }}>
+            {TRAITS.map(group => (
+              <div key={group.id} style={{ marginBottom: 10 }}>
+                <div style={{ fontSize: 10, color: "#6888a0", letterSpacing: "1px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 6 }}>
+                  {group.icon} {group.label}
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                  {group.items.map(item => {
+                    const on = (sel[group.id] || []).includes(item.id);
+                    return (
+                      <button key={item.id} onClick={() => {
+                        toggle(group.id, item.id);
+                        const newSel = { ...sel };
+                        const cur = newSel[group.id] || [];
+                        newSel[group.id] = cur.includes(item.id) ? cur.filter(x => x !== item.id) : [...cur, item.id];
+                        const newFlat = Object.values(newSel).flat();
+                        const results = scoreAll(newFlat, myBook);
+                        setScored(results);
+                        if (!selFm && results[0]) setSelFm(results[0]);
+                      }} style={{
+                        padding: "5px 10px", borderRadius: 14,
+                        border: on ? "1px solid #b8880c" : "1px solid #1e2d3d",
+                        background: on ? "#1a1408" : "#0d1622",
+                        color: on ? "#f0c040" : "#c5d0dc",
+                        fontSize: 11, cursor: "pointer",
+                      }}>
+                        {on ? "✓ " : ""}{item.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
