@@ -928,14 +928,17 @@ function blitzInfo(pct) {
 }
 
 // Returns ALL matched formations with score, sorted — no slice
-function scoreAll(flat) {
+function scoreAll(flat, book) {
   if (!flat.length) return [];
   return Object.entries(FDB).map(([name, d]) => {
+    if (book && book !== "All") {
+      if (!d.books.includes(book) && !d.books.includes("All")) return null;
+    }
     const coreHits = d.coreTags.filter(t => flat.includes(t));
     const suppHits = d.suppTags.filter(t => flat.includes(t));
     const sc = coreHits.length * 2 + suppHits.length;
     return { name, sc, coreHits, suppHits, blitz: getBlitz(d, flat), ...d };
-  }).filter(f => f.sc > 0).sort((a, b) => b.sc - a.sc);
+  }).filter(Boolean).filter(f => f.sc > 0).sort((a, b) => b.sc - a.sc);
 }
 
 // Group formations by personnel type for the "All Formations" browser
@@ -1441,6 +1444,11 @@ function CFB26Schemes() {
   });
 
   // Persist profiles to localStorage whenever they change
+  const [shareToast, setShareToast] = useState(null);
+  const [myBook, setMyBook] = useState(() => {
+    try { return localStorage.getItem("cfb26_myBook") || "All"; } catch(e) { return "All"; }
+  });
+
   const saveProfiles = (updater) => {
     setProfiles(prev => {
       const next = typeof updater === 'function' ? updater(prev) : updater;
@@ -1449,7 +1457,12 @@ function CFB26Schemes() {
     });
   };
 
-  const [shareToast, setShareToast] = useState(null); // "shared" | "copied" | null
+
+
+  const changeBook = (book) => {
+    setMyBook(book);
+    try { localStorage.setItem("cfb26_myBook", book); } catch(e) {}
+  };
 
   // Build the plain-text game plan summary
   const buildShareText = () => {
@@ -1536,7 +1549,7 @@ function CFB26Schemes() {
   const personnelSel = sel.personnel || [];
 
   const build = () => {
-    const results = scoreAll(flat);
+    const results = scoreAll(flat, myBook);
     setScored(results);
     const personnel = personnelSel.length ? personnelSel : ["p11"];
     setActiveP(personnel[0]);
@@ -1554,21 +1567,42 @@ function CFB26Schemes() {
             <div style={{ fontSize: "10px", letterSpacing: "2px", color: "#7a6025", textTransform: "uppercase", fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>CFB26 · Defensive Intelligence</div>
             <div style={{ fontSize: "18px", fontWeight: "700", color: "#c8d0da", letterSpacing: "-0.3px", fontFamily: "'IBM Plex Mono', monospace" }}>DC Scheme Builder</div>
           </div>
-          <button onClick={() => setShowPB(v => !v)} style={{ padding: "5px 10px", background: "transparent", border: `1px solid ${showPB ? "#9a7020" : "#4a6a8a"}`, borderRadius: 7, color: showPB ? "#9a7020" : "#567080", fontSize: 11, cursor: "pointer" }}>
-            📖 {showPB ? "Hide" : "Playbooks"}
+          <button onClick={() => setShowPB(v => !v)} style={{ padding: "5px 10px", background: "transparent", border: `1px solid ${myBook !== "All" ? "#9a7020" : showPB ? "#9a7020" : "#4a6a8a"}`, borderRadius: 7, color: myBook !== "All" ? "#9a7020" : showPB ? "#9a7020" : "#567080", fontSize: 11, cursor: "pointer" }}>
+            📖 {myBook !== "All" ? myBook : "My Book"}
           </button>
         </div>
       </div>
 
       {showPB && (
-        <div style={{ background: "#090f1a", borderBottom: "1px solid #1e2a3a", padding: "16px 16px", maxHeight: 260, overflowY: "auto" }}>
-          <div style={{ fontSize: "12px", letterSpacing: "2px", color: "#9a7020", textTransform: "uppercase", marginBottom: 18, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>All 9 CFB26 Defensive Playbooks</div>
-          {Object.entries(PLAYBOOKS).map(([name, pb]) => (
-            <div key={name} style={{ marginBottom: 18, padding: "10px 13px", background: "#0d1622", border: `1px solid ${pb.color}33`, borderLeft: `3px solid ${pb.color}`, borderRadius: 6 }}>
-              <div style={{ fontSize: 11, fontWeight: "bold", color: pb.color, marginBottom: 2 }}>{name}</div>
-              <div style={{ fontSize: 11, color: "#6a8090", lineHeight: 1.4 }}>{pb.desc}</div>
+        <div style={{ background: "#090f1a", borderBottom: "1px solid #1e2a3a", padding: "14px 16px" }}>
+          <div style={{ fontSize: "11px", letterSpacing: "2px", color: "#7a6025", textTransform: "uppercase", marginBottom: 12, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>
+            Select Your Defensive Playbook
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginBottom: 12 }}>
+            {[["All", "#6a8090", "Show all formations from any playbook"], ...Object.entries(PLAYBOOKS).map(([n, pb]) => [n, pb.color, pb.desc])].map(([name, color, desc]) => (
+              <button key={name} onClick={() => { changeBook(name); setShowPB(false); }} style={{
+                padding: "7px 12px",
+                background: myBook === name ? "#1a1408" : "#0d1622",
+                border: `1px solid ${myBook === name ? "#9a7020" : "#1e2d3d"}`,
+                borderLeft: `3px solid ${myBook === name ? "#9a7020" : color}`,
+                borderRadius: 6,
+                cursor: "pointer",
+                textAlign: "left",
+                maxWidth: "100%",
+              }}>
+                <div style={{ fontSize: 11, fontWeight: "bold", color: myBook === name ? "#9a7020" : color, fontFamily: "'IBM Plex Mono', monospace" }}>
+                  {myBook === name ? "✓ " : ""}{name}
+                </div>
+                <div style={{ fontSize: 10, color: "#4a6070", lineHeight: 1.4, marginTop: 2 }}>{desc}</div>
+              </button>
+            ))}
+          </div>
+          {myBook !== "All" && (
+            <div style={{ fontSize: 10, color: "#4a6070", fontFamily: "'IBM Plex Mono', monospace" }}>
+              Only formations from <span style={{ color: "#9a7020" }}>{myBook}</span> will appear in your game plan.
+              Formations marked "All" in the database are included in every playbook.
             </div>
-          ))}
+          )}
         </div>
       )}
 
@@ -1625,6 +1659,11 @@ function CFB26Schemes() {
 
         <div style={{ marginTop: 16, display: "flex", flexDirection: "column", alignItems: "center", gap: 9 }}>
           <span style={{ fontSize: 11, color: "#6a8090" }}>{flat.length} trait{flat.length !== 1 ? "s" : ""} selected</span>
+          {myBook !== "All" && (
+            <span style={{ fontSize: 10, color: "#7a6025", fontFamily: "'IBM Plex Mono', monospace" }}>
+              📖 {myBook} · {Object.values(FDB).filter(d => d.books.includes(myBook) || d.books.includes("All")).length} formations
+            </span>
+          )}
           {flat.length >= 2 && (
             <button onClick={() => setModal(true)} style={{ padding: "5px 18px", background: "transparent", border: "1px solid #2a4a6a", borderRadius: 17, color: "#567080", fontSize: 11, cursor: "pointer" }}>💾 Save Opponent Profile</button>
           )}
@@ -1661,7 +1700,7 @@ function CFB26Schemes() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
             <div style={{ fontSize: "10px", letterSpacing: "2px", color: "#7a6025", textTransform: "uppercase", fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>CFB26 · DC Scheme Builder</div>
-            <div style={{ fontSize: "17px", fontWeight: "700", color: "#c8d0da", fontFamily: "'IBM Plex Mono', monospace" }}>Game Plan — {scored.length} Formations Matched</div>
+            <div style={{ fontSize: "17px", fontWeight: "700", color: "#c8d0da", fontFamily: "'IBM Plex Mono', monospace" }}>Game Plan — {scored.length} Formation{scored.length !== 1 ? "s" : ""}{myBook !== "All" ? " · " + myBook : ""}</div>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexShrink: 0 }}>
               <button onClick={handleShare} style={{ background: "transparent", border: "1px solid #2a3545", borderRadius: 6, padding: "5px 10px", color: "#607888", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
