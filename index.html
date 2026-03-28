@@ -1624,9 +1624,17 @@ function CFB26Schemes() {
           </div>
         )}
 
-        <div style={{ background: "#0a1210", border: "1px solid #1e3028", borderLeft: "4px solid #3a6048", borderRadius: 7, padding: "8px 12px", marginBottom: 16, fontSize: 11, color: "#507060", lineHeight: 1.6 }}>
-          🎮 Scout your opponent — select every trait you know. More traits = sharper game plan. All matching formations will be shown and explained.
-        </div>
+        {scored.length > 0 && (
+          <div style={{ background: "#0e1408", border: "1px solid #2a3a1e", borderLeft: "4px solid #5a8040", borderRadius: 7, padding: "8px 12px", marginBottom: 16, fontSize: 11, color: "#6a9a50", lineHeight: 1.6, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span>✏️ Editing active game plan — add or remove traits then tap Update.</span>
+            <button onClick={() => { setSel({}); setScored([]); setSelFm(null); setActiveP(null); }} style={{ background: "transparent", border: "1px solid #2a4a1e", borderRadius: 5, padding: "3px 8px", color: "#4a7a30", fontSize: 10, cursor: "pointer", whiteSpace: "nowrap", marginLeft: 8, flexShrink: 0 }}>Clear All</button>
+          </div>
+        )}
+        {scored.length === 0 && (
+          <div style={{ background: "#0a1210", border: "1px solid #1e3028", borderLeft: "4px solid #3a6048", borderRadius: 7, padding: "8px 12px", marginBottom: 16, fontSize: 11, color: "#507060", lineHeight: 1.6 }}>
+            🎮 Scout your opponent — select every trait you know. More traits = sharper game plan. All matching formations will be shown and explained.
+          </div>
+        )}
 
         {TRAITS.map(group => {
           const cnt = (sel[group.id] || []).length;
@@ -1668,7 +1676,7 @@ function CFB26Schemes() {
             <button onClick={() => setModal(true)} style={{ padding: "5px 18px", background: "transparent", border: "1px solid #2a4a6a", borderRadius: 17, color: "#567080", fontSize: 11, cursor: "pointer" }}>💾 Save Opponent Profile</button>
           )}
           <button onClick={build} disabled={flat.length < 2} style={{ padding: "12px 36px", background: flat.length >= 2 ? "linear-gradient(135deg,#3a2c08,#6a5010,#3a2c08)" : "#141414", border: flat.length >= 2 ? "2px solid #6a5010" : "2px solid #1e1e1e", borderRadius: 26, color: flat.length >= 2 ? "#0a0e16" : "#333", fontSize: 11, fontWeight: "bold", cursor: flat.length >= 2 ? "pointer" : "not-allowed", letterSpacing: "1px", textTransform: "uppercase" }}>
-            🛡️ Build Game Plan
+            🛡️ {scored.length > 0 ? "Update Game Plan" : "Build Game Plan"}
           </button>
         </div>
       </div>
@@ -1706,7 +1714,7 @@ function CFB26Schemes() {
               <button onClick={handleShare} style={{ background: "transparent", border: "1px solid #2a3545", borderRadius: 6, padding: "5px 10px", color: "#607888", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
                 {shareToast === "shared" ? "✓ Sent" : shareToast === "copied" ? "✓ Copied" : "⬆ Share"}
               </button>
-              <button onClick={() => { setStep("scout"); setScored([]); setSelFm(null); }} style={{ background: "transparent", border: "1px solid #2a3545", borderRadius: 6, padding: "5px 10px", color: "#607888", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>← Re-Scout</button>
+              <button onClick={() => { setStep("scout"); setSelFm(null); }} style={{ background: "transparent", border: "1px solid #2a3545", borderRadius: 6, padding: "5px 10px", color: "#607888", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>← Edit Scout</button>
             </div>
         </div>
 
@@ -1843,7 +1851,7 @@ function CFB26Schemes() {
         </div>
 
         <div style={{ textAlign: "center", paddingBottom: 16 }}>
-          <button onClick={() => { setStep("scout"); setScored([]); setSelFm(null); }} style={{ background: "transparent", border: "1px solid #1e2a3a", borderRadius: 17, padding: "7px 20px", color: "#6a7d90", fontSize: 11, cursor: "pointer" }}>🔁 Scout New Opponent</button>
+          <button onClick={() => { setStep("scout"); setSel({}); setScored([]); setSelFm(null); setActiveP(null); }} style={{ background: "transparent", border: "1px solid #1e2a3a", borderRadius: 17, padding: "7px 20px", color: "#6a7d90", fontSize: 11, cursor: "pointer" }}>🔁 New Opponent</button>
         </div>
       </div>
     </div>
