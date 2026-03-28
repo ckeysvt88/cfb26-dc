@@ -82,15 +82,15 @@ const { useState, useCallback } = React;
 // ══════════════════════════════════════════════════════════════════
 
 const PLAYBOOKS = {
-  "4-3":         { color:"#9a7020", desc:"Classic 4-man front. Best gap integrity. Strong vs outside run." },
-  "4-3 Multiple":{ color:"#3a5a80", desc:"Adds Even 6-1, Odd, 3-3 Cub/Stack/Over. Your base book." },
-  "3-4":         { color:"#284535", desc:"3 DL, 4 LBs. Best blitz disguise. OLB spy for mobile QBs." },
-  "3-4 Multiple":{ color:"#4a3060", desc:"Adds Even, Over Stack, Tite, 4-4 Split. Most versatile 3-4." },
-  "4-2-5":       { color:"#245060", desc:"4 DL, 2 LBs, 5 DBs. Best pass rush + coverage balance." },
-  "3-3-5":       { color:"#6a4028", desc:"3/3/5. Speed everywhere. Best vs spread/RPO/mobile QB." },
-  "3-3-5 Tite":  { color:"#6a3030", desc:"Community #1 playbook. Tite front walls inside run + 5 DBs." },
-  "3-2-6":       { color:"#302060", desc:"6 DBs. Most pass-coverage-heavy book. 3-2-6 Mug/Odd unique." },
-  "Multiple":    { color:"#303d48", desc:"Only book with 5-2 Normal. 3-4 Bear/Tite, 4-3 Under, Nickel variety." },
+  "4-3":         { color:"#b8880c", desc:"Classic 4-man front. Best gap integrity. Strong vs outside run." },
+  "4-3 Multiple":{ color:"#6090b8", desc:"Adds Even 6-1, Odd, 3-3 Cub/Stack/Over. Your base book." },
+  "3-4":         { color:"#508860", desc:"3 DL, 4 LBs. Best blitz disguise. OLB spy for mobile QBs." },
+  "3-4 Multiple":{ color:"#7858a0", desc:"Adds Even, Over Stack, Tite, 4-4 Split. Most versatile 3-4." },
+  "4-2-5":       { color:"#4a8090", desc:"4 DL, 2 LBs, 5 DBs. Best pass rush + coverage balance." },
+  "3-3-5":       { color:"#a06030", desc:"3/3/5. Speed everywhere. Best vs spread/RPO/mobile QB." },
+  "3-3-5 Tite":  { color:"#aa5050", desc:"Community #1 playbook. Tite front walls inside run + 5 DBs." },
+  "3-2-6":       { color:"#8870c8", desc:"6 DBs. Most pass-coverage-heavy book. 3-2-6 Mug/Odd unique." },
+  "Multiple":    { color:"#607888", desc:"Only book with 5-2 Normal. 3-4 Bear/Tite, 4-3 Under, Nickel variety." },
 };
 
 // ── FULL FORMATION DATABASE ────────────────────────────────────────
@@ -920,11 +920,11 @@ function getBlitz(f, flat) {
 }
 
 function blitzInfo(pct) {
-  if (pct <= 10) return { label: "Very Conservative", color: "#406050" };
-  if (pct <= 20) return { label: "Conservative",      color: "#486050" };
-  if (pct <= 30) return { label: "Moderate",          color: "#7a6020" };
-  if (pct <= 40) return { label: "Aggressive",        color: "#6a4028" };
-  return                 { label: "Max Pressure",     color: "#5a2828" };
+  if (pct <= 10) return { label: "Very Conservative", color: "#60906e" };
+  if (pct <= 20) return { label: "Conservative",      color: "#6a9870" };
+  if (pct <= 30) return { label: "Moderate",          color: "#a07830" };
+  if (pct <= 40) return { label: "Aggressive",        color: "#a06030" };
+  return                 { label: "Max Pressure",     color: "#aa5050" };
 }
 
 // Returns ALL matched formations with score, sorted — no slice
@@ -984,7 +984,7 @@ function groupByPersonnel(scored) {
   return order.filter(k => groups[k]).map(k => ({ label: k, formations: groups[k] }));
 }
 
-const PC = { run: "#6a4028", pass: "#1a6fe8", hybrid: "#4a3060", pressure: "#6a3030" };
+const PC = { run: "#a06030", pass: "#1a6fe8", hybrid: "#7858a0", pressure: "#aa5050" };
 const PL = { run: "RUN STOP", pass: "PASS DEF", hybrid: "HYBRID", pressure: "PRESSURE" };
 
 // ── SUB-COMPONENTS ────────────────────────────────────────────────────────────
@@ -993,11 +993,11 @@ function BlitzBar({ pct, size = "normal" }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: size === "sm" ? 5 : 9 }}>
       {size !== "sm" && (
-        <span style={{ fontSize: "12px", color: "#6a8090", letterSpacing: "1px", textTransform: "uppercase", flexShrink: 0 }}>
+        <span style={{ fontSize: "12px", color: "#7f9fb2", letterSpacing: "1px", textTransform: "uppercase", flexShrink: 0 }}>
           Blitz %
         </span>
       )}
-      <div style={{ flex: 1, height: size === "sm" ? 4 : 6, background: "#2a4055", borderRadius: 3 }}>
+      <div style={{ flex: 1, height: size === "sm" ? 4 : 6, background: "#507890", borderRadius: 3 }}>
         <div style={{ width: `${Math.min(pct * 2, 100)}%`, height: "100%", background: info.color, borderRadius: 3, transition: "width 0.3s" }} />
       </div>
       <span style={{ fontSize: size === "sm" ? 10 : 13, fontWeight: "bold", color: info.color, minWidth: 28, textAlign: "right" }}>{pct}%</span>
@@ -1013,7 +1013,7 @@ function WhySelected({ coreHits, suppHits }) {
   if (!coreHits.length && !suppHits.length) return null;
   return (
     <div style={{ marginTop: 8 }}>
-      <div style={{ fontSize: "12px", color: "#6a8090", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 8, fontFamily: "'IBM Plex Mono', monospace" }}>
+      <div style={{ fontSize: "12px", color: "#7f9fb2", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 8, fontFamily: "'IBM Plex Mono', monospace" }}>
         Why This Formation Was Selected
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
@@ -1022,7 +1022,7 @@ function WhySelected({ coreHits, suppHits }) {
             fontSize: 11, padding: "3px 8px", borderRadius: 12,
             background: "linear-gradient(135deg,#2a1800,#3a2200)",
             border: "1px solid #c8960c",
-            color: "#907020", fontWeight: "bold"
+            color: "#b08010", fontWeight: "bold"
           }}>
             ★ {TRAIT_LABELS[t] || t}
           </span>
@@ -1038,10 +1038,10 @@ function WhySelected({ coreHits, suppHits }) {
           </span>
         ))}
       </div>
-      <div style={{ fontSize: "11px", color: "#6a7d90", marginTop: 4 }}>
-        <span style={{ color: "#9a7020" }}>★ Core match</span>
-        <span style={{ margin: "0 8px", color: "#2a4055" }}>|</span>
-        <span style={{ color: "#607888" }}>+ Supporting match</span>
+      <div style={{ fontSize: "11px", color: "#7c9aaf", marginTop: 4 }}>
+        <span style={{ color: "#b8880c" }}>★ Core match</span>
+        <span style={{ margin: "0 8px", color: "#507890" }}>|</span>
+        <span style={{ color: "#7898ae" }}>+ Supporting match</span>
       </div>
     </div>
   );
@@ -1056,7 +1056,7 @@ function FormationCard({ fm, flat, onSelect, isSelected }) {
       onClick={() => onSelect(fm)}
       style={{
         background: isSelected ? "linear-gradient(135deg,#1a1200,#2a1c00)" : "linear-gradient(135deg,#0e1420,#0a0f18)",
-        border: `1px solid ${isSelected ? "#9a7020" : "#2a4055"}`,
+        border: `1px solid ${isSelected ? "#b8880c" : "#507890"}`,
         borderLeft: `3px solid ${PC[fm.priority]}`,
         borderRadius: 7, padding: "13px 15px", marginBottom: 16, cursor: "pointer",
         transition: "all 0.15s"
@@ -1064,21 +1064,21 @@ function FormationCard({ fm, flat, onSelect, isSelected }) {
     >
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 9, flexWrap: "wrap" }}>
-          <span style={{ fontSize: 11, fontWeight: "600", color: isSelected ? "#907020" : "#e8eef4", fontFamily: "'IBM Plex Mono', monospace" }}>{fm.name}</span>
+          <span style={{ fontSize: 11, fontWeight: "600", color: isSelected ? "#b08010" : "#e8eef4", fontFamily: "'IBM Plex Mono', monospace" }}>{fm.name}</span>
           <span style={{ fontSize: "12px", background: `${PC[fm.priority]}18`, border: `1px solid ${PC[fm.priority]}55`, color: PC[fm.priority], padding: "1px 5px", borderRadius: 4, fontWeight: "bold" }}>{PL[fm.priority]}</span>
-          <span style={{ fontSize: "12px", background: "#0a0e18", border: "1px solid #1e2a3a", color: "#6a8090", padding: "1px 5px", borderRadius: 4 }}>{fm.personnel}</span>
+          <span style={{ fontSize: "12px", background: "#0a0e18", border: "1px solid #1e2a3a", color: "#7f9fb2", padding: "1px 5px", borderRadius: 4 }}>{fm.personnel}</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 9, flexShrink: 0 }}>
-          <span style={{ fontSize: 11, fontWeight: "bold", color: "#9a7020" }}>{fm.sc}pt</span>
+          <span style={{ fontSize: 11, fontWeight: "bold", color: "#b8880c" }}>{fm.sc}pt</span>
           <span style={{ fontSize: 11, fontWeight: "bold", color: bi.color }}>{blitz}%</span>
         </div>
       </div>
-      <div style={{ fontSize: "12px", color: "#567080", marginBottom: 8, fontFamily: "'IBM Plex Mono', monospace" }}>
+      <div style={{ fontSize: "12px", color: "#6888a0", marginBottom: 8, fontFamily: "'IBM Plex Mono', monospace" }}>
         📖 {fm.books.slice(0, 3).join(" · ")}{fm.books.length > 3 ? ` +${fm.books.length - 3}` : ""}
       </div>
       <WhySelected coreHits={fm.coreHits} suppHits={fm.suppHits} />
       {isSelected && (
-        <div style={{ marginTop: 6, fontSize: "11px", color: "#9a7020", fontFamily: "'IBM Plex Mono', monospace" }}>▼ Details below</div>
+        <div style={{ marginTop: 6, fontSize: "11px", color: "#b8880c", fontFamily: "'IBM Plex Mono', monospace" }}>▼ Details below</div>
       )}
     </div>
   );
@@ -1097,19 +1097,19 @@ function FormationDetail({ fm, flat }) {
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
           <div style={{ flex: 1 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" }}>
-              <span style={{ fontSize: 11, fontWeight: "bold", color: "#c8c4bc" }}>{fm.name}</span>
+              <span style={{ fontSize: 11, fontWeight: "bold", color: "#c5cdd5" }}>{fm.name}</span>
               <span style={{ background: PC[fm.priority], color: "#fff", fontSize: "12px", fontWeight: "bold", padding: "2px 8px", borderRadius: 6, letterSpacing: 1 }}>{PL[fm.priority]}</span>
-              <span style={{ fontSize: "12px", color: "#607888", fontFamily: "'IBM Plex Mono', monospace" }}>📖 {fm.books.join(" · ")}</span>
+              <span style={{ fontSize: "12px", color: "#7898ae", fontFamily: "'IBM Plex Mono', monospace" }}>📖 {fm.books.join(" · ")}</span>
             </div>
-            <div style={{ fontSize: 11, color: "#708090", lineHeight: 1.6, marginBottom: 16 }}>{fm.desc}</div>
+            <div style={{ fontSize: 11, color: "#7f9fb2", lineHeight: 1.6, marginBottom: 16 }}>{fm.desc}</div>
             <div style={{ background: "#080c15", border: "1px solid #1a3050", borderRadius: 5, padding: "10px 13px" }}>
-              <div style={{ fontSize: "12px", color: "#567080", letterSpacing: 1, textTransform: "uppercase", marginBottom: 2, fontFamily: "'IBM Plex Mono', monospace" }}>DC Logic</div>
-              <div style={{ fontSize: 11, color: "#607888", lineHeight: 1.65 }}>{fm.dcNote}</div>
+              <div style={{ fontSize: "12px", color: "#6888a0", letterSpacing: 1, textTransform: "uppercase", marginBottom: 2, fontFamily: "'IBM Plex Mono', monospace" }}>DC Logic</div>
+              <div style={{ fontSize: 11, color: "#7898ae", lineHeight: 1.65 }}>{fm.dcNote}</div>
             </div>
           </div>
           <div style={{ background: "#080c15", border: "1px solid #c8960c", borderRadius: 7, padding: "6px 10px", textAlign: "center", flexShrink: 0 }}>
-            <div style={{ fontSize: 11, fontWeight: "bold", color: "#9a7020" }}>{fm.sc}</div>
-            <div style={{ fontSize: "12px", color: "#9a7020", fontFamily: "'IBM Plex Mono', monospace" }}>MATCH</div>
+            <div style={{ fontSize: 11, fontWeight: "bold", color: "#b8880c" }}>{fm.sc}</div>
+            <div style={{ fontSize: "12px", color: "#b8880c", fontFamily: "'IBM Plex Mono', monospace" }}>MATCH</div>
           </div>
         </div>
       </div>
@@ -1123,8 +1123,8 @@ function FormationDetail({ fm, flat }) {
       <div style={{ padding: "16px 16px", borderBottom: "1px solid #1e2a3a", background: "#090f1a" }}>
         <BlitzBar pct={blitz} />
         {fm.blitzMods.filter(m => m.tags.some(t => flat.includes(t))).slice(0, 3).map((m, i) => (
-          <div key={i} style={{ fontSize: "11px", color: "#6a8090", marginTop: 3, display: "flex", gap: 8 }}>
-            <span style={{ color: m.d >= 0 ? "#c49a2a" : "#305040", fontWeight: "bold" }}>{m.d >= 0 ? `+${m.d}%` : `${m.d}%`}</span>
+          <div key={i} style={{ fontSize: "11px", color: "#7f9fb2", marginTop: 3, display: "flex", gap: 8 }}>
+            <span style={{ color: m.d >= 0 ? "#d4aa30" : "#558a68", fontWeight: "bold" }}>{m.d >= 0 ? `+${m.d}%` : `${m.d}%`}</span>
             <span>— {m.tags.filter(t => flat.includes(t)).map(t => TRAIT_LABELS[t] || t).join(", ")}</span>
           </div>
         ))}
@@ -1141,7 +1141,7 @@ function FormationDetail({ fm, flat }) {
           <button key={t.id} onClick={() => setTab(t.id)} style={{
             flex: 1, padding: "8px 2px", background: "transparent", border: "none",
             borderBottom: tab === t.id ? "2px solid #c8960c" : "2px solid transparent",
-            color: tab === t.id ? "#9a7020" : "#607888",
+            color: tab === t.id ? "#b8880c" : "#7898ae",
             fontSize: "11px", fontWeight: tab === t.id ? "bold" : "normal", cursor: "pointer"
           }}>{t.l}</button>
         ))}
@@ -1149,29 +1149,29 @@ function FormationDetail({ fm, flat }) {
 
       <div style={{ padding: 13 }}>
         {tab === "coverages" && fm.coverages.map((c, i) => (
-          <div key={i} style={{ background: "#080c15", border: "1px solid #1e2a3a", borderLeft: `3px solid ${["#9a7020","#3a5a80","#4a3060","#284535"][i] || "#9a7020"}`, borderRadius: 5, padding: "14px 16px", marginBottom: 16 }}>
+          <div key={i} style={{ background: "#080c15", border: "1px solid #1e2a3a", borderLeft: `3px solid ${["#b8880c","#6090b8","#7858a0","#508860"][i] || "#b8880c"}`, borderRadius: 5, padding: "14px 16px", marginBottom: 16 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontWeight: "bold", fontSize: 11, color: "#c8d0da" }}>{c.name}</span>
-                <span style={{ fontSize: "12px", background: "#111009", border: "1px solid #3a2800", color: "#9a7020", padding: "1px 5px", borderRadius: 4, fontFamily: "'IBM Plex Mono', monospace" }}>{c.tag}</span>
-                {i === 0 && <span style={{ fontSize: "12px", background: "#0a2010", border: "1px solid #2a6030", color: "#305040", padding: "1px 5px", borderRadius: 4, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>BASE</span>}
+                <span style={{ fontWeight: "bold", fontSize: 11, color: "#c5d0dc" }}>{c.name}</span>
+                <span style={{ fontSize: "12px", background: "#111009", border: "1px solid #3a2800", color: "#b8880c", padding: "1px 5px", borderRadius: 4, fontFamily: "'IBM Plex Mono', monospace" }}>{c.tag}</span>
+                {i === 0 && <span style={{ fontSize: "12px", background: "#0a2010", border: "1px solid #2a6030", color: "#558a68", padding: "1px 5px", borderRadius: 4, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>BASE</span>}
               </div>
               <span style={{ fontSize: 11 }}>
-                <span style={{ color: "#c49a2a" }}>{"★".repeat(c.rating)}</span>
-                <span style={{ color: "#1e2530" }}>{"★".repeat(5 - c.rating)}</span>
+                <span style={{ color: "#d4aa30" }}>{"★".repeat(c.rating)}</span>
+                <span style={{ color: "#506880" }}>{"★".repeat(5 - c.rating)}</span>
               </span>
             </div>
-            <div style={{ fontSize: 11, color: "#b0c0d0", lineHeight: 1.65 }}>{c.detail || c.note}</div>
+            <div style={{ fontSize: 11, color: "#90b0c4", lineHeight: 1.65 }}>{c.detail || c.note}</div>
           </div>
         ))}
 
         {tab === "preSnap" && (
           <div>
-            <div style={{ fontSize: "12px", color: "#6a7d90", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>Every Snap — Before the Ball is Snapped</div>
+            <div style={{ fontSize: "12px", color: "#7c9aaf", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>Every Snap — Before the Ball is Snapped</div>
             {fm.preSnap.map((a, i) => (
               <div key={i} style={{ display: "flex", gap: 8, background: "#080c15", border: "1px solid #1e2a3a", borderRadius: 5, padding: "14px 16px", marginBottom: 8 }}>
-                <span style={{ color: "#9a7020", flexShrink: 0, marginTop: 1 }}>▸</span>
-                <span style={{ fontSize: 11, color: "#b8c8d8", lineHeight: 1.55 }}>{a}</span>
+                <span style={{ color: "#b8880c", flexShrink: 0, marginTop: 1 }}>▸</span>
+                <span style={{ fontSize: 11, color: "#98b4c8", lineHeight: 1.55 }}>{a}</span>
               </div>
             ))}
           </div>
@@ -1179,11 +1179,11 @@ function FormationDetail({ fm, flat }) {
 
         {tab === "coaching" && (
           <div>
-            <div style={{ fontSize: "12px", color: "#6a7d90", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>In-Game Coaching Setup</div>
+            <div style={{ fontSize: "12px", color: "#7c9aaf", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>In-Game Coaching Setup</div>
             {fm.coaching.map((c, i) => (
               <div key={i} style={{ background: "#080c15", border: "1px solid #1e2a3a", borderRadius: 5, padding: "14px 16px", marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 11, color: "#708090" }}>{c.label}</span>
-                <span style={{ fontSize: 11, fontWeight: "bold", color: "#907020", background: "#111009", border: "1px solid #3a2800", padding: "2px 8px", borderRadius: 5, flexShrink: 0, fontFamily: "'IBM Plex Mono', monospace" }}>{c.value}</span>
+                <span style={{ fontSize: 11, color: "#7f9fb2" }}>{c.label}</span>
+                <span style={{ fontSize: 11, fontWeight: "bold", color: "#b08010", background: "#111009", border: "1px solid #3a2800", padding: "2px 8px", borderRadius: 5, flexShrink: 0, fontFamily: "'IBM Plex Mono', monospace" }}>{c.value}</span>
               </div>
             ))}
           </div>
@@ -1191,15 +1191,15 @@ function FormationDetail({ fm, flat }) {
 
         {tab === "callsheet" && (
           <div>
-            <div style={{ fontSize: "12px", color: "#6a7d90", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>Down & Distance Quick Reference</div>
+            <div style={{ fontSize: "12px", color: "#7c9aaf", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>Down & Distance Quick Reference</div>
             {fm.callsheet.map((c, i) => (
               <div key={i} style={{ display: "grid", gridTemplateColumns: "95px 1fr", background: i % 2 === 0 ? "#080c15" : "#060910", border: "1px solid #1e2a3a", borderRadius: 4, marginBottom: 4, overflow: "hidden" }}>
                 <div style={{ padding: "10px 12px", background: "#050708", borderRight: "1px solid #1e2a3a", display: "flex", alignItems: "center" }}>
-                  <span style={{ fontSize: 11, fontWeight: "bold", color: "#9a7020", fontFamily: "'IBM Plex Mono', monospace" }}>{c.down}</span>
+                  <span style={{ fontSize: 11, fontWeight: "bold", color: "#b8880c", fontFamily: "'IBM Plex Mono', monospace" }}>{c.down}</span>
                 </div>
                 <div style={{ padding: "10px 13px" }}>
-                  <div style={{ fontSize: 15, fontWeight: "700", color: "#c8d0da", fontFamily: "'IBM Plex Mono', monospace" }}>{c.call}</div>
-                  {c.note && <div style={{ fontSize: 11, color: "#6a8090", fontStyle: "italic", marginTop: 1 }}>{c.note}</div>}
+                  <div style={{ fontSize: 15, fontWeight: "700", color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>{c.call}</div>
+                  {c.note && <div style={{ fontSize: 11, color: "#7f9fb2", fontStyle: "italic", marginTop: 1 }}>{c.note}</div>}
                 </div>
               </div>
             ))}
@@ -1459,9 +1459,49 @@ function CFB26Schemes() {
 
 
 
+  const [importMsg, setImportMsg] = useState(null);
+
   const changeBook = (book) => {
     setMyBook(book);
     try { localStorage.setItem("cfb26_myBook", book); } catch(e) {}
+  };
+
+
+  // ── EXPORT PROFILES ──────────────────────────────────────────────
+  const exportProfiles = () => {
+    if (!Object.keys(profiles).length) return;
+    const data = JSON.stringify({ version: 1, profiles }, null, 2);
+    const blob = new Blob([data], { type: "application/json" });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement("a");
+    a.href     = url;
+    a.download = "cfb26-dc-profiles.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  // ── IMPORT PROFILES ───────────────────────────────────────────────
+  const importProfiles = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const parsed = JSON.parse(ev.target.result);
+        const incoming = parsed.profiles || parsed; // support both formats
+        if (typeof incoming === "object" && incoming !== null) {
+          saveProfiles(prev => ({ ...prev, ...incoming }));
+          setImportMsg("✓ " + Object.keys(incoming).length + " profile(s) imported");
+        } else {
+          setImportMsg("✗ Invalid file format");
+        }
+      } catch(err) {
+        setImportMsg("✗ Could not read file");
+      }
+      setTimeout(() => setImportMsg(null), 3000);
+    };
+    reader.readAsText(file);
+    e.target.value = ""; // reset so same file can be re-imported
   };
 
   // Build the plain-text game plan summary
@@ -1560,14 +1600,14 @@ function CFB26Schemes() {
 
   // ── SCOUT SCREEN ─────────────────────────────────────────────────────────────
   if (step === "scout") return (
-    <div style={{ fontFamily: "'Georgia',serif", background: "#080c12", minHeight: "100vh", color: "#c8d0da", maxWidth: 720, margin: "0 auto" }}>
+    <div style={{ fontFamily: "'Georgia',serif", background: "#080c12", minHeight: "100vh", color: "#c5d0dc", maxWidth: 720, margin: "0 auto" }}>
       <div style={{ background: "linear-gradient(135deg,#07090f,#0c1220)", borderBottom: "3px solid #c8960c", padding: "13px 15px 10px", paddingTop: "calc(env(safe-area-inset-top) + 13px)", position: "sticky", top: 0, zIndex: 100 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
-            <div style={{ fontSize: "10px", letterSpacing: "2px", color: "#7a6025", textTransform: "uppercase", fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>CFB26 · Defensive Intelligence</div>
-            <div style={{ fontSize: "18px", fontWeight: "700", color: "#c8d0da", letterSpacing: "-0.3px", fontFamily: "'IBM Plex Mono', monospace" }}>DC Scheme Builder</div>
+            <div style={{ fontSize: "10px", letterSpacing: "2px", color: "#a07830", textTransform: "uppercase", fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>CFB26 · Defensive Intelligence</div>
+            <div style={{ fontSize: "18px", fontWeight: "700", color: "#c5d0dc", letterSpacing: "-0.3px", fontFamily: "'IBM Plex Mono', monospace" }}>DC Scheme Builder</div>
           </div>
-          <button onClick={() => setShowPB(v => !v)} style={{ padding: "5px 10px", background: "transparent", border: `1px solid ${myBook !== "All" ? "#9a7020" : showPB ? "#9a7020" : "#4a6a8a"}`, borderRadius: 7, color: myBook !== "All" ? "#9a7020" : showPB ? "#9a7020" : "#567080", fontSize: 11, cursor: "pointer" }}>
+          <button onClick={() => setShowPB(v => !v)} style={{ padding: "5px 10px", background: "transparent", border: `1px solid ${myBook !== "All" ? "#b8880c" : showPB ? "#b8880c" : "#7aaac8"}`, borderRadius: 7, color: myBook !== "All" ? "#b8880c" : showPB ? "#b8880c" : "#6888a0", fontSize: 11, cursor: "pointer" }}>
             📖 {myBook !== "All" ? myBook : "My Book"}
           </button>
         </div>
@@ -1575,31 +1615,31 @@ function CFB26Schemes() {
 
       {showPB && (
         <div style={{ background: "#090f1a", borderBottom: "1px solid #1e2a3a", padding: "14px 16px" }}>
-          <div style={{ fontSize: "11px", letterSpacing: "2px", color: "#7a6025", textTransform: "uppercase", marginBottom: 12, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>
+          <div style={{ fontSize: "11px", letterSpacing: "2px", color: "#a07830", textTransform: "uppercase", marginBottom: 12, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>
             Select Your Defensive Playbook
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginBottom: 12 }}>
-            {[["All", "#6a8090", "Show all formations from any playbook"], ...Object.entries(PLAYBOOKS).map(([n, pb]) => [n, pb.color, pb.desc])].map(([name, color, desc]) => (
+            {[["All", "#7f9fb2", "Show all formations from any playbook"], ...Object.entries(PLAYBOOKS).map(([n, pb]) => [n, pb.color, pb.desc])].map(([name, color, desc]) => (
               <button key={name} onClick={() => { changeBook(name); setShowPB(false); }} style={{
                 padding: "7px 12px",
                 background: myBook === name ? "#1a1408" : "#0d1622",
-                border: `1px solid ${myBook === name ? "#9a7020" : "#1e2d3d"}`,
-                borderLeft: `3px solid ${myBook === name ? "#9a7020" : color}`,
+                border: `1px solid ${myBook === name ? "#b8880c" : "#1e2d3d"}`,
+                borderLeft: `3px solid ${myBook === name ? "#b8880c" : color}`,
                 borderRadius: 6,
                 cursor: "pointer",
                 textAlign: "left",
                 maxWidth: "100%",
               }}>
-                <div style={{ fontSize: 11, fontWeight: "bold", color: myBook === name ? "#9a7020" : color, fontFamily: "'IBM Plex Mono', monospace" }}>
+                <div style={{ fontSize: 11, fontWeight: "bold", color: myBook === name ? "#b8880c" : color, fontFamily: "'IBM Plex Mono', monospace" }}>
                   {myBook === name ? "✓ " : ""}{name}
                 </div>
-                <div style={{ fontSize: 10, color: "#4a6070", lineHeight: 1.4, marginTop: 2 }}>{desc}</div>
+                <div style={{ fontSize: 10, color: "#6888a0", lineHeight: 1.4, marginTop: 2 }}>{desc}</div>
               </button>
             ))}
           </div>
           {myBook !== "All" && (
-            <div style={{ fontSize: 10, color: "#4a6070", fontFamily: "'IBM Plex Mono', monospace" }}>
-              Only formations from <span style={{ color: "#9a7020" }}>{myBook}</span> will appear in your game plan.
+            <div style={{ fontSize: 10, color: "#6888a0", fontFamily: "'IBM Plex Mono', monospace" }}>
+              Only formations from <span style={{ color: "#b8880c" }}>{myBook}</span> will appear in your game plan.
               Formations marked "All" in the database are included in every playbook.
             </div>
           )}
@@ -1609,15 +1649,33 @@ function CFB26Schemes() {
       <div style={{ padding: "16px 16px" }}>
         {Object.keys(profiles).length > 0 && (
           <div style={{ marginBottom: 18 }}>
-            <div style={{ fontSize: 10, color: "#4a5a6a", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 10, fontFamily: "'IBM Plex Mono', monospace" }}>
-              Saved Opponents · {Object.keys(profiles).length}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+              <div style={{ fontSize: 10, color: "#6888a0", letterSpacing: "2px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace" }}>
+                Saved Opponents · {Object.keys(profiles).length}
+              </div>
+              <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                {importMsg && (
+                  <span style={{ fontSize: 10, color: importMsg.startsWith("✓") ? "#6a9870" : "#aa5050", fontFamily: "'IBM Plex Mono', monospace" }}>
+                    {importMsg}
+                  </span>
+                )}
+                {Object.keys(profiles).length > 0 && (
+                  <button onClick={exportProfiles} style={{ fontSize: 10, padding: "3px 9px", background: "transparent", border: "1px solid #2a3d52", borderRadius: 5, color: "#7f9fb2", cursor: "pointer", fontFamily: "'IBM Plex Mono', monospace", whiteSpace: "nowrap" }}>
+                    Export
+                  </button>
+                )}
+                <label style={{ fontSize: 10, padding: "3px 9px", background: "transparent", border: "1px solid #2a3d52", borderRadius: 5, color: "#7f9fb2", cursor: "pointer", fontFamily: "'IBM Plex Mono', monospace", whiteSpace: "nowrap" }}>
+                  Import
+                  <input type="file" accept=".json" onChange={importProfiles} style={{ display: "none" }} />
+                </label>
+              </div>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               {Object.keys(profiles).map(n => (
                 <div key={n} style={{ display: "flex", alignItems: "center", background: "#0d1622", border: "1px solid #253545", borderRadius: 8, overflow: "hidden" }}>
-                  <button onClick={() => setSel(profiles[n])} style={{ padding: "7px 12px", background: "transparent", border: "none", color: "#8aa0b0", fontSize: 11, cursor: "pointer", fontFamily: "'IBM Plex Mono', monospace" }}>📂 {n}</button>
+                  <button onClick={() => setSel(profiles[n])} style={{ padding: "7px 12px", background: "transparent", border: "none", color: "#90b0c4", fontSize: 11, cursor: "pointer", fontFamily: "'IBM Plex Mono', monospace" }}>📂 {n}</button>
                   <div style={{ width: 1, alignSelf: "stretch", background: "#253545" }}/>
-                  <button onClick={() => saveProfiles(p => { const x = { ...p }; delete x[n]; return x; })} style={{ padding: "7px 9px", background: "transparent", border: "none", color: "#6a4040", fontSize: 11, cursor: "pointer" }}>✕</button>
+                  <button onClick={() => saveProfiles(p => { const x = { ...p }; delete x[n]; return x; })} style={{ padding: "7px 9px", background: "transparent", border: "none", color: "#aa6868", fontSize: 11, cursor: "pointer" }}>✕</button>
                 </div>
               ))}
             </div>
@@ -1625,13 +1683,13 @@ function CFB26Schemes() {
         )}
 
         {scored.length > 0 && (
-          <div style={{ background: "#0e1408", border: "1px solid #2a3a1e", borderLeft: "4px solid #5a8040", borderRadius: 7, padding: "8px 12px", marginBottom: 16, fontSize: 11, color: "#6a9a50", lineHeight: 1.6, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ background: "#0e1408", border: "1px solid #2a3a1e", borderLeft: "4px solid #5a8040", borderRadius: 7, padding: "8px 12px", marginBottom: 16, fontSize: 11, color: "#88bb60", lineHeight: 1.6, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span>✏️ Editing active game plan — add or remove traits then tap Update.</span>
-            <button onClick={() => { setSel({}); setScored([]); setSelFm(null); setActiveP(null); }} style={{ background: "transparent", border: "1px solid #2a4a1e", borderRadius: 5, padding: "3px 8px", color: "#4a7a30", fontSize: 10, cursor: "pointer", whiteSpace: "nowrap", marginLeft: 8, flexShrink: 0 }}>Clear All</button>
+            <button onClick={() => { setSel({}); setScored([]); setSelFm(null); setActiveP(null); }} style={{ background: "transparent", border: "1px solid #2a4a1e", borderRadius: 5, padding: "3px 8px", color: "#70aa50", fontSize: 10, cursor: "pointer", whiteSpace: "nowrap", marginLeft: 8, flexShrink: 0 }}>Clear All</button>
           </div>
         )}
         {scored.length === 0 && (
-          <div style={{ background: "#0a1210", border: "1px solid #1e3028", borderLeft: "4px solid #3a6048", borderRadius: 7, padding: "8px 12px", marginBottom: 16, fontSize: 11, color: "#507060", lineHeight: 1.6 }}>
+          <div style={{ background: "#0a1210", border: "1px solid #1e3028", borderLeft: "4px solid #3a6048", borderRadius: 7, padding: "8px 12px", marginBottom: 16, fontSize: 11, color: "#70a080", lineHeight: 1.6 }}>
             🎮 Scout your opponent — select every trait you know. More traits = sharper game plan. All matching formations will be shown and explained.
           </div>
         )}
@@ -1644,17 +1702,17 @@ function CFB26Schemes() {
               <button onClick={() => setOpenGrp(open ? null : group.id)} style={{ width: "100%", padding: "14px 16px", display: "flex", alignItems: "center", justifyContent: "space-between", background: cnt > 0 ? "#0a1210" : "#0d1622", border: "none", cursor: "pointer" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <span style={{ fontSize: 11 }}>{group.icon}</span>
-                  <span style={{ fontSize: 11, fontWeight: "bold", color: cnt > 0 ? "#486050" : "#9a7020" }}>{group.label}</span>
-                  {cnt > 0 && <span style={{ background: "#1a3020", border: "1px solid #4a8a1a", borderRadius: 9, padding: "1px 7px", fontSize: 11, color: "#486050", fontWeight: "bold" }}>{cnt}</span>}
+                  <span style={{ fontSize: 11, fontWeight: "bold", color: cnt > 0 ? "#6a9870" : "#b8880c" }}>{group.label}</span>
+                  {cnt > 0 && <span style={{ background: "#1a3020", border: "1px solid #4a8a1a", borderRadius: 9, padding: "1px 7px", fontSize: 11, color: "#6a9870", fontWeight: "bold" }}>{cnt}</span>}
                 </div>
-                <span style={{ color: cnt > 0 ? "#486050" : "#6a7d90", fontSize: 11 }}>{open ? "▲" : "▼"}</span>
+                <span style={{ color: cnt > 0 ? "#6a9870" : "#7c9aaf", fontSize: 11 }}>{open ? "▲" : "▼"}</span>
               </button>
               {open && (
                 <div style={{ padding: "10px 12px 12px", background: "#080c12", borderTop: "1px solid #1a2030", display: "flex", flexWrap: "wrap", gap: 9 }}>
                   {group.items.map(item => {
                     const on = (sel[group.id] || []).includes(item.id);
                     return (
-                      <button key={item.id} onClick={() => toggle(group.id, item.id)} style={{ padding: "7px 12px", borderRadius: 18, border: on ? "2px solid #c8960c" : "2px solid #1e2a3a", background: on ? "#121008" : "#0d1622", color: on ? "#907020" : "#6a8090", fontSize: 11, fontWeight: on ? "bold" : "normal", cursor: "pointer", transition: "all 0.1s" }}>
+                      <button key={item.id} onClick={() => toggle(group.id, item.id)} style={{ padding: "7px 12px", borderRadius: 18, border: on ? "2px solid #c8960c" : "2px solid #1e2a3a", background: on ? "#121008" : "#0d1622", color: on ? "#b08010" : "#7f9fb2", fontSize: 11, fontWeight: on ? "bold" : "normal", cursor: "pointer", transition: "all 0.1s" }}>
                         {on ? "✓ " : ""}{item.label}
                       </button>
                     );
@@ -1666,14 +1724,14 @@ function CFB26Schemes() {
         })}
 
         <div style={{ marginTop: 16, display: "flex", flexDirection: "column", alignItems: "center", gap: 9 }}>
-          <span style={{ fontSize: 11, color: "#6a8090" }}>{flat.length} trait{flat.length !== 1 ? "s" : ""} selected</span>
+          <span style={{ fontSize: 11, color: "#7f9fb2" }}>{flat.length} trait{flat.length !== 1 ? "s" : ""} selected</span>
           {myBook !== "All" && (
-            <span style={{ fontSize: 10, color: "#7a6025", fontFamily: "'IBM Plex Mono', monospace" }}>
+            <span style={{ fontSize: 10, color: "#a07830", fontFamily: "'IBM Plex Mono', monospace" }}>
               📖 {myBook} · {Object.values(FDB).filter(d => d.books.includes(myBook) || d.books.includes("All")).length} formations
             </span>
           )}
           {flat.length >= 2 && (
-            <button onClick={() => setModal(true)} style={{ padding: "5px 18px", background: "transparent", border: "1px solid #2a4a6a", borderRadius: 17, color: "#567080", fontSize: 11, cursor: "pointer" }}>💾 Save Opponent Profile</button>
+            <button onClick={() => setModal(true)} style={{ padding: "5px 18px", background: "transparent", border: "1px solid #2a4a6a", borderRadius: 17, color: "#6888a0", fontSize: 11, cursor: "pointer" }}>💾 Save Opponent Profile</button>
           )}
           <button onClick={build} disabled={flat.length < 2} style={{ padding: "12px 36px", background: flat.length >= 2 ? "linear-gradient(135deg,#3a2c08,#6a5010,#3a2c08)" : "#141414", border: flat.length >= 2 ? "2px solid #6a5010" : "2px solid #1e1e1e", borderRadius: 26, color: flat.length >= 2 ? "#0a0e16" : "#333", fontSize: 11, fontWeight: "bold", cursor: flat.length >= 2 ? "pointer" : "not-allowed", letterSpacing: "1px", textTransform: "uppercase" }}>
             🛡️ {scored.length > 0 ? "Update Game Plan" : "Build Game Plan"}
@@ -1684,12 +1742,12 @@ function CFB26Schemes() {
       {modal && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.85)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100, padding: 20 }}>
           <div style={{ background: "#0d1622", border: "1px solid #c8960c", borderRadius: 10, padding: "18px 20px", width: "100%", maxWidth: 310 }}>
-            <div style={{ fontSize: 11, fontWeight: "bold", color: "#c8d0da", marginBottom: 6, fontFamily: "'IBM Plex Mono', monospace" }}>Save Opponent Profile</div>
-            <div style={{ fontSize: 10, color: "#4a5a6a", marginBottom: 14 }}>Saved profiles persist between sessions on this device.</div>
-            <input value={saveName} onChange={e => setSaveName(e.target.value)} placeholder="e.g. Player B, RPO Friend..." style={{ width: "100%", padding: "14px 16px", background: "#080c12", border: "1px solid #2a3a50", borderRadius: 6, color: "#c8d0da", fontSize: 11, boxSizing: "border-box" }} />
+            <div style={{ fontSize: 11, fontWeight: "bold", color: "#c5d0dc", marginBottom: 6, fontFamily: "'IBM Plex Mono', monospace" }}>Save Opponent Profile</div>
+            <div style={{ fontSize: 10, color: "#6888a0", marginBottom: 14 }}>Saved profiles persist between sessions on this device.</div>
+            <input value={saveName} onChange={e => setSaveName(e.target.value)} placeholder="e.g. Player B, RPO Friend..." style={{ width: "100%", padding: "14px 16px", background: "#080c12", border: "1px solid #2a3a50", borderRadius: 6, color: "#c5d0dc", fontSize: 11, boxSizing: "border-box" }} />
             <div style={{ display: "flex", gap: 10, marginTop: 12 }}>
-              <button onClick={() => { if (saveName.trim()) saveProfiles(p => ({ ...p, [saveName.trim()]: sel })); setModal(false); setSaveName(""); }} disabled={!saveName.trim()} style={{ flex: 1, padding: "8px", background: "#9a7020", border: "none", borderRadius: 6, color: "#0a0e16", fontWeight: "bold", fontSize: 11, cursor: "pointer" }}>Save</button>
-              <button onClick={() => { setModal(false); setSaveName(""); }} style={{ flex: 1, padding: "8px", background: "transparent", border: "1px solid #2a3a50", borderRadius: 6, color: "#6a8090", fontSize: 11, cursor: "pointer" }}>Cancel</button>
+              <button onClick={() => { if (saveName.trim()) saveProfiles(p => ({ ...p, [saveName.trim()]: sel })); setModal(false); setSaveName(""); }} disabled={!saveName.trim()} style={{ flex: 1, padding: "8px", background: "#b8880c", border: "none", borderRadius: 6, color: "#0a0e16", fontWeight: "bold", fontSize: 11, cursor: "pointer" }}>Save</button>
+              <button onClick={() => { setModal(false); setSaveName(""); }} style={{ flex: 1, padding: "8px", background: "transparent", border: "1px solid #2a3a50", borderRadius: 6, color: "#7f9fb2", fontSize: 11, cursor: "pointer" }}>Cancel</button>
             </div>
           </div>
         </div>
@@ -1702,19 +1760,19 @@ function CFB26Schemes() {
   const grouped = groupByPersonnel(scored);
 
   return (
-    <div style={{ fontFamily: "'Georgia',serif", background: "#080c12", minHeight: "100vh", color: "#c8d0da", maxWidth: 720, margin: "0 auto" }}>
+    <div style={{ fontFamily: "'Georgia',serif", background: "#080c12", minHeight: "100vh", color: "#c5d0dc", maxWidth: 720, margin: "0 auto" }}>
       {/* Header */}
       <div style={{ background: "linear-gradient(135deg,#07090f,#0c1220)", borderBottom: "3px solid #c8960c", padding: "12px 15px 10px", paddingTop: "calc(env(safe-area-inset-top) + 12px)", position: "sticky", top: 0, zIndex: 100 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
-            <div style={{ fontSize: "10px", letterSpacing: "2px", color: "#7a6025", textTransform: "uppercase", fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>CFB26 · DC Scheme Builder</div>
-            <div style={{ fontSize: "17px", fontWeight: "700", color: "#c8d0da", fontFamily: "'IBM Plex Mono', monospace" }}>Game Plan — {scored.length} Formation{scored.length !== 1 ? "s" : ""}{myBook !== "All" ? " · " + myBook : ""}</div>
+            <div style={{ fontSize: "10px", letterSpacing: "2px", color: "#a07830", textTransform: "uppercase", fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>CFB26 · DC Scheme Builder</div>
+            <div style={{ fontSize: "17px", fontWeight: "700", color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>Game Plan — {scored.length} Formation{scored.length !== 1 ? "s" : ""}{myBook !== "All" ? " · " + myBook : ""}</div>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexShrink: 0 }}>
-              <button onClick={handleShare} style={{ background: "transparent", border: "1px solid #2a3545", borderRadius: 6, padding: "5px 10px", color: "#607888", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
+              <button onClick={handleShare} style={{ background: "transparent", border: "1px solid #2a3545", borderRadius: 6, padding: "5px 10px", color: "#7898ae", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
                 {shareToast === "shared" ? "✓ Sent" : shareToast === "copied" ? "✓ Copied" : "⬆ Share"}
               </button>
-              <button onClick={() => { setStep("scout"); setSelFm(null); }} style={{ background: "transparent", border: "1px solid #2a3545", borderRadius: 6, padding: "5px 10px", color: "#607888", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>← Edit Scout</button>
+              <button onClick={() => { setStep("scout"); setSelFm(null); }} style={{ background: "transparent", border: "1px solid #2a3545", borderRadius: 6, padding: "5px 10px", color: "#7898ae", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>← Edit Scout</button>
             </div>
         </div>
 
@@ -1724,7 +1782,7 @@ function CFB26Schemes() {
             { id: "personnel", l: "📋 By His Personnel" },
             { id: "all",       l: `🏟️ All ${scored.length} Formations` },
           ].map(t => (
-            <button key={t.id} onClick={() => setMainTab(t.id)} style={{ padding: "6px 13px", background: mainTab === t.id ? "#111009" : "transparent", border: `1px solid ${mainTab === t.id ? "#9a7020" : "#2a4055"}`, borderRadius: 7, color: mainTab === t.id ? "#907020" : "#6a8090", fontSize: 11, fontWeight: mainTab === t.id ? "bold" : "normal", cursor: "pointer" }}>{t.l}</button>
+            <button key={t.id} onClick={() => setMainTab(t.id)} style={{ padding: "6px 13px", background: mainTab === t.id ? "#111009" : "transparent", border: `1px solid ${mainTab === t.id ? "#b8880c" : "#507890"}`, borderRadius: 7, color: mainTab === t.id ? "#b08010" : "#7f9fb2", fontSize: 11, fontWeight: mainTab === t.id ? "bold" : "normal", cursor: "pointer" }}>{t.l}</button>
           ))}
         </div>
       </div>
@@ -1734,13 +1792,13 @@ function CFB26Schemes() {
         {/* ══ TAB: BY HIS PERSONNEL ══ */}
         {mainTab === "personnel" && (
           <div>
-            <div style={{ fontSize: "12px", letterSpacing: "2px", color: "#9a7020", textTransform: "uppercase", marginBottom: 18, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>Formation + Personnel</div>
+            <div style={{ fontSize: "12px", letterSpacing: "2px", color: "#b8880c", textTransform: "uppercase", marginBottom: 18, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>Formation + Personnel</div>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 18 }}>
               {getAvailableFamilies(flat).map(fid => {
                 const fam = PERSONNEL_FAMILIES[fid];
                 return fam ? (
-                  <button key={fid} onClick={() => { setActiveP(fid); setSelFm(null); }} style={{ padding: "7px 11px", background: activeP === fid ? "#111009" : "#0d1622", border: `2px solid ${activeP === fid ? "#9a7020" : "#2a4055"}`, borderRadius: 7, color: activeP === fid ? "#907020" : "#6a8090", fontSize: 11, fontWeight: activeP === fid ? "bold" : "normal", cursor: "pointer" }}>
+                  <button key={fid} onClick={() => { setActiveP(fid); setSelFm(null); }} style={{ padding: "7px 11px", background: activeP === fid ? "#111009" : "#0d1622", border: `2px solid ${activeP === fid ? "#b8880c" : "#507890"}`, borderRadius: 7, color: activeP === fid ? "#b08010" : "#7f9fb2", fontSize: 11, fontWeight: activeP === fid ? "bold" : "normal", cursor: "pointer" }}>
                     {fam.label}
                   </button>
                 ) : null;
@@ -1758,37 +1816,37 @@ function CFB26Schemes() {
                 <div>
                   <div style={{ background: "#090f1a", border: "1px solid #1e2a3a", borderRadius: 7, padding: "9px 13px", marginBottom: 16 }}>
                     {fam && <div style={{ marginBottom: 10, paddingBottom: 10, borderBottom: "1px solid #1e2a3a" }}>
-                      <div style={{ fontSize: "12px", color: "#6a8090", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 3, fontFamily: "'IBM Plex Mono', monospace" }}>Alignment</div>
-                      <div style={{ fontSize: 11, color: "#8aa0b0" }}>{fam.desc}</div>
+                      <div style={{ fontSize: "12px", color: "#7f9fb2", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 3, fontFamily: "'IBM Plex Mono', monospace" }}>Alignment</div>
+                      <div style={{ fontSize: 11, color: "#90b0c4" }}>{fam.desc}</div>
                     </div>}
                     {adj && <div style={{ marginBottom: 10, paddingBottom: 10, borderBottom: "1px solid #1e2a3a" }}>
-                      <div style={{ fontSize: "12px", color: "#9a7020", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 5, fontFamily: "'IBM Plex Mono', monospace" }}>Alignment DC Rule</div>
-                      <div style={{ fontSize: 11, color: "#c8d0da", lineHeight: 1.65, marginBottom: 8 }}>{adj.extra}</div>
+                      <div style={{ fontSize: "12px", color: "#b8880c", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 5, fontFamily: "'IBM Plex Mono', monospace" }}>Alignment DC Rule</div>
+                      <div style={{ fontSize: 11, color: "#c5d0dc", lineHeight: 1.65, marginBottom: 8 }}>{adj.extra}</div>
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
-                        {adj.bias && adj.bias.map(b => <span key={b} style={{ fontSize: 10, padding: "2px 8px", border: "1px solid #9a702044", borderRadius: 5, color: "#9a7020", fontFamily: "'IBM Plex Mono', monospace" }}>{b}</span>)}
+                        {adj.bias && adj.bias.map(b => <span key={b} style={{ fontSize: 10, padding: "2px 8px", border: "1px solid #9a702044", borderRadius: 5, color: "#b8880c", fontFamily: "'IBM Plex Mono', monospace" }}>{b}</span>)}
                       </div>
                     </div>}
                     {pd && <div>
-                      <div style={{ fontSize: "12px", color: "#7a6025", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 2, fontFamily: "'IBM Plex Mono', monospace" }}>DC Priority</div>
-                      <div style={{ fontSize: 11, color: "#c8d0da", lineHeight: 1.6, marginBottom: 18 }}>{pd.priority}</div>
+                      <div style={{ fontSize: "12px", color: "#a07830", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 2, fontFamily: "'IBM Plex Mono', monospace" }}>DC Priority</div>
+                      <div style={{ fontSize: 11, color: "#c5d0dc", lineHeight: 1.6, marginBottom: 18 }}>{pd.priority}</div>
                       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
                         <div style={{ background: "#160808", border: "1px solid #5a1a1a", borderRadius: 6, padding: "6px 9px" }}>
-                          <div style={{ fontSize: "12px", color: "#9a3a3a", letterSpacing: "1px", textTransform: "uppercase", marginBottom: 2, fontFamily: "'IBM Plex Mono', monospace" }}>⚠️ Avoid</div>
-                          <div style={{ fontSize: 11, color: "#6a4040", lineHeight: 1.6 }}>{pd.avoid}</div>
+                          <div style={{ fontSize: "12px", color: "#cc5050", letterSpacing: "1px", textTransform: "uppercase", marginBottom: 2, fontFamily: "'IBM Plex Mono', monospace" }}>⚠️ Avoid</div>
+                          <div style={{ fontSize: 11, color: "#aa6868", lineHeight: 1.6 }}>{pd.avoid}</div>
                         </div>
                         <div style={{ background: "#08140a", border: "1px solid #1a5a1a", borderRadius: 6, padding: "6px 9px" }}>
-                          <div style={{ fontSize: "12px", color: "#305040", letterSpacing: "1px", textTransform: "uppercase", marginBottom: 2, fontFamily: "'IBM Plex Mono', monospace" }}>💡 Blitz Guide</div>
-                          <div style={{ fontSize: 11, color: "#507060", lineHeight: 1.6 }}>{pd.blitzNote}</div>
+                          <div style={{ fontSize: "12px", color: "#558a68", letterSpacing: "1px", textTransform: "uppercase", marginBottom: 2, fontFamily: "'IBM Plex Mono', monospace" }}>💡 Blitz Guide</div>
+                          <div style={{ fontSize: 11, color: "#70a080", lineHeight: 1.6 }}>{pd.blitzNote}</div>
                         </div>
                       </div>
                     </div>}
                   </div>
 
-                  <div style={{ fontSize: "12px", letterSpacing: "2px", color: "#6a8090", textTransform: "uppercase", marginBottom: 16, fontFamily: "'IBM Plex Mono', monospace" }}>
+                  <div style={{ fontSize: "12px", letterSpacing: "2px", color: "#7f9fb2", textTransform: "uppercase", marginBottom: 16, fontFamily: "'IBM Plex Mono', monospace" }}>
                     {persMatches.length} formations matched
                   </div>
                   {persMatches.length === 0 && (
-                    <div style={{ fontSize: 11, color: "#6a8090", padding: "10px", textAlign: "center" }}>
+                    <div style={{ fontSize: 11, color: "#7f9fb2", padding: "10px", textAlign: "center" }}>
                       No scout traits matched for this personnel yet. Go back and add more traits.
                     </div>
                   )}
@@ -1814,15 +1872,15 @@ function CFB26Schemes() {
         {/* ══ TAB: ALL FORMATIONS ══ */}
         {mainTab === "all" && (
           <div>
-            <div style={{ background: "#0a1210", border: "1px solid #1e3028", borderLeft: "4px solid #3a6048", borderRadius: 7, padding: "8px 12px", marginBottom: 18, fontSize: 11, color: "#507060", lineHeight: 1.6 }}>
+            <div style={{ background: "#0a1210", border: "1px solid #1e3028", borderLeft: "4px solid #3a6048", borderRadius: 7, padding: "8px 12px", marginBottom: 18, fontSize: 11, color: "#70a080", lineHeight: 1.6 }}>
               All {scored.length} formations matched by your scouting, grouped by personnel type. ★ Gold pills = core match to your scouted traits. Blue pills = supporting match. Tap any card to expand full detail.
             </div>
 
             {grouped.map(group => (
               <div key={group.label} style={{ marginBottom: 14 }}>
-                <div style={{ fontSize: "11px", letterSpacing: "2px", color: "#9a7020", textTransform: "uppercase", marginBottom: 16, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace", display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ fontSize: "11px", letterSpacing: "2px", color: "#b8880c", textTransform: "uppercase", marginBottom: 16, fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace", display: "flex", alignItems: "center", gap: 8 }}>
                   <span>{group.label} Formations</span>
-                  <span style={{ background: "#111009", border: "1px solid #3a2800", borderRadius: 9, padding: "1px 7px", fontSize: 11, color: "#9a7020" }}>{group.formations.length}</span>
+                  <span style={{ background: "#111009", border: "1px solid #3a2800", borderRadius: 9, padding: "1px 7px", fontSize: 11, color: "#b8880c" }}>{group.formations.length}</span>
                 </div>
                 {group.formations.map(fm => (
                   <div key={fm.name}>
@@ -1844,14 +1902,14 @@ function CFB26Schemes() {
 
         {/* In-game tip */}
         <div style={{ background: "#0a1210", border: "1px solid #1e3028", borderLeft: "4px solid #3a6048", borderRadius: 7, padding: "14px 16px", marginBottom: 14, marginTop: 8 }}>
-          <div style={{ fontWeight: "bold", color: "#487058", fontSize: 11, marginBottom: 3 }}>💡 In-Game DC Adjustment Rule</div>
-          <div style={{ fontSize: 11, color: "#487058", lineHeight: 1.65 }}>
-            Identify <em style={{ color: "#507060" }}>which window</em> he's attacking: flat, seam, hash, middle, or deep. Use the "All Formations" tab and sort by your opponent's new tendency. Match his personnel first — then optimize for the specific window he's attacking within it.
+          <div style={{ fontWeight: "bold", color: "#68a078", fontSize: 11, marginBottom: 3 }}>💡 In-Game DC Adjustment Rule</div>
+          <div style={{ fontSize: 11, color: "#68a078", lineHeight: 1.65 }}>
+            Identify <em style={{ color: "#70a080" }}>which window</em> he's attacking: flat, seam, hash, middle, or deep. Use the "All Formations" tab and sort by your opponent's new tendency. Match his personnel first — then optimize for the specific window he's attacking within it.
           </div>
         </div>
 
         <div style={{ textAlign: "center", paddingBottom: 16 }}>
-          <button onClick={() => { setStep("scout"); setSel({}); setScored([]); setSelFm(null); setActiveP(null); }} style={{ background: "transparent", border: "1px solid #1e2a3a", borderRadius: 17, padding: "7px 20px", color: "#6a7d90", fontSize: 11, cursor: "pointer" }}>🔁 New Opponent</button>
+          <button onClick={() => { setStep("scout"); setSel({}); setScored([]); setSelFm(null); setActiveP(null); }} style={{ background: "transparent", border: "1px solid #1e2a3a", borderRadius: 17, padding: "7px 20px", color: "#7c9aaf", fontSize: 11, cursor: "pointer" }}>🔁 New Opponent</button>
         </div>
       </div>
     </div>
