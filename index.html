@@ -542,7 +542,7 @@ const FDB = {
     desc:"Five DL, two LBs. Every gap filled simultaneously. UNIQUE to the Multiple playbook. 5 DL occupy all 5 OL in individual matchups — both LBs are completely free runners.",
     dcNote:"5-2 gives you 5 individual DL vs OL matchups with zero doubles possible. The two LBs have clean sight lines with no blockers. Against power run it's dominant. Sub immediately vs any spread.",
     blitzBase:18, blitzMods:[{tags:["strong_oline","p22"],d:-8},{tags:["short_yardage_run"],d:+10},{tags:["rpo","quick_game","p10","empty"],d:-30}],
-    coreTags:["inside_run","counter_trap","p22","p21","strong_oline","run_heavy_1st","fb_lead","hb_stretch"],
+    coreTags:["inside_run","counter_trap","p22","p21","strong_oline","run_heavy_1st","fb_lead","hb_stretch","short_yardage_run","four_down_go","option_run"],
     suppTags:["outside_run","short_yardage_run","four_down_go","p12"],
     coverages:[
       {name:"Cover 1",rating:5,tag:"Base",detail:"5 DL vs 5 OL — one-on-one matchups everywhere. LBs flow free to the ball. The run cannot gain yards when all gaps are filled."},
@@ -587,7 +587,7 @@ const FDB = {
     desc:"Three deep zone defenders + flooding all underneath zones. Intentionally surrenders short yardage to eliminate the explosive play. Use ONLY when protecting a lead late in the game.",
     dcNote:"Prevent is a deliberate trade — yards for time. The mistake DCs make is using it too early. Deploy with 2+ min left protecting a 2-score lead. Short completions kill clock in your favor.",
     blitzBase:5, blitzMods:[{tags:["qb_pressure"],d:+5},{tags:["deep_shots","elite_wr"],d:-5}],
-    coreTags:["two_minute_pass","tempo_shift","deep_shots","no_run","p10","elite_wr","back_shoulder"],
+    coreTags:["two_minute_pass","tempo_shift","deep_shots","no_run","p10","elite_wr","back_shoulder","pass_heavy_3rd"],
     suppTags:["west_coast","crossers","trips","empty","hurry_up"],
     coverages:[
       {name:"Cover 3",rating:5,tag:"Base",detail:"Three deep thirds. Allow the short throw — attack the tackle. Clock management trades yards for time."},
@@ -604,7 +604,7 @@ const FDB = {
     desc:"Classic 3-tech over the guard. Most fundamentally sound college front vs pro-style offenses. Balanced run/pass fits. The standard starting point for any DC.",
     dcNote:"The 3-tech over the guard disrupts inside zone by occupying two blockers. MLB reads the B-gap. The Over has been the dominant college base front since the 1980s — it accounts for all 7 gaps.",
     blitzBase:18, blitzMods:[{tags:["qb_pressure","qb_one_read"],d:+10},{tags:["qb_scramble","dual_threat"],d:-10},{tags:["quick_game","rpo"],d:-8},{tags:["qb_pocket"],d:+5}],
-    coreTags:["inside_run","counter_trap","fb_lead","p21","p22","strong_oline","run_heavy_1st","play_action"],
+    coreTags:["inside_run","counter_trap","fb_lead","p21","p22","strong_oline","run_heavy_1st","play_action","p11","p12","hurry_up","rpo"],
     suppTags:["outside_run","hb_stretch","p12","qb_pocket","boundary_hash"],
     coverages:[
       {name:"Cover 3 Sky",rating:5,tag:"Base All-Purpose",detail:"SS rotates to strong flat. CBs at 7 yards. MLB/WLB own curl/flat. Handles run AND play-action simultaneously. The textbook call."},
@@ -651,8 +651,8 @@ const FDB = {
     desc:"Under front shifts DL to weak side. 5-tech DE + OLB create a two-man edge that's nearly impossible to reach. The dominant outside run-stop formation in college football history.",
     dcNote:"Under is the best college formation vs outside zone and HB stretch. The 5-tech DE and OLB create a two-man edge. The 3-tech backside DE collapses the cutback lane. MLB is free to fill B-gap.",
     blitzBase:16, blitzMods:[{tags:["qb_pressure"],d:+10},{tags:["outside_run","hb_stretch"],d:-10},{tags:["strong_oline"],d:-6},{tags:["qb_pocket","qb_one_read"],d:+8},{tags:["rpo","quick_game"],d:-6}],
-    coreTags:["outside_run","hb_stretch","counter_trap","p12","p21","p22","strong_oline","run_heavy_1st","fb_lead"],
-    suppTags:["inside_run","short_yardage_run","play_action","mobile_qb","boundary_hash","flat_attack"],
+    coreTags:["p12","p21","p22","strong_oline","run_heavy_1st","fb_lead","p11","play_action","inside_run"],
+    suppTags:["inside_run","short_yardage_run","play_action","mobile_qb","boundary_hash","flat_attack","outside_run","hb_stretch","counter_trap"],
     coverages:[
       {name:"Cover 3 Sky",rating:5,tag:"Base",detail:"SS as force/flat (3rd edge defender). CBs at 7 yards. Handles outside run AND play-action. OLB is your 4th lineman setting the hard edge."},
       {name:"Cover 1",rating:4,tag:"Run Support",detail:"Man locks receivers — no free TE/WR blocking releases. Forces all eligibles to declare."},
@@ -667,7 +667,7 @@ const FDB = {
     desc:"Six defenders in the box — 4-3 Even alignment with all gaps accounted for pre-snap. Specifically designed to overwhelm 21 and 22 personnel who bring extra blockers.",
     dcNote:"21/22p give the offense a numerical blocker advantage. 6-1 counters with a 6th box defender. Every gap assigned before the snap. The offense must win one-on-one blocking matchups.",
     blitzBase:15, blitzMods:[{tags:["p22","strong_oline"],d:-8},{tags:["fb_lead","inside_run"],d:-5},{tags:["qb_pressure"],d:+8},{tags:["rpo","quick_game","p10","p11"],d:-15}],
-    coreTags:["p21","p22","fb_lead","inside_run","short_yardage_run","strong_oline","run_heavy_1st"],
+    coreTags:["p21","p22","fb_lead","inside_run","short_yardage_run","strong_oline","run_heavy_1st","p11"],
     suppTags:["outside_run","hb_stretch","counter_trap","redzone_spec","p12","four_down_go"],
     coverages:[
       {name:"Cover 2",rating:5,tag:"Base",detail:"6 box + Cover 2 behind. Handles run while maintaining pass responsibility. Against 21/22p deep pass threat is minimal."},
@@ -784,7 +784,7 @@ const FDB = {
     desc:"Both ILBs mug A-gaps in a 3-3 shell. Center cannot block both threats alone. Interior pressure from confusion, not athleticism. Best pre-snap pressure package in the Nickel family.",
     dcNote:"The center must communicate pick-ups for two A-gap threats. Guards must decide inside help or primary assignment. This indecision creates pressure windows even when the LB drops. Against a one-read QB, he will panic.",
     blitzBase:30, blitzMods:[{tags:["qb_pressure","qb_one_read"],d:+15},{tags:["qb_pocket"],d:+10},{tags:["quick_game","rpo","screens"],d:-18},{tags:["qb_scramble","dual_threat"],d:-15},{tags:["empty"],d:+10}],
-    coreTags:["qb_pocket","qb_pressure","qb_one_read","p10","p11","empty","pass_heavy_3rd","tempo_shift"],
+    coreTags:["qb_pocket","qb_pressure","qb_one_read","p10","p11","empty","pass_heavy_3rd","tempo_shift","trips","hurry_up"],
     suppTags:["west_coast","middle_heavy","crossers","trips","hurry_up","no_deep","two_minute_pass","four_wide"],
     coverages:[
       {name:"Tampa 2",rating:5,tag:"Base Pressure",detail:"One ILB drops to flat. Other blitzes A-gap. Zone behind — quick throws hit covered zones. Center cannot handle both simultaneously."},
@@ -942,7 +942,7 @@ const FDB = {
     desc:"3-4 Bear packs all four LBs near LOS. Creates a 7-man box with 3-4 flexibility. Four LBs can blitz any combination of A, B, or C gaps — the permutations are too many for the offense to account for.",
     dcNote:"The 3-4 Bear gives you 7 near the LOS while only rushing 3. Four LBs can blitz any gap combination. The offense cannot ID the protection assignment against 4 potential blitzers from all combinations.",
     blitzBase:20, blitzMods:[{tags:["short_yardage_run","inside_run"],d:+8},{tags:["qb_pressure"],d:+10},{tags:["qb_scramble","dual_threat"],d:-8},{tags:["rpo","quick_game","p10"],d:-10}],
-    coreTags:["inside_run","short_yardage_run","counter_trap","p21","p22","strong_oline","run_heavy_1st","fb_lead"],
+    coreTags:["inside_run","short_yardage_run","counter_trap","p21","p22","strong_oline","run_heavy_1st","fb_lead","option_run"],
     suppTags:["outside_run","hb_stretch","play_action","qb_pocket","four_down_go","redzone_spec"],
     coverages:[
       {name:"Cover 1",rating:5,tag:"Base",detail:"7-man box with man coverage. Every gap assigned, every receiver has a DB. Offense must win 7 individual matchups to gain a yard."},
@@ -1048,7 +1048,7 @@ const FDB = {
     desc:"Four DL, four LBs. Both OLBs as DE-quality edge defenders. Maximum box presence. Most physically dominant run-stop front outside Goal Line. ONLY for run downs — sub immediately vs pass.",
     dcNote:"Eight near the LOS leaves no running lane. Both OLBs set hard edges simultaneously. Four LBs fill all interior gaps. The ONLY weakness is pass coverage — this is exclusively a run-stop formation.",
     blitzBase:14, blitzMods:[{tags:["strong_oline","inside_run"],d:-8},{tags:["short_yardage_run"],d:+10},{tags:["rpo","quick_game","p10","p11","empty"],d:-30}],
-    coreTags:["inside_run","outside_run","short_yardage_run","p22","p21","strong_oline","fb_lead","run_heavy_1st"],
+    coreTags:["inside_run","outside_run","short_yardage_run","p22","p21","strong_oline","fb_lead","run_heavy_1st","option_run"],
     suppTags:["counter_trap","hb_stretch","four_down_go"],
     coverages:[
       {name:"Cover 1",rating:5,tag:"Base",detail:"4 DL and 4 LBs near LOS. Every gap has a defender, every receiver has a DB."},
@@ -1219,7 +1219,7 @@ const FDB = {
     desc:"Mint alignment in 3-3-5 Tite. Middle-loaded positioning enables loop blitzes and natural seam coverage. Tite DL walls interior while Mint LBs cover intermediate window. Community top formation.",
     dcNote:"3-3-5 Mint runs the same loop blitz concept as Nickel 3-3 Mint but with Tite DL. The Tite front handles inside zone while Mint LBs cover every intermediate zone.",
     blitzBase:24, blitzMods:[{tags:["qb_pressure","qb_pocket"],d:+12},{tags:["rpo","quick_game"],d:-10},{tags:["qb_scramble"],d:-8}],
-    coreTags:["qb_pocket","p11","play_action","crossers","seam_routes","middle_heavy","west_coast","qb_pressure","elite_te"],
+    coreTags:["qb_pocket","p11","play_action","crossers","seam_routes","middle_heavy","west_coast","qb_pressure","elite_te","p10","hurry_up"],
     suppTags:["motion_heavy","trips","flat_attack","boundary_hash","field_hash"],
     coverages:[
       {name:"Cover 3",rating:5,tag:"Signature Pressure",detail:"OLB arcs wide, DE loops inside. QB holds watching OLB — DE hits blind side. Zone behind covers quick throw. Limit: 2x per game."},
@@ -1234,7 +1234,7 @@ const FDB = {
     desc:"DB-LB hybrid personnel. Seven DBs total in certain alignments. Hybrid defenders cover slots in man while providing run support. Against 10p and empty, coverage athletes at every position.",
     dcNote:"Traditional Nickel gets mismatched vs slots in spread. Penny's hybrid DB-LB personnel cover slots in man while providing run fits — eliminating both the coverage mismatch AND run vulnerability.",
     blitzBase:18, blitzMods:[{tags:["p10","empty"],d:+8},{tags:["qb_scramble","mobile_qb"],d:-8},{tags:["deep_shots","elite_wr"],d:-5}],
-    coreTags:["p10","p11","empty","no_run","elite_wr","slot_threat","trips","hurry_up","two_minute_pass"],
+    coreTags:["p10","p11","empty","no_run","elite_wr","slot_threat","trips","hurry_up","two_minute_pass","rpo"],
     suppTags:["west_coast","flat_attack","crossers","deep_shots","boundary_hash"],
     coverages:[
       {name:"Cover 4 Quarters",rating:5,tag:"Spread Shutdown",detail:"Hybrid DBs cover every zone in quarters. Every receiver has an athlete — no positional mismatch anywhere."},
@@ -1251,7 +1251,7 @@ const FDB = {
     desc:"4-2-5 with G-alignment — 3-tech directly over the guard (weakest blocker). Best pass rush + coverage formation in 4-2-5 family. 4-man G-rush generates reliable pressure without blitzing while 5 DBs cover every receiver.",
     dcNote:"G-alignment puts the 3-tech directly over the guard — fastest path to QB through the weakest blocker. With 5 DBs covering every receiver, the 4-man G-rush generates pressure without a blitz.",
     blitzBase:20, blitzMods:[{tags:["qb_pressure","qb_pocket"],d:+12},{tags:["qb_scramble","mobile_qb"],d:-12},{tags:["deep_shots"],d:-6},{tags:["rpo","quick_game"],d:-8}],
-    coreTags:["deep_shots","play_action","elite_wr","elite_te","p11","p12","qb_pocket","seam_routes","crossers","west_coast","back_shoulder"],
+    coreTags:["deep_shots","play_action","elite_wr","elite_te","p11","p12","qb_pocket","seam_routes","crossers","west_coast","back_shoulder","rpo","hurry_up"],
     suppTags:["boundary_hash","field_hash","middle_heavy","motion_heavy","trips"],
     coverages:[
       {name:"Cover 2 Man",rating:5,tag:"Base vs Spread",detail:"5 DBs in man. 2 safeties deep. 4-man G-rush without blitzing. No receiver uncovered."},
@@ -1267,7 +1267,7 @@ const FDB = {
     desc:"4-2-5 Under shifts DL to weak side. The definitive pass-stop formation for spread passing attacks — best balance of pass rush and coverage in any playbook. 4-man rush without blitzing + 5-DB coverage.",
     dcNote:"Under shift puts best pass rusher at 3-tech on the weak-side guard. With 5 DBs covering every receiver, the 4-man rush generates pressure. This is what top DCs use as their base vs spread passing attacks.",
     blitzBase:20, blitzMods:[{tags:["qb_pressure","qb_pocket"],d:+12},{tags:["qb_scramble","mobile_qb"],d:-12},{tags:["deep_shots","elite_wr"],d:-6},{tags:["rpo"],d:-8}],
-    coreTags:["deep_shots","back_shoulder","play_action","elite_wr","elite_te","p11","p12","qb_pocket","seam_routes","crossers","middle_heavy","boundary_hash","field_hash"],
+    coreTags:["deep_shots","back_shoulder","play_action","elite_wr","elite_te","p11","p12","qb_pocket","seam_routes","crossers","middle_heavy","boundary_hash","field_hash","p10","hurry_up","rpo"],
     suppTags:["west_coast","motion_heavy","trips","four_down_go"],
     coverages:[
       {name:"Cover 2 Man",rating:5,tag:"Base vs Spread",detail:"5 DBs in man. 2 safeties deep. 4-man Under rush without blitzing. No receiver uncovered. CBs must win individual matchups."},
@@ -1864,6 +1864,7 @@ function CFB26Schemes() {
   const [mainTab, setMainTab] = useState("personnel"); // "personnel" | "all"
   const [showPB, setShowPB]   = useState(false);
   const [modal, setModal]     = useState(false);
+  const [showRecModal, setShowRecModal] = useState(false);
   const [saveName, setSaveName] = useState("");
   const [profiles, setProfiles] = useState(() => {
     try {
@@ -1898,6 +1899,10 @@ function CFB26Schemes() {
   const changeBook = (book) => {
     setMyBook(book);
     try { localStorage.setItem("cfb26_myBook", book); } catch(e) {}
+    const newFlat = Object.values(sel).flat();
+    const results = scoreAll(newFlat, book);
+    setScored(results);
+    setSelFm(null);
   };
 
 
@@ -2023,11 +2028,12 @@ function CFB26Schemes() {
   const personnelSel = sel.personnel || [];
 
   const build = () => {
-    const results = scoreAll(flat, myBook);
+    const bookToUse = myBook || "All";
+    const results = scoreAll(flat, bookToUse);
     setScored(results);
     const personnel = personnelSel.length ? personnelSel : ["p11"];
     setActiveP(personnel[0]);
-    setSelFm(results[0] || null);
+    setSelFm(null);
     setMainTab("personnel");
     setStep("plan");
   };
@@ -2038,15 +2044,17 @@ function CFB26Schemes() {
       const matchConf = teamConf === "all" || t.conf === teamConf;
       const matchSearch = !teamSearch || t.name.toLowerCase().includes(teamSearch.toLowerCase());
       return matchConf && matchSearch;
-    });
+    }).sort((a, b) => a.name.localeCompare(b.name));
 
     const PERS_LABELS = {"p10":"5-WR","p11":"11p","p12":"12p (2 TE)","p21":"21p (FB)","p22":"22p Jumbo","trips":"Trips","empty":"Empty"};
     const buildFromTeam = (team) => {
-      const results = scoreAll(team.traits, myBook);
+      const results = scoreAll(team.traits, "All");
+      setMyBook("All");
+      try { localStorage.setItem("cfb26_myBook", "All"); } catch(e) {}
       setSel({ _team: team.traits });
       setScored(results);
       setActiveP(team.traits.find(t => ["p10","p11","p12","p21","p22","trips","empty"].includes(t)) || "p11");
-      setSelFm(results[0] || null);
+      setSelFm(null);
       setMainTab("personnel");
       setStep("plan");
     };
@@ -2413,6 +2421,73 @@ function CFB26Schemes() {
   const personnel = personnelSel.length ? personnelSel : ["p11"];
   const grouped = groupByPersonnel(scored);
 
+  // ── Recommended playbook ──────────────────────────────────────
+  // Method: top-8 formation average × scheme-affinity boost
+  // Pool: 8 base/focused books (no bare "Multiple" superset)
+  // Scheme type inferred from trait distribution — encodes play-call tendency
+  const recBook = (() => {
+    const allScored = scoreAll(flat, "All");
+    if (!allScored.length) return null;
+
+    const BOOKS = ["4-3","4-3 Multiple","3-4","3-4 Multiple","4-2-5","3-3-5","3-3-5 Tite","3-2-6"];
+
+    // Signal sets for scheme inference
+    const RUN_T    = ["inside_run","outside_run","strong_oline","p21","p22","fb_lead","short_yardage_run","run_heavy_1st","option_run","triple_option"];
+    const PASS_T   = ["empty","p10","no_deep","qb_pocket","crossers","flat_attack","hurry_up","middle_heavy","four_wide","quick_game"];
+    const SPREAD_T = ["hurry_up","rpo","trips","motion_heavy","outside_run","mobile_qb","qb_scramble"];
+    const OPT_T    = ["option_run","triple_option","dual_threat"];
+    const runSc    = flat.filter(t => RUN_T.includes(t)).length;
+    const passSc   = flat.filter(t => PASS_T.includes(t)).length;
+    const spreadSc = flat.filter(t => SPREAD_T.includes(t)).length;
+    const optSc    = flat.filter(t => OPT_T.includes(t)).length;
+
+    // Spread-Option: has option signals but also passes — don't treat like pure option
+    const isSpreadOption = optSc >= 1 && spreadSc >= 3 && passSc >= 2;
+    const schemeType =
+        (optSc >= 2 && !isSpreadOption) ? "Option"
+      : passSc >= 6                     ? "Air Raid"
+      : runSc  >= 7                     ? "Pro Style"
+      : passSc >= 4                     ? "Spread"
+      : (spreadSc >= 4 && runSc <= 3)   ? "Spread"
+      : isSpreadOption                  ? "Spread"
+      : runSc  >= 4                     ? "Power Spread"
+      : "Multiple Offense";
+
+    // Scheme → defensive playbook affinity multipliers
+    const BOOST = {
+      "Air Raid":        {"3-2-6":1.6,"4-2-5":1.3,"3-3-5":1.2,"3-3-5 Tite":1.1,"4-3 Multiple":0.8,"3-4 Multiple":0.8,"4-3":0.7,"3-4":0.7},
+      "Run And Shoot":   {"3-2-6":1.6,"3-3-5":1.3,"4-2-5":1.2,"3-3-5 Tite":1.1,"4-3 Multiple":0.8,"3-4 Multiple":0.8,"4-3":0.7,"3-4":0.7},
+      "Spread":          {"4-2-5":1.4,"3-3-5 Tite":1.2,"3-3-5":1.1,"3-2-6":1.0,"4-3 Multiple":1.0,"3-4 Multiple":1.0,"4-3":0.9,"3-4":0.9},
+      "Veer and Shoot":  {"4-2-5":1.35,"3-3-5 Tite":1.2,"3-4 Multiple":1.1,"4-3 Multiple":1.0,"4-3":0.9,"3-4":0.9,"3-3-5":1.0,"3-2-6":0.75},
+      "Spread Option":   {"4-2-5":1.35,"4-3 Multiple":1.1,"3-4 Multiple":1.2,"4-3":1.0,"3-4":1.0,"3-3-5 Tite":1.0,"3-3-5":0.85,"3-2-6":0.5},
+      "Power Spread":    {"4-2-5":1.3,"4-3 Multiple":1.2,"3-4 Multiple":1.25,"4-3":1.1,"3-4":1.1,"3-3-5 Tite":1.0,"3-3-5":0.85,"3-2-6":0.6},
+      "Multiple Offense":{"4-3 Multiple":1.3,"3-4 Multiple":1.3,"4-3":1.2,"3-4":1.2,"4-2-5":1.0,"3-3-5 Tite":0.85,"3-3-5":0.75,"3-2-6":0.55},
+      "Pro Style":       {"4-3 Multiple":1.3,"3-4 Multiple":1.3,"4-3":1.35,"3-4":1.35,"4-2-5":0.9,"3-3-5 Tite":0.75,"3-3-5":0.65,"3-2-6":0.45},
+      "Pistol":          {"4-2-5":1.3,"3-4 Multiple":1.2,"4-3 Multiple":1.1,"3-4":1.1,"4-3":1.05,"3-3-5 Tite":1.0,"3-3-5":0.9,"3-2-6":0.7},
+      "Option":          {"3-4 Multiple":1.35,"4-3 Multiple":1.25,"4-3":1.25,"3-4":1.3,"4-2-5":0.7,"3-3-5 Tite":0.6,"3-3-5":0.55,"3-2-6":0.25},
+    };
+    const boosts = BOOST[schemeType] || BOOST["Multiple Offense"];
+
+    // Top-8 average per playbook — eliminates "larger book wins" size bias
+    const N = 8;
+    const raw = {}; const cnt = {};
+    BOOKS.forEach(pb => { raw[pb] = []; cnt[pb] = 0; });
+    allScored.forEach(fm => {
+      if (fm.books.includes("All")) return;
+      BOOKS.forEach(pb => {
+        if (fm.books.includes(pb)) { raw[pb].push(fm.sc); cnt[pb]++; }
+      });
+    });
+    const adjusted = {};
+    BOOKS.forEach(pb => {
+      const top = raw[pb].sort((a,b) => b-a).slice(0, N);
+      const avg = top.length ? top.reduce((s,v) => s+v, 0) / top.length : 0;
+      adjusted[pb] = avg * (boosts[pb] || 1.0);
+    });
+    const best = BOOKS.reduce((a, b) => adjusted[b] > adjusted[a] ? b : a);
+    return { book: best, count: cnt[best] || 0, total: allScored.length };
+  })();
+
   return (
     <div style={{ fontFamily: "'Georgia',serif", background: "#080c12", minHeight: "100vh", color: "#c5d0dc", maxWidth: 720, margin: "0 auto" }}>
       {/* Header */}
@@ -2423,6 +2498,11 @@ function CFB26Schemes() {
             <div style={{ fontSize: "17px", fontWeight: "700", color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>Game Plan — {scored.length} Formation{scored.length !== 1 ? "s" : ""}{myBook !== "All" ? " · " + myBook : ""}</div>
           </div>
           <div style={{ display: "flex", gap: 6, alignItems: "center", flexShrink: 0 }}>
+              {recBook && (
+                <button onClick={() => setShowRecModal(true)} style={{ background: showRecModal ? "#0e1a08" : "transparent", border: `1px solid ${showRecModal ? "#508840" : "#2a3545"}`, borderRadius: 6, padding: "5px 10px", color: showRecModal ? "#70b850" : "#7f9fb2", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
+                  {"📖 Rec. Playbook"}
+                </button>
+              )}
               <button onClick={() => setQuickAdjOpen(v => !v)} style={{ background: quickAdjOpen ? "#1a1408" : "transparent", border: `1px solid ${quickAdjOpen ? "#b8880c" : "#2a3545"}`, borderRadius: 6, padding: "5px 10px", color: quickAdjOpen ? "#b8880c" : "#7f9fb2", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
                 ⚡ Adjust
               </button>
@@ -2470,8 +2550,12 @@ function CFB26Schemes() {
               const fam = PERSONNEL_FAMILIES[activeP];
               const pd  = fam ? PMAP[fam.base] : PMAP[activeP];
               const adj = FAMILY_ADJUSTMENTS[activeP];
-              const persMatches = fam ? scoreForFamily(activeP, flat).slice(0, 8)
-                                      : scoreForPersonnel(activeP, flat).slice(0, 8);
+              const persMatchesRaw = fam ? scoreForFamily(activeP, flat)
+                                          : scoreForPersonnel(activeP, flat);
+              const persMatches = (myBook && myBook !== "All"
+                ? persMatchesRaw.filter(f => f.books && (f.books.includes(myBook) || f.books.includes("All")))
+                : persMatchesRaw
+              ).slice(0, 8);
 
               return (
                 <div>
@@ -2602,7 +2686,7 @@ function CFB26Schemes() {
                         const newFlat = Object.values(newSel).flat();
                         const results = scoreAll(newFlat, myBook);
                         setScored(results);
-                        if (!selFm && results[0]) setSelFm(results[0]);
+                        setSelFm(null);
                       }} style={{
                         padding: "5px 10px", borderRadius: 14,
                         border: on ? "1px solid #b8880c" : "1px solid #1e2d3d",
@@ -2620,6 +2704,32 @@ function CFB26Schemes() {
           </div>
         </div>
       )}
+
+      {/* Recommended Playbook Modal */}
+      {showRecModal && recBook && (
+        <div onClick={() => setShowRecModal(false)} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.85)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 200, padding: 20 }}>
+          <div onClick={e => e.stopPropagation()} style={{ background: "#0d1622", border: "1px solid #508840", borderRadius: 12, padding: "22px 22px 20px", width: "100%", maxWidth: 340 }}>
+            <div style={{ fontSize: 10, letterSpacing: "2px", textTransform: "uppercase", color: "#70b850", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 10 }}>Recommended Playbook</div>
+            <div style={{ fontSize: 24, fontWeight: "bold", color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 6 }}>{recBook.book}</div>
+            <div style={{ fontSize: 11, color: "#7f9fb2", lineHeight: 1.6, marginBottom: 12 }}>
+              {recBook.count} of {recBook.total} top formations are in this playbook — the best defensive coverage for this opponent.
+            </div>
+            <div style={{ fontSize: 10, color: "#508840", lineHeight: 1.55, marginBottom: 20, paddingLeft: 8, borderLeft: "2px solid #2a5830" }}>
+              {PLAYBOOKS[recBook.book] ? PLAYBOOKS[recBook.book].desc : ""}
+            </div>
+            <div style={{ display: "flex", gap: 10 }}>
+              <button onClick={() => { changeBook(recBook.book); setShowRecModal(false); }} style={{ flex: 1, padding: "10px", background: "#2a5020", border: "1px solid #508840", borderRadius: 7, color: "#90e070", fontWeight: "bold", fontSize: 12, cursor: "pointer" }}>
+                {"Use " + recBook.book}
+              </button>
+              <button onClick={() => { changeBook("All"); setShowRecModal(false); }} style={{ flex: 1, padding: "10px", background: "transparent", border: "1px solid #2a3a50", borderRadius: 7, color: "#7f9fb2", fontSize: 12, cursor: "pointer" }}>
+                Keep All Plays
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
     </div>
   );
 }
