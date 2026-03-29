@@ -1153,7 +1153,7 @@ const FDB = {
     callsheet:[{down:"1st & 10 (spread)",call:"3-3-5 Stack · Cover 3 Sky",note:"Best all-purpose spread call"},{down:"2nd & Long",call:"3-3-5 Stack · Cover 4",note:"Every zone covered"},{down:"3rd & Medium",call:"3-3-5 Stack · Cover 1 Robber",note:"Destroy crosser/mesh"}],
   },
   "3-3-5 3 High": {
-    books:["3-3-5"], priority:"pass", personnel:"Prevent",
+    books:["3-3-5"], priority:"pass", personnel:"Nickel",
     desc:"Three-high safety shell. Three deep defenders eliminate the explosive play entirely. Intentionally surrenders short yardage. Best 2-minute and protect-the-lead defense.",
     dcNote:"Three-high puts a defender in every deep zone. No vertical route beats this coverage. Allow the short completion — the clock is your ally when leading.",
     blitzBase:5, blitzMods:[{tags:["deep_shots","elite_wr"],d:-5},{tags:["qb_pressure"],d:+3}],
@@ -2128,7 +2128,7 @@ function CFB26Schemes() {
     const getFormations = (book) => {
       return Object.entries(FDB).filter(([name, d]) =>
         book === "All" || d.books.includes(book) || d.books.includes("All")
-      ).map(([name, d]) => ({ name, ...d }));
+      ).map(([name, d]) => ({ name, ...d })).sort((a,b) => a.name.localeCompare(b.name));
     };
 
     const fmsA = getFormations(compareA);
@@ -2139,14 +2139,18 @@ function CFB26Schemes() {
     const onlyB  = fmsB.filter(f => !namesA.has(f.name));
     const shared = fmsA.filter(f => namesB.has(f.name));
 
-    const PERS_ORDER = ["Prevent","Goal Line","Heavy","Base","Nickel","Dime"];
-    const groupFms = (fms) => {
-      const g = {};
-      fms.forEach(f => { g[f.personnel] = g[f.personnel] || []; g[f.personnel].push(f); });
-      return PERS_ORDER.filter(p => g[p]).map(p => ({ label: p, items: g[p] }));
-    };
-
     const pbColor = (book) => book === "All" ? "#6888a0" : (PLAYBOOKS[book] && PLAYBOOKS[book].color) || "#6888a0";
+
+    const FmList = ({ fms, borderColor }) => (
+      <div>
+        {fms.map(fm => (
+          <div key={fm.name} style={{ background: "#0d1622", border: "1px solid #1e2d3d", borderLeft: "3px solid " + borderColor, borderRadius: 6, padding: "7px 11px", marginBottom: 5, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <span style={{ fontSize: 11, fontWeight: 600, color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>{fm.name}</span>
+            <span style={{ fontSize: 10, color: PC[fm.priority], background: PC[fm.priority] + "22", padding: "1px 6px", borderRadius: 4 }}>{PL[fm.priority]}</span>
+          </div>
+        ))}
+      </div>
+    );
 
     return (
       <div style={{ fontFamily: "'IBM Plex Sans', system-ui, sans-serif", background: "#080c12", minHeight: "100vh", color: "#c5d0dc", maxWidth: 720, margin: "0 auto" }}>
@@ -2200,17 +2204,7 @@ function CFB26Schemes() {
                 <span style={{ color: pbColor(compareA) }}>Exclusive to {compareA}</span>
                 <span style={{ background: "#0d1622", border: `1px solid ${pbColor(compareA)}`, borderRadius: 8, padding: "1px 7px", fontSize: 9, color: pbColor(compareA) }}>{onlyA.length}</span>
               </div>
-              {groupFms(onlyA).map(group => (
-                <div key={group.label} style={{ marginBottom: 10 }}>
-                  <div style={{ fontSize: 9, color: "#6888a0", letterSpacing: "1px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 5 }}>{group.label}</div>
-                  {group.items.map(fm => (
-                    <div key={fm.name} style={{ background: "#0d1622", border: `1px solid #1e2d3d`, borderLeft: `3px solid ${pbColor(compareA)}`, borderRadius: 6, padding: "7px 11px", marginBottom: 5, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <span style={{ fontSize: 11, fontWeight: 600, color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>{fm.name}</span>
-                      <span style={{ fontSize: 10, color: PC[fm.priority], background: PC[fm.priority] + "22", padding: "1px 6px", borderRadius: 4 }}>{PL[fm.priority]}</span>
-                    </div>
-                  ))}
-                </div>
-              ))}
+              <FmList fms={onlyA} borderColor={pbColor(compareA)} />
             </div>
           )}
 
@@ -2221,17 +2215,7 @@ function CFB26Schemes() {
                 <span style={{ color: "#7f9fb2" }}>In Both Playbooks</span>
                 <span style={{ background: "#0d1622", border: "1px solid #2a3d52", borderRadius: 8, padding: "1px 7px", fontSize: 9, color: "#6888a0" }}>{shared.length}</span>
               </div>
-              {groupFms(shared).map(group => (
-                <div key={group.label} style={{ marginBottom: 10 }}>
-                  <div style={{ fontSize: 9, color: "#6888a0", letterSpacing: "1px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 5 }}>{group.label}</div>
-                  {group.items.map(fm => (
-                    <div key={fm.name} style={{ background: "#0d1622", border: "1px solid #1e2d3d", borderLeft: "3px solid #2a3d52", borderRadius: 6, padding: "7px 11px", marginBottom: 5, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <span style={{ fontSize: 11, fontWeight: 600, color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>{fm.name}</span>
-                      <span style={{ fontSize: 10, color: PC[fm.priority], background: PC[fm.priority] + "22", padding: "1px 6px", borderRadius: 4 }}>{PL[fm.priority]}</span>
-                    </div>
-                  ))}
-                </div>
-              ))}
+              <FmList fms={shared} borderColor="#2a3d52" />
             </div>
           )}
 
@@ -2242,17 +2226,7 @@ function CFB26Schemes() {
                 <span style={{ color: pbColor(compareB) }}>Exclusive to {compareB}</span>
                 <span style={{ background: "#0d1622", border: `1px solid ${pbColor(compareB)}`, borderRadius: 8, padding: "1px 7px", fontSize: 9, color: pbColor(compareB) }}>{onlyB.length}</span>
               </div>
-              {groupFms(onlyB).map(group => (
-                <div key={group.label} style={{ marginBottom: 10 }}>
-                  <div style={{ fontSize: 9, color: "#6888a0", letterSpacing: "1px", textTransform: "uppercase", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 5 }}>{group.label}</div>
-                  {group.items.map(fm => (
-                    <div key={fm.name} style={{ background: "#0d1622", border: `1px solid #1e2d3d`, borderLeft: `3px solid ${pbColor(compareB)}`, borderRadius: 6, padding: "7px 11px", marginBottom: 5, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <span style={{ fontSize: 11, fontWeight: 600, color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>{fm.name}</span>
-                      <span style={{ fontSize: 10, color: PC[fm.priority], background: PC[fm.priority] + "22", padding: "1px 6px", borderRadius: 4 }}>{PL[fm.priority]}</span>
-                    </div>
-                  ))}
-                </div>
-              ))}
+              <FmList fms={onlyB} borderColor={pbColor(compareB)} />
             </div>
           )}
 
