@@ -140,6 +140,9 @@ const TEAMS = [
   { id:"notre-dame", name:"Notre Dame", conf:"IND", color:"#0C2340",
     traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch","elite_te","seam_routes","p22","four_down_go"],
     notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
+  { id:"uconn", name:"UConn", conf:"IND", color:"#000E2F",
+    traits:["p11","p12","p21","inside_run","outside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st"],
+    notes:"Multiple Offense — Pro-style with spread elements. Multiple formations and personnel groups." },
   { id:"pittsburgh", name:"Pittsburgh", conf:"ACC", color:"#003594",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
@@ -195,7 +198,7 @@ const TEAMS = [
   { id:"oregon", name:"Oregon", conf:"B1G", color:"#154734",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12","mobile_qb","qb_scramble","elite_wr","deep_shots"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
-  { id:"oregon-state", name:"Oregon State", conf:"B1G", color:"#DC4405",
+  { id:"oregon-state", name:"Oregon State", conf:"PAC12", color:"#DC4405",
     traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
     notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
   { id:"penn-state", name:"Penn State", conf:"B1G", color:"#041E42",
@@ -216,7 +219,7 @@ const TEAMS = [
   { id:"washington", name:"Washington", conf:"B1G", color:"#4B2E83",
     traits:["p11","p12","p21","inside_run","outside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st"],
     notes:"Multiple Offense — Pro-style with spread elements. Multiple formations and personnel groups." },
-  { id:"washington-state", name:"Washington State", conf:"B1G", color:"#981E32",
+  { id:"washington-state", name:"Washington State", conf:"PAC12", color:"#981E32",
     traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
     notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
   { id:"wisconsin", name:"Wisconsin", conf:"B1G", color:"#C5050C",
@@ -305,6 +308,9 @@ const TEAMS = [
   { id:"ole-miss", name:"Ole Miss", conf:"SEC", color:"#CE1126",
     traits:["p11","p10","empty","trips","outside_run","rpo","hurry_up","quick_game","play_action","deep_shots","motion_heavy","dual_threat","elite_wr","screens","qb_scramble","mobile_qb"],
     notes:"Veer and Shoot — Veer and Shoot: run-pass threats from spread. Mobile QB, quick game, deep shots." },
+  { id:"oklahoma", name:"Oklahoma", conf:"SEC", color:"#841617",
+    traits:["p11","p10","empty","trips","quick_game","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","elite_wr","deep_shots","screens","rpo","mobile_qb","dual_threat","motion_heavy"],
+    notes:"Air Raid — Air Raid spread. Pass-heavy scheme with mobile QB, quick game, and RPO elements. Empty and trips heavy." },
   { id:"south-carolina", name:"South Carolina", conf:"SEC", color:"#73000A",
     traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
     notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
@@ -321,13 +327,13 @@ const TEAMS = [
   { id:"air-force", name:"Air Force", conf:"MWC", color:"#003087",
     traits:["option_run","inside_run","outside_run","rpo","dual_threat","mobile_qb","p21","qb_scramble","p11","play_action","short_yardage_run","triple_option","p22","four_down_go"],
     notes:"Option — Triple option or read option. Assignment defense is mandatory. QB is a run threat." },
-  { id:"boise-state", name:"Boise State", conf:"MWC", color:"#0033A0",
+  { id:"boise-state", name:"Boise State", conf:"PAC12", color:"#0033A0",
     traits:["p12","p21","p22","inside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st","short_yardage_run","fb_lead","outside_run","motion_heavy"],
     notes:"Pro Style — Traditional pro-style offense. Power run with West Coast passing and TE seam routes." },
-  { id:"colorado-state", name:"Colorado State", conf:"MWC", color:"#1E4D2B",
+  { id:"colorado-state", name:"Colorado State", conf:"PAC12", color:"#1E4D2B",
     traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","elite_wr","deep_shots"],
     notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
-  { id:"fresno-state", name:"Fresno State", conf:"MWC", color:"#CC0000",
+  { id:"fresno-state", name:"Fresno State", conf:"PAC12", color:"#CC0000",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
   { id:"hawaii", name:"Hawaii", conf:"MWC", color:"#024731",
@@ -339,18 +345,24 @@ const TEAMS = [
   { id:"new-mexico", name:"New Mexico", conf:"MWC", color:"#BA0C2F",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
-  { id:"san-diego-state", name:"San Diego State", conf:"MWC", color:"#C41230",
+  { id:"san-diego-state", name:"San Diego State", conf:"PAC12", color:"#C41230",
     traits:["p11","p10","empty","trips","outside_run","rpo","hurry_up","quick_game","play_action","deep_shots","motion_heavy","dual_threat","inside_run","strong_oline","run_heavy_1st"],
     notes:"Veer and Shoot — Veer and Shoot: run-pass threats from spread. Mobile QB, quick game, deep shots." },
   { id:"unlv", name:"UNLV", conf:"MWC", color:"#B10202",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
-  { id:"utah-state", name:"Utah State", conf:"MWC", color:"#00263A",
+  { id:"utah-state", name:"Utah State", conf:"PAC12", color:"#00263A",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
   { id:"wyoming", name:"Wyoming", conf:"MWC", color:"#492F24",
     traits:["p11","p12","p21","inside_run","outside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st"],
     notes:"Multiple Offense — Pro-style with spread elements. Multiple formations and personnel groups." },
+  { id:"san-jose-state", name:"San Jose State", conf:"MWC", color:"#0055A2",
+    traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
+    notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
+  { id:"north-dakota-state", name:"North Dakota State", conf:"MWC", color:"#006A32",
+    traits:["p11","p12","p21","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","hb_stretch","short_yardage_run"],
+    notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
   // ── AAC ──────────────────────────────────────────────────
   { id:"charlotte", name:"Charlotte", conf:"AAC", color:"#046A38",
     traits:["p11","p12","inside_run","outside_run","hb_stretch","play_action","rpo","option_run","motion_heavy","p21","hurry_up","quick_game"],
@@ -383,6 +395,9 @@ const TEAMS = [
     traits:["option_run","rpo","outside_run","p11","mobile_qb","dual_threat","hurry_up","trips","qb_scramble","play_action","p12"],
     notes:"Spread Option — Spread option hybrid. Mobile QB read game combined with spread passing." },
   { id:"utsa", name:"UTSA", conf:"AAC", color:"#0C2340",
+    traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
+    notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
+  { id:"uab", name:"UAB", conf:"AAC", color:"#1E6B52",
     traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
     notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
   // ── SBC ──────────────────────────────────────────────────
@@ -419,7 +434,7 @@ const TEAMS = [
   { id:"southern-miss", name:"Southern Miss", conf:"SBC", color:"#FFD046",
     traits:["p11","p10","empty","trips","outside_run","rpo","hurry_up","quick_game","play_action","deep_shots","motion_heavy","dual_threat","mobile_qb","qb_scramble"],
     notes:"Veer and Shoot — Veer and Shoot: run-pass threats from spread. Mobile QB, quick game, deep shots." },
-  { id:"texas-state", name:"Texas State", conf:"SBC", color:"#501214",
+  { id:"texas-state", name:"Texas State", conf:"PAC12", color:"#501214",
     traits:["p11","p10","empty","trips","outside_run","rpo","hurry_up","quick_game","play_action","deep_shots","motion_heavy","dual_threat"],
     notes:"Veer and Shoot — Veer and Shoot: run-pass threats from spread. Mobile QB, quick game, deep shots." },
   { id:"troy", name:"Troy", conf:"SBC", color:"#8B2131",
@@ -453,15 +468,18 @@ const TEAMS = [
   { id:"new-mexico-state", name:"New Mexico State", conf:"CUSA", color:"#891216",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
-  { id:"sam-houston", name:"Sam Houston", conf:"AAC", color:"#F05023",
+  { id:"sam-houston", name:"Sam Houston", conf:"CUSA", color:"#F05023",
     traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","deep_shots"],
     notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
-  { id:"utep", name:"UTEP", conf:"CUSA", color:"#041E42",
+  { id:"utep", name:"UTEP", conf:"MWC", color:"#041E42",
     traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","elite_wr","deep_shots"],
     notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
   { id:"western-kentucky", name:"Western Kentucky", conf:"CUSA", color:"#C60C30",
     traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","elite_wr","deep_shots"],
     notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
+  { id:"missouri-state", name:"Missouri State", conf:"CUSA", color:"#5E0018",
+    traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
+    notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
   // ── MAC ──────────────────────────────────────────────────
   { id:"akron", name:"Akron", conf:"MAC", color:"#041E42",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
@@ -487,7 +505,7 @@ const TEAMS = [
   { id:"miami-oh", name:"Miami (OH)", conf:"MAC", color:"#B61E2E",
     traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","deep_shots"],
     notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
-  { id:"northern-illinois", name:"Northern Illinois", conf:"MAC", color:"#BA0C2F",
+  { id:"northern-illinois", name:"Northern Illinois", conf:"MWC", color:"#BA0C2F",
     traits:["p11","p12","p21","inside_run","outside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st"],
     notes:"Multiple Offense — Pro-style with spread elements. Multiple formations and personnel groups." },
   { id:"ohio", name:"Ohio", conf:"MAC", color:"#00694E",
@@ -499,29 +517,35 @@ const TEAMS = [
   { id:"western-michigan", name:"Western Michigan", conf:"MAC", color:"#6C4023",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
-  // ── CAA ──────────────────────────────────────────────────
-  { id:"delaware", name:"Delaware", conf:"CAA", color:"#00539F",
+  { id:"umass", name:"UMass", conf:"MAC", color:"#881C1C",
+    traits:["p11","p12","p21","inside_run","outside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st"],
+    notes:"Multiple Offense — Pro-style with spread elements. Multiple formations and personnel groups." },
+  { id:"sacramento-state", name:"Sacramento State", conf:"MAC", color:"#043927",
+    traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
+    notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
+  // ── CUSA (cont.) ──────────────────────────────────────────────────
+  { id:"delaware", name:"Delaware", conf:"CUSA", color:"#00539F",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
   // ── IND ──────────────────────────────────────────────────
-  { id:"army", name:"Army", conf:"IND", color:"#000000",
+  { id:"army", name:"Army", conf:"AAC", color:"#000000",
     traits:["option_run","inside_run","outside_run","rpo","dual_threat","mobile_qb","p21","qb_scramble","p11","play_action","short_yardage_run","triple_option","p22","four_down_go","fb_lead"],
     notes:"Option — Triple option or read option. Assignment defense is mandatory. QB is a run threat." },
 ];
 
 const CONFERENCES = [
-  { id:"all",  label:"All"      },
-  { id:"SEC",  label:"SEC"      },
-  { id:"B1G",  label:"Big Ten"  },
-  { id:"B12",  label:"Big 12"   },
-  { id:"ACC",  label:"ACC"      },
-  { id:"MWC",  label:"Mtn West" },
-  { id:"AAC",  label:"AAC"      },
-  { id:"SBC",  label:"Sun Belt" },
-  { id:"CUSA", label:"C-USA"    },
-  { id:"MAC",  label:"MAC"      },
-  { id:"CAA",  label:"CAA"      },
-  { id:"IND",  label:"Indep."   },
+  { id:"all",    label:"All"      },
+  { id:"AAC",    label:"AAC"      },
+  { id:"ACC",    label:"ACC"      },
+  { id:"B1G",    label:"Big Ten"  },
+  { id:"B12",    label:"Big 12"   },
+  { id:"CUSA",   label:"C-USA"    },
+  { id:"MAC",    label:"MAC"      },
+  { id:"MWC",    label:"Mtn West" },
+  { id:"PAC12",  label:"Pac-12"   },
+  { id:"SEC",    label:"SEC"      },
+  { id:"SBC",    label:"Sun Belt" },
+  { id:"IND",    label:"Indep."   },
 ];
 
 // ── FULL FORMATION DATABASE ────────────────────────────────────────
@@ -2263,7 +2287,7 @@ function CFB26Schemes() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
             <div style={{ fontSize: "10px", letterSpacing: "2px", color: "#a07830", textTransform: "uppercase", fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>Scheme Builders</div>
-            <div style={{ fontSize: "18px", fontWeight: "700", color: "#c5d0dc", letterSpacing: "-0.3px", fontFamily: "'IBM Plex Mono', monospace" }}>Scheme Builders</div>
+            <div style={{ fontSize: "18px", fontWeight: "700", color: "#c5d0dc", letterSpacing: "-0.3px", fontFamily: "'IBM Plex Mono', monospace", lineHeight: "1.3" }}>Scheme Builder<br/>Scout Your Opponent</div>
           </div>
           <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
             <button onClick={() => setStep("teams")} style={{ padding: "5px 10px", background: "transparent", border: "1px solid #2a3d52", borderRadius: 7, color: "#6888a0", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>
@@ -2498,7 +2522,7 @@ function CFB26Schemes() {
       <div style={{ background: "linear-gradient(135deg,#07090f,#0c1220)", borderBottom: "3px solid #c8960c", padding: "12px 15px 10px", paddingTop: "calc(env(safe-area-inset-top) + 12px)", position: "sticky", top: 0, zIndex: 100 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
-            <div style={{ fontSize: "10px", letterSpacing: "2px", color: "#a07830", textTransform: "uppercase", fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace" }}>Scheme Builders</div>
+            <div style={{ fontSize: "10px", letterSpacing: "2px", color: "#a07830", textTransform: "uppercase", fontWeight: "bold", fontFamily: "'IBM Plex Mono', monospace", lineHeight: "1.4" }}>Scheme Builder<br/>Scout Your Opponent</div>
             <div style={{ fontSize: "17px", fontWeight: "700", color: "#c5d0dc", fontFamily: "'IBM Plex Mono', monospace" }}>Game Plan — {scored.length} Formation{scored.length !== 1 ? "s" : ""}{myBook !== "All" ? " · " + myBook : ""}</div>
           </div>
           <div style={{ display: "flex", gap: 6, alignItems: "center", flexShrink: 0 }}>
