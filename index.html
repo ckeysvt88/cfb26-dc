@@ -195,7 +195,7 @@ const TEAMS = [
   { id:"oregon", name:"Oregon", conf:"B1G", color:"#154734",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12","mobile_qb","qb_scramble","elite_wr","deep_shots"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
-  { id:"oregon-state", name:"Oregon State", conf:"B1G", color:"#DC4405",
+  { id:"oregon-state", name:"Oregon State", conf:"PAC12", color:"#DC4405",
     traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
     notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
   { id:"penn-state", name:"Penn State", conf:"B1G", color:"#041E42",
@@ -216,7 +216,7 @@ const TEAMS = [
   { id:"washington", name:"Washington", conf:"B1G", color:"#4B2E83",
     traits:["p11","p12","p21","inside_run","outside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st"],
     notes:"Multiple Offense — Pro-style with spread elements. Multiple formations and personnel groups." },
-  { id:"washington-state", name:"Washington State", conf:"B1G", color:"#981E32",
+  { id:"washington-state", name:"Washington State", conf:"PAC12", color:"#981E32",
     traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
     notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
   { id:"wisconsin", name:"Wisconsin", conf:"B1G", color:"#C5050C",
@@ -305,6 +305,9 @@ const TEAMS = [
   { id:"ole-miss", name:"Ole Miss", conf:"SEC", color:"#CE1126",
     traits:["p11","p10","empty","trips","outside_run","rpo","hurry_up","quick_game","play_action","deep_shots","motion_heavy","dual_threat","elite_wr","screens","qb_scramble","mobile_qb"],
     notes:"Veer and Shoot — Veer and Shoot: run-pass threats from spread. Mobile QB, quick game, deep shots." },
+  { id:"oklahoma", name:"Oklahoma", conf:"SEC", color:"#841617",
+    traits:["p10","p11","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","screens","west_coast","four_wide","elite_wr","rpo","mobile_qb","dual_threat"],
+    notes:"Air Raid / Arbuckle — Four-wide spread, quick game, screens, crossers. Mobile QB adds RPO and scramble dimension." },
   { id:"south-carolina", name:"South Carolina", conf:"SEC", color:"#73000A",
     traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
     notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
@@ -321,15 +324,6 @@ const TEAMS = [
   { id:"air-force", name:"Air Force", conf:"MWC", color:"#003087",
     traits:["option_run","inside_run","outside_run","rpo","dual_threat","mobile_qb","p21","qb_scramble","p11","play_action","short_yardage_run","triple_option","p22","four_down_go"],
     notes:"Option — Triple option or read option. Assignment defense is mandatory. QB is a run threat." },
-  { id:"boise-state", name:"Boise State", conf:"MWC", color:"#0033A0",
-    traits:["p12","p21","p22","inside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st","short_yardage_run","fb_lead","outside_run","motion_heavy"],
-    notes:"Pro Style — Traditional pro-style offense. Power run with West Coast passing and TE seam routes." },
-  { id:"colorado-state", name:"Colorado State", conf:"MWC", color:"#1E4D2B",
-    traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","elite_wr","deep_shots"],
-    notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
-  { id:"fresno-state", name:"Fresno State", conf:"MWC", color:"#CC0000",
-    traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
-    notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
   { id:"hawaii", name:"Hawaii", conf:"MWC", color:"#024731",
     traits:["p10","p11","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","screens","west_coast","four_wide","elite_wr"],
     notes:"Run And Shoot — Run and Shoot air attack. 4-wide sets, quick game, crossers. Minimal run game." },
@@ -339,22 +333,44 @@ const TEAMS = [
   { id:"new-mexico", name:"New Mexico", conf:"MWC", color:"#BA0C2F",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
-  { id:"san-diego-state", name:"San Diego State", conf:"MWC", color:"#C41230",
-    traits:["p11","p10","empty","trips","outside_run","rpo","hurry_up","quick_game","play_action","deep_shots","motion_heavy","dual_threat","inside_run","strong_oline","run_heavy_1st"],
-    notes:"Veer and Shoot — Veer and Shoot: run-pass threats from spread. Mobile QB, quick game, deep shots." },
+  { id:"north-dakota-state", name:"North Dakota State", conf:"MWC", color:"#005C36",
+    traits:["p11","p12","p21","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p22","four_down_go","short_yardage_run"],
+    notes:"Power Run — Physical power run offense. Heavy personnel, multiple TEs, dominates at the point of attack." },
+  { id:"northern-illinois", name:"Northern Illinois", conf:"MWC", color:"#BA0C2F",
+    traits:["p11","p12","p21","inside_run","outside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st"],
+    notes:"Multiple Offense — Pro-style with spread elements. Multiple formations and personnel groups." },
+  { id:"san-jose-state", name:"San Jose State", conf:"MWC", color:"#0055A2",
+    traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
+    notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
   { id:"unlv", name:"UNLV", conf:"MWC", color:"#B10202",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
-  { id:"utah-state", name:"Utah State", conf:"MWC", color:"#00263A",
-    traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
-    notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
+  { id:"utep", name:"UTEP", conf:"MWC", color:"#041E42",
+    traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","elite_wr","deep_shots"],
+    notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
   { id:"wyoming", name:"Wyoming", conf:"MWC", color:"#492F24",
     traits:["p11","p12","p21","inside_run","outside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st"],
     notes:"Multiple Offense — Pro-style with spread elements. Multiple formations and personnel groups." },
+  // ── PAC12 ─────────────────────────────────────────────────
+  { id:"boise-state", name:"Boise State", conf:"PAC12", color:"#0033A0",
+    traits:["p12","p21","p22","inside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st","short_yardage_run","fb_lead","outside_run","motion_heavy"],
+    notes:"Pro Style — Traditional pro-style offense. Power run with West Coast passing and TE seam routes." },
+  { id:"colorado-state", name:"Colorado State", conf:"PAC12", color:"#1E4D2B",
+    traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","elite_wr","deep_shots"],
+    notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
+  { id:"fresno-state", name:"Fresno State", conf:"PAC12", color:"#CC0000",
+    traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
+    notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
+  { id:"san-diego-state", name:"San Diego State", conf:"PAC12", color:"#C41230",
+    traits:["p11","p10","empty","trips","outside_run","rpo","hurry_up","quick_game","play_action","deep_shots","motion_heavy","dual_threat","inside_run","strong_oline","run_heavy_1st"],
+    notes:"Veer and Shoot — Veer and Shoot: run-pass threats from spread. Mobile QB, quick game, deep shots." },
+  { id:"texas-state", name:"Texas State", conf:"PAC12", color:"#501214",
+    traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
+    notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
+  { id:"utah-state", name:"Utah State", conf:"PAC12", color:"#00263A",
+    traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
+    notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
   // ── AAC ──────────────────────────────────────────────────
-  { id:"army", name:"Army", conf:"AAC", color:"#000000",
-    traits:["option_run","inside_run","outside_run","rpo","dual_threat","mobile_qb","p21","qb_scramble","p11","play_action","short_yardage_run","triple_option","p22","four_down_go","fb_lead"],
-    notes:"Option — Triple option or read option. Assignment defense is mandatory. QB is a run threat." },
   { id:"charlotte", name:"Charlotte", conf:"AAC", color:"#046A38",
     traits:["p11","p12","inside_run","outside_run","hb_stretch","play_action","rpo","option_run","motion_heavy","p21","hurry_up","quick_game"],
     notes:"Pistol — Pistol formation base. Power run game with RPO and PA concepts from pistol." },
@@ -422,9 +438,6 @@ const TEAMS = [
   { id:"southern-miss", name:"Southern Miss", conf:"SBC", color:"#FFD046",
     traits:["p11","p10","empty","trips","outside_run","rpo","hurry_up","quick_game","play_action","deep_shots","motion_heavy","dual_threat","mobile_qb","qb_scramble"],
     notes:"Veer and Shoot — Veer and Shoot: run-pass threats from spread. Mobile QB, quick game, deep shots." },
-  { id:"texas-state", name:"Texas State", conf:"SBC", color:"#501214",
-    traits:["p11","p10","empty","trips","outside_run","rpo","hurry_up","quick_game","play_action","deep_shots","motion_heavy","dual_threat"],
-    notes:"Veer and Shoot — Veer and Shoot: run-pass threats from spread. Mobile QB, quick game, deep shots." },
   { id:"troy", name:"Troy", conf:"SBC", color:"#8B2131",
     traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
     notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
@@ -435,7 +448,7 @@ const TEAMS = [
   { id:"fiu", name:"FIU", conf:"CUSA", color:"#081E3F",
     traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
     notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
-  { id:"florida-atlantic", name:"Florida Atlantic", conf:"AAC", color:"#003366",
+  { id:"florida-atlantic", name:"Florida Atlantic", conf:"CUSA", color:"#003366",
     traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","elite_wr","deep_shots"],
     notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
   { id:"jacksonville-state", name:"Jacksonville State", conf:"CUSA", color:"#CC0000",
@@ -456,11 +469,11 @@ const TEAMS = [
   { id:"new-mexico-state", name:"New Mexico State", conf:"CUSA", color:"#891216",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
-  { id:"sam-houston", name:"Sam Houston", conf:"AAC", color:"#F05023",
+  { id:"delaware", name:"Delaware", conf:"CUSA", color:"#00539F",
+    traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
+    notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
+  { id:"sam-houston", name:"Sam Houston", conf:"CUSA", color:"#F05023",
     traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","deep_shots"],
-    notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
-  { id:"utep", name:"UTEP", conf:"CUSA", color:"#041E42",
-    traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","elite_wr","deep_shots"],
     notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
   { id:"western-kentucky", name:"Western Kentucky", conf:"CUSA", color:"#C60C30",
     traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","elite_wr","deep_shots"],
@@ -490,41 +503,43 @@ const TEAMS = [
   { id:"miami-oh", name:"Miami (OH)", conf:"MAC", color:"#B61E2E",
     traits:["p11","p10","empty","trips","quick_game","no_deep","crossers","flat_attack","hurry_up","qb_pocket","west_coast","middle_heavy","deep_shots"],
     notes:"Air Raid — Air Raid spread. Minimal run game, maximum pass coverage needed. Empty and trips heavy." },
-  { id:"northern-illinois", name:"Northern Illinois", conf:"MAC", color:"#BA0C2F",
-    traits:["p11","p12","p21","inside_run","outside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st"],
-    notes:"Multiple Offense — Pro-style with spread elements. Multiple formations and personnel groups." },
   { id:"ohio", name:"Ohio", conf:"MAC", color:"#00694E",
     traits:["p11","p12","inside_run","outside_run","hb_stretch","play_action","rpo","option_run","motion_heavy","p21"],
     notes:"Pistol — Pistol formation base. Power run game with RPO and PA concepts from pistol." },
   { id:"toledo", name:"Toledo", conf:"MAC", color:"#003865",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
+  { id:"sacramento-state", name:"Sacramento State", conf:"MAC", color:"#043927",
+    traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
+    notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
+  { id:"umass", name:"UMass", conf:"MAC", color:"#971B2F",
+    traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
+    notes:"Power Spread — Physical spread. Power run game meets multiple passing concepts. TE heavy personnel." },
   { id:"western-michigan", name:"Western Michigan", conf:"MAC", color:"#6C4023",
     traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
     notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
-  // ── CAA ──────────────────────────────────────────────────
-  { id:"delaware", name:"Delaware", conf:"CAA", color:"#00539F",
-    traits:["p11","outside_run","rpo","quick_game","hurry_up","motion_heavy","play_action","trips","p12"],
-    notes:"Spread — Spread RPO attack. Outside run and quick game from Gun. Motion and trips surfaces." },
   // ── IND ──────────────────────────────────────────────────
+  { id:"army", name:"Army", conf:"AAC", color:"#000000",
+    traits:["option_run","inside_run","outside_run","rpo","dual_threat","mobile_qb","p21","qb_scramble","p11","play_action","short_yardage_run","triple_option","p22","four_down_go","fb_lead"],
+    notes:"Option — Triple option or read option. Assignment defense is mandatory. QB is a run threat." },
   { id:"uconn", name:"UConn", conf:"IND", color:"#000E2F",
-    traits:["p11","p12","p21","inside_run","outside_run","play_action","west_coast","strong_oline","boundary_hash","run_heavy_1st"],
+    traits:["p11","p12","inside_run","outside_run","play_action","strong_oline","run_heavy_1st","rpo","p21","hb_stretch"],
     notes:"Multiple Offense — Pro-style with spread elements. Multiple formations and personnel groups." },
 ];
 
 const CONFERENCES = [
-  { id:"all",  label:"All"      },
-  { id:"AAC",  label:"AAC"      },
-  { id:"ACC",  label:"ACC"      },
-  { id:"B1G",  label:"Big Ten"  },
-  { id:"B12",  label:"Big 12"   },
-  { id:"CUSA", label:"C-USA"    },
-  { id:"MAC",  label:"MAC"      },
-  { id:"MWC",  label:"Mtn West" },
-  { id:"SEC",  label:"SEC"      },
-  { id:"SBC",  label:"Sun Belt" },
-  { id:"CAA",  label:"CAA"      },
-  { id:"IND",  label:"Indep."   },
+  { id:"all",   label:"All"      },
+  { id:"AAC",   label:"AAC"      },
+  { id:"ACC",   label:"ACC"      },
+  { id:"B1G",   label:"Big Ten"  },
+  { id:"B12",   label:"Big 12"   },
+  { id:"CUSA",  label:"C-USA"    },
+  { id:"MAC",   label:"MAC"      },
+  { id:"MWC",   label:"Mtn West" },
+  { id:"PAC12", label:"PAC-12"   },
+  { id:"SEC",   label:"SEC"      },
+  { id:"SBC",   label:"Sun Belt" },
+  { id:"IND",   label:"Indep."   },
 ];
 
 // ── FULL FORMATION DATABASE ────────────────────────────────────────
@@ -611,14 +626,15 @@ const FDB = {
     desc:"Classic 3-tech over the guard. Most fundamentally sound college front vs pro-style offenses. Balanced run/pass fits. The standard starting point for any DC.",
     dcNote:"The 3-tech over the guard disrupts inside zone by occupying two blockers. MLB reads the B-gap. The Over has been the dominant college base front since the 1980s — it accounts for all 7 gaps.",
     blitzBase:18, blitzMods:[{tags:["qb_pressure","qb_one_read"],d:+10},{tags:["qb_scramble","dual_threat"],d:-10},{tags:["quick_game","rpo"],d:-8},{tags:["qb_pocket"],d:+5}],
-    coreTags:["inside_run","counter_trap","fb_lead","p21","p22","strong_oline","run_heavy_1st","play_action","p11","p12","hurry_up","rpo"],
-    suppTags:["outside_run","hb_stretch","p12","qb_pocket","boundary_hash"],
+    coreTags:["inside_run","counter_trap","fb_lead","p21","p22","strong_oline","run_heavy_1st","play_action","p11","p12","rpo"],
+    suppTags:["outside_run","hb_stretch","p12","qb_pocket","boundary_hash","hurry_up"],
     coverages:[
       {name:"Cover 3 Sky",rating:5,tag:"Base All-Purpose",detail:"SS rotates to strong flat. CBs at 7 yards. MLB/WLB own curl/flat. Handles run AND play-action simultaneously. The textbook call."},
+      {name:"Cover 3 Cloud",rating:4,tag:"Boundary/Fade Stopper",detail:"CB traps the fade on boundary side. Forces short throws underneath. Best vs back-shoulder, out routes, and teams attacking the boundary hash."},
       {name:"Cover 2",rating:4,tag:"Hash Stopper",detail:"Safeties split halves. Strong vs boundary/field hash routes and PA intermediate windows. Vulnerable to deep middle post."},
+      {name:"Tampa 2",rating:3,tag:"12p TE Seam",detail:"MLB walls the seam when 12p TE leaks after faking a block. REQUIRES athletic MLB — don't call this with a slow MLB."},
       {name:"Cover 1",rating:3,tag:"Run Support",detail:"Man coverage frees box defenders. Forces TEs/FBs to declare. Good when confident run is coming."},
     ],
-    preSnap:["Strong DE: contain — never upfield vs outside run","MLB: two-gap read B-gap, flow AFTER DL engages","SS: force defender on run side (Cover 3 Sky)","WLB: scrape over top on outside runs — cutback responsibility","Show blitz pre-snap, drop to Cover 3 vs pre-snap readers"],
     coaching:[{label:"Run Aggr.",value:"Aggressive"},{label:"DL Tech",value:"3-tech over guard (Over shade)"},{label:"Safety Depth",value:"10–12 yards"},{label:"LB Fits",value:"MIKE: B-gap, WILL: C-gap"},{label:"CB Align",value:"Off-Man 7 yds"}],
     callsheet:[{down:"1st & 10",call:"4-3 Over · Cover 3 Sky",note:"Sound base — run and PA covered"},{down:"2nd & Medium",call:"4-3 Over · Cover 2",note:"Squeeze hash routes"},{down:"3rd & Long",call:"4-3 Over · Cover 1 Man",note:"Man frees all 4 rushers"},{down:"Red Zone",call:"4-3 Over · Cover 2",note:"Flatten field"}],
   },
@@ -662,6 +678,7 @@ const FDB = {
     suppTags:["inside_run","short_yardage_run","play_action","mobile_qb","boundary_hash","flat_attack","outside_run","hb_stretch","counter_trap"],
     coverages:[
       {name:"Cover 3 Sky",rating:5,tag:"Base",detail:"SS as force/flat (3rd edge defender). CBs at 7 yards. Handles outside run AND play-action. OLB is your 4th lineman setting the hard edge."},
+      {name:"Cover 3 Cloud",rating:4,tag:"Boundary / Fade",detail:"CB traps the boundary fade — forces all deep throws to the field side where the safety can help. Best vs teams attacking the boundary hash consistently."},
       {name:"Cover 1",rating:4,tag:"Run Support",detail:"Man locks receivers — no free TE/WR blocking releases. Forces all eligibles to declare."},
       {name:"Tampa 2",rating:3,tag:"12p TE Seam",detail:"MLB walls the seam when 12p TE leaks after faking a block. REQUIRES athletic MLB — don't call this with a slow MLB."},
     ],
@@ -712,8 +729,9 @@ const FDB = {
     coverages:[
       {name:"Cover 3 Sky",rating:5,tag:"Base RPO Call",detail:"SS hard to flat. CBs at 7 yards — NEVER press vs RPO. Takes away bubbles (SS in flat), TE seams (MLB owns curl), PA rollouts (OLB contains). The complete RPO answer."},
       {name:"Cover 2",rating:4,tag:"Hash/Middle Stopper",detail:"Safeties split halves. LBs sink to 8 yards. Eliminates boundary AND field hash windows simultaneously."},
-      {name:"Cover 1 Robber",rating:4,tag:"Change-Up",detail:"FS robs slot/TE over middle. Use 2–3x per game — destroys his first read by surprise."},
-      {name:"Cover 4 Drop",rating:3,tag:"Trips Counter",detail:"Against trips/bunch. Quarters distributes all CBs and safeties — eliminates the flooding concept."},
+      {name:"Cover 6",rating:4,tag:"Trips Counter",detail:"Cover 4 to trips side, Cover 2 to boundary. Accounts for 3 receivers without sacrificing boundary coverage. Mathematically handles 3x1 overloads."},
+      {name:"Cover 3 Buzz",rating:4,tag:"Crossers / Mesh",detail:"Safety buzzes to hook-curl as a robber. Reads QB eyes — excellent vs West Coast crossing routes and mesh concepts at 8-12 yards."},
+      {name:"Cover 1 Robber",rating:3,tag:"Change-Up",detail:"FS robs slot/TE over middle. Use 2–3x per game — destroys his first read by surprise."},
     ],
     preSnap:["CBs: NEVER press vs RPO — RPO reads your press alignment pre-snap","Show Cover 2 pre-snap, rotate to Cover 3 at snap","OLB: contain — no freelance blitz without spy","Shade hook defenders toward his hot target window"],
     coaching:[{label:"CB Press",value:"Off / Cushion 5–7 yds"},{label:"Zone Drops",value:"Hook 8, Flat 5 yds"},{label:"Safety Depth",value:"10–12 yds"},{label:"Hash Shade",value:"SS to his hot side"},{label:"Contain",value:"Both DEs on edge"}],
@@ -728,7 +746,7 @@ const FDB = {
     suppTags:["quick_game","no_deep","elite_wr","slot_threat","crossers","middle_heavy","seam_routes"],
     coverages:[
       {name:"Cover 3 Sky",rating:5,tag:"Base / RPO",detail:"SS hard to flat pre-snap — eliminates the bubble read window before the ball is snapped. CBs off 7 yards. Three LBs own curl, hook, and flat. Best base call from this formation."},
-      {name:"Tampa 2",rating:5,tag:"Seam Closure",detail:"MLB drives the seam at the snap. Closes the Cover 2 void at 15-20 yards. Best vs 11p TE seam routes and slot seam routes off play action."},
+      {name:"Tampa 2",rating:5,tag:"Seam Closure",detail:"MLB drives the seam at the snap. Closes the Cover 2 void at 15-20 yards. Best vs 11p TE seam routes and slot seam routes off play action. REQUIRES athletic MLB — don't call this with a slow MLB."},
       {name:"Cover 3 Buzz",rating:4,tag:"West Coast / Cross",detail:"Safety buzzes to hook-curl as a robber. Excellent vs West Coast crossing routes and mesh concepts at 8-12 yards. Safety reads QB eyes and jumps the first look."},
       {name:"Cover 4 Drop",rating:4,tag:"Trips / Deep",detail:"Drop variant closes curl windows earlier than base Quarters. Best vs spread trips and 4-receiver sets — each vertical route has a zone defender above him."},
       {name:"Cover 1 Robber",rating:3,tag:"Rhythm Breaker",detail:"Man with FS robbing the middle seam. Breaks timing routes — forces QB vs man coverage while FS sits on any seam or crossing route he looks at first."},
@@ -747,6 +765,8 @@ const FDB = {
     coverages:[
       {name:"Cover 3 Sky",rating:5,tag:"Base RPO Stopper",detail:"SS to flat. Three LBs own curl, hook, opposite flat. Every quick-game window covered pre-snap. CBs at 7 yards."},
       {name:"Cover 2",rating:4,tag:"Flat/Sideline",detail:"Safeties split. Three LBs sink to 8 yards — all three hash windows covered simultaneously."},
+      {name:"Cover 6",rating:4,tag:"Trips Counter",detail:"Cover 4 to trips side, Cover 2 to boundary. Three stacked LBs distribute naturally to both sides of the coverage rotation."},
+      {name:"Cover 3 Buzz",rating:3,tag:"West Coast Counter",detail:"Safety buzzes to hook-curl as a robber. Reads QB eyes — stops crossing routes and West Coast intermediate mesh."},
       {name:"Cover 1 Robber",rating:3,tag:"Rhythm Breaker",detail:"Man with FS roaming. Use when he finds a zone window — forces man execution."},
     ],
     preSnap:["CBs: NEVER press from 3-3 Stack vs RPO","Manually shade all 3 LB zones toward his target window","Show Cover 2 pre-snap, roll to Cover 3 at snap always","OLB: edge contain — no freelance blitz"],
@@ -759,7 +779,7 @@ const FDB = {
     dcNote:"The Cub LB's inside alignment lets him physically disrupt crossing stems before the route develops. Against mesh, he attacks the inside receiver BEFORE the cross — eliminating the timing that makes mesh work. This LB is NOT a blitzer — he's a route disruptor.",
     blitzBase:18, blitzMods:[{tags:["crossers","middle_heavy"],d:-8},{tags:["qb_pressure"],d:+6},{tags:["rpo","quick_game"],d:-8}],
     coreTags:["crossers","middle_heavy","seam_routes","p11","play_action","west_coast","qb_pocket","elite_te"],
-    suppTags:["rpo","flat_attack","trips","motion_heavy","inside_run","slant_heavy"],
+    suppTags:["rpo","flat_attack","trips","motion_heavy","inside_run","slant_heavy","p10","slot_threat"],
     coverages:[
       {name:"Cover 1 Robber",rating:5,tag:"Crosser Destroyer",detail:"Cub LB disrupts crossing stems inside-out. Man behind. Physical disruption before receivers can separate."},
       {name:"Cover 3 Sky",rating:4,tag:"Base Coverage",detail:"Cub's inside position naturally covers hook-curl zone vs vertical slot routes."},
@@ -780,7 +800,7 @@ const FDB = {
       {name:"Cover 3",rating:5,tag:"Signature Pressure",detail:"OLB arcs wide, DE loops inside behind. QB holds watching OLB — DE hits blind side. Zone behind covers the quick throw. Limit to 2x per game."},
       {name:"Cover 4 Drop",rating:5,tag:"Spread/Trips Base",detail:"Mint with match principles — defenders track receiver routes into zones rather than spot-dropping. Best Nickel coverage vs 11p spread and trips."},
       {name:"Cover 6",rating:5,tag:"3x1 / Trips",detail:"Cover 4 to trips side, Cover 2 to boundary. Mint naturally sets up this rotation. Mathematically strongest vs 3x1 sets — every receiver accounted for."},
-      {name:"Tampa 2",rating:4,tag:"Seam Closure",detail:"MLB in Mint has natural seam depth. Drive the seam at the snap — closes the intermediate void vs TE releases and slot seam routes off play action."},
+      {name:"Tampa 2",rating:4,tag:"Seam Closure",detail:"MLB in Mint has natural seam depth. Drive the seam at the snap — closes the intermediate void vs TE releases and slot seam routes off play action. REQUIRES athletic MLB — don't call this with a slow MLB."},
     ],
     preSnap:["Loop blitz: OLB arcs, DE loops — timing is everything","Max 2 loop blitzes per game — he'll hot-route around the pattern","Three Mint LBs: sink to 8–10 yards in all coverage calls"],
     coaching:[{label:"Loop Blitz",value:"OLB out, DE loops inside (2x max)"},{label:"Zone Drops",value:"All LBs: 8–10 yards"}],
@@ -822,7 +842,7 @@ const FDB = {
     desc:"Nickel with extra LB in box. Five DBs handle 3 WRs while Load LB maintains run integrity against 11p run threats. Best compromise formation when offense can run OR pass from same personnel.",
     dcNote:"11p still runs the ball with a capable HB. Load front maintains run integrity without sacrificing the extra DB vs 3 WRs. This is the compromise elite DCs use when the offense is a true run-pass threat.",
     blitzBase:20, blitzMods:[{tags:["rpo","play_action"],d:-8},{tags:["qb_pressure"],d:+10},{tags:["qb_scramble"],d:-6},{tags:["elite_rb","outside_run"],d:-5}],
-    coreTags:["rpo","play_action","p11","outside_run","elite_rb","flat_attack","run_heavy_1st","seam_routes"],
+    coreTags:["rpo","play_action","p11","p12","outside_run","elite_rb","flat_attack","run_heavy_1st","seam_routes","elite_te"],
     suppTags:["inside_run","hb_stretch","quick_game","motion_heavy","elite_te","boundary_hash"],
     coverages:[
       {name:"Cover 3 Sky",rating:5,tag:"Base",detail:"Load LB handles run gap. SS to flat. Eliminates run AND flat/screen threat simultaneously from 11p."},
@@ -865,7 +885,7 @@ const FDB = {
     callsheet:[{down:"2nd & Medium",call:"Single Mug · Cover 3 Sky",note:"Sell blitz, play zone"},{down:"3rd & Medium",call:"Single Mug · Cover 1 Robber",note:"Actual blitz — unidentifiable"}],
   },
   "Nickel Wide": {
-    books:["4-3"], priority:"pass", personnel:"Nickel",
+    books:["4-3","4-3 Multiple","4-2-5"], priority:"pass", personnel:"Nickel",
     desc:"Nickel Wide pre-positions DBs to match wide receiver splits. Eliminates travel distance to boundary routes — DBs are already at their coverage positions. Against trips, pre-positions the apex defender.",
     dcNote:"Against 10/11p in a spread, standard Nickel leaves CBs too narrow for boundary routes — they must travel across their alignment to coverage. Wide alignment eliminates that travel entirely.",
     blitzBase:18, blitzMods:[{tags:["deep_shots","back_shoulder"],d:-8},{tags:["boundary_hash","field_hash"],d:-5},{tags:["qb_pressure","qb_one_read"],d:+8}],
@@ -873,7 +893,9 @@ const FDB = {
     suppTags:["slant_heavy","flat_attack","west_coast","no_deep","qb_checkdown"],
     coverages:[
       {name:"Cover 4 Drop",rating:5,tag:"Wide/Trips Base",detail:"Each DB owns a quarter. Wide alignment pre-positions DBs at coverage zones. No receiver gets a numbers advantage."},
-      {name:"Cover 2",rating:4,tag:"Flat Coverage",detail:"Safeties split. Wide-aligned CBs carry flat routes efficiently."},
+      {name:"Cover 6",rating:5,tag:"Trips / 3x1",detail:"Cover 4 to trips side, Cover 2 to boundary. Wide alignment pre-positions the safety for this rotation before the snap — no travel distance."},
+      {name:"Cover 3 Cloud",rating:4,tag:"Boundary Fade Stopper",detail:"CB traps the boundary fade from wide alignment. Safeties hold deep thirds. Best vs back-shoulder routes and teams attacking the boundary hash from wide splits."},
+      {name:"Cover 2",rating:3,tag:"Flat Coverage",detail:"Safeties split. Wide-aligned CBs carry flat routes efficiently."},
     ],
     preSnap:["Rotate safety to trips side pre-snap","Wide alignment: CBs can press boundary routes more effectively","Against 10p empty: CBs press — no run threat"],
     coaching:[{label:"DB Align",value:"Match WR Splits (Wide)"},{label:"Safety",value:"To Trips/Bunch Side"}],
@@ -898,7 +920,7 @@ const FDB = {
     callsheet:[{down:"3rd & Long",call:"Dime Normal · Cover 2 Man",note:"Max coverage + pressure"},{down:"Deep Shot Down",call:"Dime Normal · Cover 4",note:"Every deep window covered"},{down:"2-Minute",call:"Dime Normal · Cover 3",note:"Prevent the explosive"}],
   },
   "Dime Rush": {
-    books:["4-3","3-4","4-2-5","3-3-5","3-3-5 Tite","3-2-6","Multiple"], priority:"pressure", personnel:"Dime",
+    books:["4-3","4-3 Multiple","3-4","4-2-5","3-2-6","Multiple"], priority:"pressure", personnel:"Dime",
     desc:"Dime with extra pass rusher. 5+ pass rushers in Dime shell. The offense cannot block 5+ with 5 OL — someone goes free. Exclusively a passing-down formation. NEVER vs mobile QB.",
     dcNote:"On clear passing downs, an extra rusher gets to the QB faster. With 6 DBs covering every receiver, there's no hot route answer. Someone goes free — the QB must throw in 1.5 seconds.",
     blitzBase:40, blitzMods:[{tags:["qb_pressure","qb_one_read"],d:+15},{tags:["qb_pocket"],d:+10},{tags:["qb_scramble","mobile_qb","dual_threat"],d:-25},{tags:["quick_game","screens"],d:-20},{tags:["empty"],d:+8}],
@@ -950,7 +972,7 @@ const FDB = {
     dcNote:"The 3-4 Bear gives you 7 near the LOS while only rushing 3. Four LBs can blitz any gap combination. The offense cannot ID the protection assignment against 4 potential blitzers from all combinations.",
     blitzBase:20, blitzMods:[{tags:["short_yardage_run","inside_run"],d:+8},{tags:["qb_pressure"],d:+10},{tags:["qb_scramble","dual_threat"],d:-8},{tags:["rpo","quick_game","p10"],d:-10}],
     coreTags:["inside_run","short_yardage_run","counter_trap","p21","p22","strong_oline","run_heavy_1st","fb_lead","option_run"],
-    suppTags:["outside_run","hb_stretch","play_action","qb_pocket","four_down_go","redzone_spec"],
+    suppTags:["outside_run","hb_stretch","play_action","qb_pocket","four_down_go","redzone_spec","p12"],
     coverages:[
       {name:"Cover 1",rating:5,tag:"Base",detail:"7-man box with man coverage. Every gap assigned, every receiver has a DB. Offense must win 7 individual matchups to gain a yard."},
       {name:"Cover 2",rating:4,tag:"Bear + PA Safety",detail:"Bear front with safeties split for PA protection. Handles run AND play-action from heavy personnel in one call."},
@@ -964,7 +986,7 @@ const FDB = {
     desc:"Most versatile 3-4 formation. No obvious 3-tech or 1-tech — OL cannot ID assignments. OLBs can rush or cover. ILBs can blitz any A/B gap combination. Maximum flexibility.",
     dcNote:"The 3-4 Odd confuses OL blocking assignments because there's no obvious shade — every gap looks different. OLBs can be pass rushers or coverage players. Maximum alignment ambiguity.",
     blitzBase:22, blitzMods:[{tags:["qb_pressure","qb_one_read"],d:+12},{tags:["play_action","deep_shots"],d:-8},{tags:["elite_te","seam_routes"],d:-6},{tags:["qb_scramble"],d:-8}],
-    coreTags:["play_action","deep_shots","p12","elite_te","seam_routes","back_shoulder","qb_pocket","middle_heavy"],
+    coreTags:["play_action","deep_shots","p12","p11","elite_te","seam_routes","back_shoulder","qb_pocket","middle_heavy"],
     suppTags:["inside_run","counter_trap","p11","crossers","qb_pre_snap"],
     coverages:[
       {name:"Tampa 2",rating:5,tag:"Seam/Middle Stopper",detail:"MLB drops seam between safeties. Walls off middle completely. The most effective middle-field coverage in college football. REQUIRES athletic MLB."},
@@ -984,7 +1006,9 @@ const FDB = {
     suppTags:["inside_run","hb_stretch","seam_routes","elite_te","boundary_hash"],
     coverages:[
       {name:"Cover 3 Sky",rating:5,tag:"Base",detail:"Strong OLB sets edge. SS to flat. Handles outside run AND PA in one coverage."},
-      {name:"Cover 2 Man",rating:4,tag:"Seam/Run Hybrid",detail:"FS robs TE seam after run fake. Best vs 12p mixing outside run with TE seam passes."},
+      {name:"Cover 3 Buzz",rating:4,tag:"PA / Crossers",detail:"Safety buzzes to hook-curl zone after PA fake. Reads QB eyes — takes away the TE seam and mesh concept off play action."},
+      {name:"Cover 6",rating:4,tag:"Trips / Motion",detail:"Cover 4 to the trips side, Cover 2 to the boundary. Strong OLB edge integrity holds — no coverage bust on the overload side."},
+      {name:"Cover 2 Man",rating:3,tag:"Seam/Run Hybrid",detail:"FS robs TE seam after run fake. Best vs 12p mixing outside run with TE seam passes."},
     ],
     preSnap:["Strong OLB: edge setter FIRST — not a blitzer in Over","Backside OLB: spy (vs mobile QB) or blitz (vs pocket QB) — decide pre-snap"],
     coaching:[{label:"Strong OLB",value:"Edge Contain (not blitz)"}],
@@ -999,7 +1023,9 @@ const FDB = {
     suppTags:["outside_run","middle_heavy","crossers","inside_run","hb_stretch"],
     coverages:[
       {name:"Cover 3",rating:5,tag:"Mobile QB Killer",detail:"One OLB spies the QB. Others drop zones. Contain + 7-man coverage without sacrificing a DB. The definitive call vs mobile QBs and PA bootlegs."},
+      {name:"Cover 3 Buzz",rating:4,tag:"Crosser / RPO",detail:"Safety buzzes to hook-curl as a robber. Reads QB eyes — excellent vs crossing routes and RPO concepts that attack the hook zone."},
       {name:"Cover 2 Man",rating:4,tag:"Seam Coverage",detail:"ILBs handle run angles. Safeties split halves. FS robs the seam — great vs TE/slot seam routes after PA fake."},
+      {name:"Cover 4 Drop",rating:3,tag:"Trips Counter",detail:"Quarters from 3-4 Under. Each DB owns a zone. Good change-up when trips/motion is causing coverage problems."},
     ],
     preSnap:["OLB spy: MANDATORY vs dual-threat QB — no exceptions","ILBs communicate TE crossing routes every snap","Show blitz with one OLB, drop to zone at snap — maintain surprise","NEVER open scramble lanes with upfield penetration on early downs"],
     coaching:[{label:"OLB Spy",value:"ALWAYS assign vs Mobile/Dual-Threat"},{label:"Pre-snap",value:"Show Cover 2 — play Cover 3"},{label:"Pass Rush",value:"Run Stop Priority on 1st/2nd down"}],
@@ -1026,7 +1052,7 @@ const FDB = {
     dcNote:"Stacking ILBs removes them from the OL's pre-snap ID. The Over DL accounts for the strong side while stacked ILBs bring interior pressure from unexpected angles.",
     blitzBase:25, blitzMods:[{tags:["qb_pressure","qb_one_read"],d:+15},{tags:["qb_pocket"],d:+10},{tags:["qb_scramble"],d:-14},{tags:["quick_game","rpo"],d:-12}],
     coreTags:["qb_pocket","qb_pressure","qb_one_read","p11","play_action","crossers","middle_heavy"],
-    suppTags:["inside_run","seam_routes","west_coast","empty","pass_heavy_3rd"],
+    suppTags:["inside_run","seam_routes","west_coast","empty","pass_heavy_3rd","p10","rpo"],
     coverages:[
       {name:"Tampa 2",rating:5,tag:"Stack Blitz",detail:"One ILB blitzes A-gap. Other drops hook-curl. Zone behind — cannot account for both stacked threats simultaneously."},
       {name:"Cover 3 Sky",rating:4,tag:"Disguise",detail:"Show stack, both ILBs drop to zones. Pre-snap reader audiibles into your coverage."},
@@ -1041,10 +1067,12 @@ const FDB = {
     dcNote:"Tite front eliminates inside zone running lanes while freeing OLBs to drop into coverage. Against 11p, no interior running lanes AND four coverage players on the perimeter. The dominant modern answer to spread-run-pass offenses.",
     blitzBase:20, blitzMods:[{tags:["rpo","play_action"],d:-8},{tags:["qb_pressure"],d:+10},{tags:["mobile_qb"],d:-6},{tags:["outside_run"],d:-6}],
     coreTags:["rpo","play_action","p11","inside_run","middle_heavy","seam_routes","qb_pre_snap","crossers","option_run","dual_threat","mobile_qb"],
-    suppTags:["flat_attack","p12","elite_te","outside_run","slant_heavy","motion_heavy"],
+    suppTags:["flat_attack","p12","p10","elite_te","outside_run","slant_heavy","motion_heavy"],
     coverages:[
       {name:"Cover 3 Sky",rating:5,tag:"Base",detail:"Tite wall stops inside run. OLBs drop to curl/flat. Three-deep. Stops inside zone AND covers perimeter pass game simultaneously."},
+      {name:"Cover 3 Buzz",rating:4,tag:"West Coast / Crossers",detail:"Safety buzzes to hook-curl as a robber. Reads QB eyes — excellent vs West Coast crossing routes and mesh concepts at 8-12 yards."},
       {name:"Cover 2",rating:4,tag:"Seam/Hash",detail:"Interior Tite wall + Cover 2. Both hash windows covered. Good vs PA teams."},
+      {name:"Tampa 2",rating:3,tag:"Seam Closure",detail:"MLB walls the seam between safeties. Closes the Cover 2 intermediate void vs TE seam releases. REQUIRES athletic MLB."},
     ],
     preSnap:["Tite DL: occupy A and B gaps — two-gap discipline","OLBs: coverage players in Tite — NOT edge rushers","Against outside run: OLB MUST set hard edge — Tite DL doesn't cover outside"],
     coaching:[{label:"DL",value:"Compressed A/B Interior (Tite)"},{label:"OLB Role",value:"Coverage First in Tite"}],
@@ -1153,7 +1181,9 @@ const FDB = {
     coverages:[
       {name:"Cover 3 Sky",rating:5,tag:"Base Spread/RPO",detail:"SS down as force/flat. CBs off 7 yards. Assignment coverage for option — one LB per threat. Perfect vs spread RPO and motion sets."},
       {name:"Cover 4 Drop",rating:4,tag:"Trips/Slot Stopper",detail:"Each DB owns a quarter. Dangerous slot receiver gets a DB in his window before the snap."},
-      {name:"Cover 1 Robber",rating:4,tag:"Crosser Stopper",detail:"FS robs the middle — destroys mesh and crosser concepts."},
+      {name:"Cover 3 Buzz",rating:4,tag:"Crosser Stopper",detail:"Safety buzzes to hook-curl zone as a robber. Reads QB eyes — destroys mesh and crossing route concepts at 8-12 yards."},
+      {name:"Cover 3 Cloud",rating:3,tag:"Boundary/Fade",detail:"CB traps the boundary fade while safeties hold deep thirds. Baits the back-shoulder throw — ideal vs teams consistently attacking the boundary hash."},
+      {name:"Cover 1 Robber",rating:3,tag:"Rhythm Breaker",detail:"FS robs the middle — destroys timing routes and first-read crossers."},
     ],
     preSnap:["ONE LB assigned as QB spy vs dual-threat — EVERY snap","Slot DB: inside shade — funnel crossers to LB help","ILB shades to middle zone vs consistent interior attacks"],
     coaching:[{label:"CB Tech",value:"Off 5 yds, slot inside shade"},{label:"Safety Depth",value:"10–12 yds"},{label:"LB Spy",value:"Mandatory vs Dual-Threat QB"}],
@@ -1194,10 +1224,12 @@ const FDB = {
     dcNote:"Over Flex pre-positions LBs and DBs in their actual coverage zones. Against hash-attack teams, standard alignment requires defenders to travel to coverage — creating a timing window. Flex eliminates that travel entirely.",
     blitzBase:20, blitzMods:[{tags:["boundary_hash","field_hash"],d:-6},{tags:["seam_routes","middle_heavy"],d:-5},{tags:["qb_pressure"],d:+8}],
     coreTags:["boundary_hash","field_hash","seam_routes","middle_heavy","play_action","elite_te","crossers","p11","p12","west_coast"],
-    suppTags:["slant_heavy","flat_attack","motion_heavy","trips","qb_pre_snap"],
+    suppTags:["slant_heavy","flat_attack","motion_heavy","trips","qb_pre_snap","rpo"],
     coverages:[
       {name:"Cover 2",rating:5,tag:"Hash Stopper",detail:"Flex pre-positions for both hash windows. LBs sink from flex positions — already there. Hash routes hit defenders pre-positioned. Timing advantage eliminated."},
       {name:"Cover 3 Sky",rating:4,tag:"Base",detail:"Three-deep from flex. SS to flat. LBs in flex handle curl/hook naturally."},
+      {name:"Cover 6",rating:4,tag:"Trips / 3x1",detail:"Flex pre-positions the safety rotation — Cover 4 to trips, Cover 2 to boundary without declaring pre-snap. Cleanest Cover 6 execution in the 3-3-5 family."},
+      {name:"Cover 3 Buzz",rating:4,tag:"Crossers / Mesh",detail:"Safety buzzes to hook-curl from flex depth — already in position. Reads QB eyes and steals crossing routes and seam reads."},
       {name:"Tampa 2",rating:4,tag:"Seam (Athletic MLB)",detail:"MLB drops seam from flex position — already positioned. Most efficient Tampa 2 alignment. REQUIRES athletic MLB."},
     ],
     preSnap:["Rotate safety to his hot hash BEFORE the snap — flex makes this easy","CBs: standard off-man from flex — LBs already pre-positioned","Against trips: rotate safety to trips side pre-snap"],
@@ -1291,7 +1323,7 @@ const FDB = {
     books:["3-2-6"], priority:"pass", personnel:"Dime",
     desc:"Six DBs, three DL, two hybrid LB-safeties. Most pass-coverage-heavy formation in CFB26. Hybrid LB-safeties eliminate slot mismatches while flooding every intermediate zone. Purpose-built to destroy spread and quick-game offenses.",
     dcNote:"Six DBs means one coverage defender per eligible receiver PLUS extra zone defenders. Hybrid LB-safeties handle intermediate coverage traditional LBs cannot. Against no-deep QBs, the 3-2-6 Mug simply runs out of field — no exploitable window.",
-    blitzBase:35, blitzMods:[{tags:["rpo","quick_game","screens"],d:-12},{tags:["no_deep","qb_checkdown"],d:-8},{tags:["qb_pressure"],d:+8},{tags:["empty","p10"],d:+5},{tags:["two_minute_pass"],d:-8}],
+    blitzBase:22, blitzMods:[{tags:["rpo","quick_game","screens"],d:-12},{tags:["no_deep","qb_checkdown"],d:-8},{tags:["qb_pressure"],d:+8},{tags:["empty","p10"],d:+5},{tags:["two_minute_pass"],d:-8}],
     coreTags:["quick_game","west_coast","screens","no_deep","p10","p11","empty","qb_checkdown","flat_attack","slant_heavy","trips","hurry_up","two_minute_pass","tempo_shift","pass_heavy_3rd"],
     suppTags:["crossers","motion_heavy","boundary_hash","field_hash","elite_wr","slot_threat","rpo","four_wide"],
     coverages:[
@@ -1331,8 +1363,8 @@ const TRAIT_LABELS = {
   middle_heavy:"Attacks Middle", boundary_hash:"Boundary Hash", field_hash:"Field Hash",
   flat_attack:"Flat / Sideline Routes", seam_routes:"Seam Routes (TE/Slot)",
   back_shoulder:"Back-Shoulder / Fades", slant_heavy:"Slant / Quick Hitch",
-  redzone_spec:"Red Zone Specialist", p10:"10p Spread (5 WR)", p11:"11 Personnel (3 WR)",
-  p12:"12 Personnel (2 TE)", p21:"21 Personnel (2 RB)", p22:"22p Heavy / Power",
+  redzone_spec:"Red Zone Specialist", p10:"10p Spread (4 WR, 1 RB)", p11:"11 Personnel (3 WR)",
+  p12:"12 Personnel (2 TE)", p13:"13 Personnel (3 TE)", p21:"21 Personnel (2 RB)", p22:"22p Heavy / Power",
   trips:"Trips / Bunch Sets", empty:"Empty Backfield", elite_wr:"Elite WR",
   elite_te:"Elite TE", elite_rb:"Elite HB", mobile_qb:"Mobile QB",
   strong_oline:"Dominant OL", slot_threat:"Dangerous Slot", dual_threat:"Dual-Threat QB",
@@ -1383,9 +1415,10 @@ function scoreForPersonnel(personnelTag, allTraits) {
   if (!allTraits.length) return [];
   // Personnel-adjacent tags that co-occur with this package
   const personnelContext = {
-    p10:  ["p10","p11","no_run","empty","trips","elite_wr","slot_threat","hurry_up","quick_game","screens","rpo"],
+    p10:  ["p10","no_run","empty","trips","elite_wr","slot_threat","hurry_up","quick_game","screens","rpo","four_wide"],
     p11:  ["p11","rpo","play_action","quick_game","outside_run","inside_run","elite_wr","slot_threat","trips","motion_heavy"],
     p12:  ["p12","p21","elite_te","inside_run","outside_run","play_action","seam_routes","run_heavy_1st","strong_oline"],
+    p13:  ["p12","p13","elite_te","inside_run","strong_oline","run_heavy_1st","fb_lead","p21","seam_routes"],
     p21:  ["p21","p22","fb_lead","inside_run","counter_trap","strong_oline","run_heavy_1st","short_yardage_run"],
     p22:  ["p22","p21","strong_oline","inside_run","run_heavy_1st","fb_lead","four_down_go","short_yardage_run"],
     trips:["trips","p10","p11","elite_wr","slot_threat","motion_heavy","rpo","quick_game","flat_attack"],
@@ -1395,15 +1428,10 @@ function scoreForPersonnel(personnelTag, allTraits) {
   return Object.entries(FDB).map(([name, d]) => {
     const coreHits = d.coreTags.filter(t => allTraits.includes(t));
     const suppHits = d.suppTags.filter(t => allTraits.includes(t));
-    // Base score from full trait set
     let sc = coreHits.length * 2 + suppHits.length;
-    // Bonus: how well does this formation specifically handle this personnel context
     const personnelBonus = ctx.filter(t => d.coreTags.includes(t)).length * 3
                          + ctx.filter(t => d.suppTags.includes(t)).length * 1;
-    // Must have at least one match on the personnel tag itself or context
-    const personnelMatch = d.coreTags.includes(personnelTag) || d.suppTags.includes(personnelTag)
-                        || ctx.some(t => d.coreTags.includes(t));
-    if (!personnelMatch) return null;
+    if (sc + personnelBonus === 0) return null;
     return { name, sc: sc + personnelBonus, coreHits, suppHits, blitz: getBlitz(d, allTraits), ...d };
   }).filter(Boolean).sort((a, b) => b.sc - a.sc);
 }
@@ -1423,6 +1451,43 @@ const PC = { run: "#a06030", pass: "#1a6fe8", hybrid: "#7858a0", pressure: "#aa5
 const PL = { run: "RUN STOP", pass: "PASS DEF", hybrid: "HYBRID", pressure: "PRESSURE" };
 
 // ── SUB-COMPONENTS ────────────────────────────────────────────────────────────
+// ── IN-GAME ADJUSTMENTS (trait-reactive CFB26 settings) ──────────────────────
+// Each entry: { section, icon, setting, reason, triggers[] }
+// Only shown when at least one trigger tag matches flat
+const ADJUSTMENTS = [
+  // ── Safety Setup ─────────────────────────────────────────────────────────
+  { section:"Safety Setup", icon:"🔭", setting:"Depth: Deep (25 yds)",       reason:"Protects against deep shots and elite receivers — safeties must not get beat over the top. Do not use vs run-heavy teams.", triggers:["deep_shots","back_shoulder","two_minute_pass"] },
+  { section:"Safety Setup", icon:"🔭", setting:"Depth: Tight (5 yds)",        reason:"Converts safety to a run-support box defender. Only when run threat is confirmed — sub back to default the moment he spreads.", triggers:["p22","short_yardage_run"] },
+  { section:"Safety Setup", icon:"🔭", setting:"Depth: Close (8 yds)",        reason:"Mid-depth for play action and TE seam routes — stays out of the box without surrendering the intermediate window.", triggers:["play_action","elite_te","crossers"] },
+  { section:"Safety Setup", icon:"🔭", setting:"Width: Spread",               reason:"Spread safeties wide to match split receivers and trips surfaces. Do not use vs heavy run formations.", triggers:["trips","p10","four_wide","empty"] },
+  { section:"Safety Setup", icon:"🔭", setting:"Width: Pinch",                reason:"Pinch safeties toward interior for seam route help and run support with multiple TEs or power personnel.", triggers:["p13","fb_lead","seam_routes"] },
+  { section:"Safety Setup", icon:"🔭", setting:"Midpoint: Field Side",        reason:"Bias the safety toward the field hash — routes are most dangerous to the wide side of the field.", triggers:["field_hash","boundary_hash","motion_heavy"] },
+  // ── Zone Drops ────────────────────────────────────────────────────────────
+  { section:"Zone Drops",   icon:"📐", setting:"Curl Flats: Shallow (6–8 yds)",  reason:"Closes bubble screens and quick flat routes — critical vs RPO and quick-game teams who take free yards at the catch.", triggers:["quick_game","hurry_up","rpo"] },
+  { section:"Zone Drops",   icon:"📐", setting:"Curl Flats: Deep (14–17 yds)",   reason:"Pushes curl defenders deeper to undercut comeback and intermediate out routes vs West Coast / crossing-heavy offenses.", triggers:["west_coast","no_deep","qb_pocket"] },
+  { section:"Zone Drops",   icon:"📐", setting:"Hook Zones: Shallow (8 yds)",    reason:"Compresses hook zones to rob short crossing routes and slant routes at the line of scrimmage.", triggers:["slant_heavy","motion_heavy"] },
+  { section:"Zone Drops",   icon:"📐", setting:"Hook Zones: Deep (18–22 yds)",   reason:"Drops hook defenders deeper to take away TE seam releases and slot route combinations off play action.", triggers:["seam_routes","elite_te","deep_shots"] },
+  { section:"Zone Drops",   icon:"📐", setting:"Regular Flats: Tight (5 yds)",   reason:"Aggressive flat depth to punish bubble reads and quick RB releases out of the backfield.", triggers:["screens","p10","flat_attack"] },
+  { section:"Zone Drops",   icon:"📐", setting:"Mid Reads: Underneath",          reason:"Mid-read zone drops shallow to rob crossing routes and take away the QB's first look over the middle.", triggers:["crossers","middle_heavy"] },
+  // ── Pre-Snap Disguise ─────────────────────────────────────────────────────
+  { section:"Pre-Snap",     icon:"🎭", setting:"Show Blitz (LB Bluff)",          reason:"Walk a LB to the line pre-snap to create protection confusion — holds the RB in pass pro and disrupts the QB's pre-snap read.", triggers:["qb_pre_snap","qb_one_read","motion_heavy","rpo"] },
+  { section:"Pre-Snap",     icon:"🎭", setting:"Shade: Up (Over Top)",           reason:"DL alignment over the top of blockers — disrupts zone blocking assignments and seals outside run lanes.", triggers:["outside_run","hb_stretch","option_run"] },
+  { section:"Pre-Snap",     icon:"🎭", setting:"Shade: Down (Underneath)",       reason:"DL slants underneath blocks — compresses interior gaps, ideal vs inside zone, power, and short-yardage runs.", triggers:["inside_run","counter_trap","fb_lead","strong_oline"] },
+  { section:"Pre-Snap",     icon:"🎭", setting:"CB Matchup: By Speed",           reason:"Assign your fastest CB to his fastest receiver — prevents speed mismatches on deep routes and elite WR releases.", triggers:["elite_wr","deep_shots","back_shoulder","slot_threat"] },
+  // ── Keys & Reads ──────────────────────────────────────────────────────────
+  { section:"Keys & Reads", icon:"🏈", setting:"RPO Read Key: Conservative",    reason:"Do not commit until ball is handed or thrown — attacking the mesh point early creates missed assignments and open lanes.", triggers:["rpo","dual_threat","mobile_qb","qb_scramble"] },
+  { section:"Keys & Reads", icon:"🏈", setting:"Option Read Key: Conservative", reason:"Assign every threat before the snap — never freelance on option. One unassigned defender guarantees a score.", triggers:["option_run","triple_option"] },
+];
+
+
+function Footer() {
+  return (
+    <div style={{ textAlign: "center", padding: "18px 0 22px", color: "#3a4a5a", fontSize: 10, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "1px" }}>
+      Designed by CK · SchemeBuilders 2026
+    </div>
+  );
+}
+
 function BlitzBar({ pct, size = "normal" }) {
   const info = blitzInfo(pct);
   return (
@@ -1520,6 +1585,40 @@ function FormationCard({ fm, flat, onSelect, isSelected }) {
 }
 
 // Full detail panel for a selected formation
+function AdjSection({ sec, items, icon }) {
+  if (!items || items.length === 0) return null;
+  return (
+    <div style={{ marginBottom:14 }}>
+      <div style={{ fontSize:"12px", color:"#b8880c", letterSpacing:"1.5px", textTransform:"uppercase", marginBottom:8, fontFamily:"'IBM Plex Mono', monospace" }}>{icon} {sec}</div>
+      {items.map((a, i) => (
+        <div key={i} style={{ background:"#080c15", border:"1px solid #1e2a3a", borderLeft:"3px solid #3a5a7a", borderRadius:5, padding:"10px 13px", marginBottom:7 }}>
+          <div style={{ fontSize:11, fontWeight:"bold", color:"#c5d0dc", fontFamily:"'IBM Plex Mono', monospace", marginBottom:3 }}>{a.setting}</div>
+          <div style={{ fontSize:11, color:"#7f9fb2", lineHeight:1.55 }}>{a.reason}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+function AdjustmentsPanel({ flat }) {
+  const matched = ADJUSTMENTS.filter(a => a.triggers.some(t => flat.includes(t)));
+  const ss = matched.filter(a => a.section === "Safety Setup");
+  const zd = matched.filter(a => a.section === "Zone Drops");
+  const ps = matched.filter(a => a.section === "Pre-Snap");
+  const kr = matched.filter(a => a.section === "Keys & Reads");
+  return (
+    <div>
+      <div style={{ fontSize:"12px", color:"#7c9aaf", letterSpacing:"2px", textTransform:"uppercase", marginBottom:14, fontFamily:"'IBM Plex Mono', monospace" }}>In-Game Adjustments</div>
+      {matched.length === 0 && (
+        <div style={{ fontSize:11, color:"#7f9fb2", padding:"10px", textAlign:"center", fontStyle:"italic" }}>No specific adjustments flagged — default settings apply.</div>
+      )}
+      <AdjSection sec="Safety Setup" items={ss} icon="🔭" />
+      <AdjSection sec="Zone Drops" items={zd} icon="📐" />
+      <AdjSection sec="Pre-Snap" items={ps} icon="🎭" />
+      <AdjSection sec="Keys & Reads" items={kr} icon="🏈" />
+    </div>
+  );
+}
+
 function FormationDetail({ fm, flat }) {
   const [tab, setTab] = useState("coverages");
   const blitz = getBlitz(fm, flat);
@@ -1570,7 +1669,7 @@ function FormationDetail({ fm, flat }) {
         {[
           { id: "coverages", l: "📡 Coverages" },
           { id: "preSnap",   l: "🎮 Pre-Snap" },
-          { id: "coaching",  l: "⚙️ Coaching" },
+          { id: "coaching",  l: "⚙️ Adjustments" },
           { id: "callsheet", l: "📋 Callsheet" },
         ].map(t => (
           <button key={t.id} onClick={() => setTab(t.id)} style={{
@@ -1613,15 +1712,7 @@ function FormationDetail({ fm, flat }) {
         )}
 
         {tab === "coaching" && (
-          <div>
-            <div style={{ fontSize: "12px", color: "#7c9aaf", letterSpacing: "2px", textTransform: "uppercase", marginBottom: 18, fontFamily: "'IBM Plex Mono', monospace" }}>In-Game Coaching Setup</div>
-            {fm.coaching.map((c, i) => (
-              <div key={i} style={{ background: "#080c15", border: "1px solid #1e2a3a", borderRadius: 5, padding: "14px 16px", marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 11, color: "#7f9fb2" }}>{c.label}</span>
-                <span style={{ fontSize: 11, fontWeight: "bold", color: "#b08010", background: "#111009", border: "1px solid #3a2800", padding: "2px 8px", borderRadius: 5, flexShrink: 0, fontFamily: "'IBM Plex Mono', monospace" }}>{c.value}</span>
-              </div>
-            ))}
-          </div>
+          <AdjustmentsPanel flat={flat} />
         )}
 
         {tab === "callsheet" && (
@@ -1666,8 +1757,9 @@ const TRAITS = [
     { id: "slant_heavy", label: "Slant / Quick Hitch" }, { id: "redzone_spec", label: "Red Zone Specialist" },
   ]},
   { id: "personnel", label: "His Personnel", icon: "👥", items: [
-    { id: "p10", label: "10p (4–5 WR Spread)" }, { id: "p11", label: "11p (1 RB, 1 TE, 3 WR)" },
-    { id: "p12", label: "12p (1 RB, 2 TE)" }, { id: "p21", label: "21p (2 RB, 1 TE)" },
+    { id: "p10", label: "10p (4 WR, 1 RB Spread)" }, { id: "p11", label: "11p (1 RB, 1 TE, 3 WR)" },
+    { id: "p12", label: "12p (1 RB, 2 TE)" }, { id: "p13", label: "13p (1 RB, 3 TE)" },
+    { id: "p21", label: "21p (2 RB, 1 TE)" },
     { id: "p22", label: "22p (Heavy / Power)" }, { id: "trips", label: "Trips / Bunch Sets" },
     { id: "empty", label: "Empty Backfield" },
   ]},
@@ -1692,9 +1784,10 @@ const TRAITS = [
 
 // ── PERSONNEL MAP ─────────────────────────────────────────────────────────────
 const PMAP = {
-  p10:   { label: "10p (5 WR Spread)",     priority: "Sub into Dime or 3-2-6. LBs vs 5 WRs = catastrophic mismatches on every snap.", avoid: "4-3 base, 3-4 base, 5-2, 4-4 Split", blitzNote: "Moderate (20–28%). 5 DBs handle all receivers — selective pressure works well." },
+  p10:   { label: "10p (4 WR, 1 RB Spread)",  priority: "Sub into Nickel immediately. 4 WRs still outnumber base LBs — RB stays as a run threat. Never go Dime unless it's obviously a passing down.", avoid: "4-3 base, 3-4 base, 5-2, 4-4 Split", blitzNote: "Moderate (20–28%). 5 DBs handle all receivers — selective pressure works well." },
   p11:   { label: "11p (1 RB, 1 TE, 3 WR)", priority: "Sub in Nickelback. Base 4-3 LB on the slot = mismatch every time.", avoid: "Base 4-3 without nickelback sub, 5-2, 4-4 Split", blitzNote: "Varies by QB (18–28%). Higher vs pocket QB. Lower vs scrambler." },
   p12:   { label: "12p (1 RB, 2 TE)",      priority: "Base or Nickel+LB. Two TEs threaten run AND seam simultaneously.", avoid: "Dime (need LBs for run), 3-2-6 (hybrid LBs vs physical TEs = mismatch)", blitzNote: "Low-moderate (15–22%). TE hot routes beat blitz. Coverage wins this matchup." },
+  p13:   { label: "13p (1 RB, 3 TE)",      priority: "Max box defenders immediately. Three TEs can block or release — identify the pass-catching TE pre-snap. Never go Nickel — you need LBs to account for the extra gap.", avoid: "Nickel, Dime, 3-2-6 (massively outnumbered at the point of attack)", blitzNote: "Very low (10–15%). Three TEs in protection collapses blitz lanes. Run defense wins this." },
   p21:   { label: "21p (2 RB, 1 TE)",      priority: "Base personnel. MLB must take the FB — frees everyone else for the HB.", avoid: "Dime, 3-2-6 (not enough run defenders)", blitzNote: "Low (14–20%). FB blocks blitzers naturally. Coverage gaps more dangerous." },
   p22:   { label: "22p (Heavy / Power)",    priority: "Maximum box defenders. Match his physicality — he outweighs you.", avoid: "Nickel (removes LBs vs 22p), 3-2-6 (disaster vs power run)", blitzNote: "Very low (10–16%). Gap integrity wins this matchup — don't sacrifice gaps." },
   trips: { label: "Trips / Bunch",          priority: "Trips floods one side with 3 receivers. Rotate coverage to match the overload.", avoid: "Standard base 4-3 without coverage adjustment — 3 DBs vs 3 receivers = overload wins", blitzNote: "Low-moderate (16–22%). Trips flooding exploits coverage busts from blitz." },
@@ -1706,8 +1799,8 @@ const PMAP = {
 // ── FORMATION FAMILIES ────────────────────────────────────────────────────────
 const PERSONNEL_FAMILIES = {
   // ── 10 Personnel ───────────────────────────────────────────────
-  p10_gun:    { label:"10p Gun",           desc:"5 WR spread from shotgun — max pass threat", base:"p10" },
-  p10_trips:  { label:"10p Trips",         desc:"5 WR with trips surface — flood one side", base:"p10" },
+  p10_gun:    { label:"10p Gun",           desc:"4 WR, 1 RB from shotgun — run threat stays, CBs cannot press", base:"p10" },
+  p10_trips:  { label:"10p Trips",         desc:"4 WR with trips surface and 1 RB — flood one side, RB checkdown", base:"p10" },
   p10_empty:  { label:"10p Empty",         desc:"No back, 5 eligible — pure pass, no protection", base:"p10" },
   // ── 11 Personnel ───────────────────────────────────────────────
   p11_gun:    { label:"11p Gun",           desc:"3 WR, 1 TE, 1 RB from shotgun — standard spread", base:"p11" },
@@ -1720,6 +1813,9 @@ const PERSONNEL_FAMILIES = {
   p12_pistol: { label:"12p Pistol",        desc:"2 TEs from pistol — run-heavy, both TEs blocking", base:"p12" },
   p12_under:  { label:"12p Under Center",  desc:"2 TEs from I-Form or Singleback — max physicality", base:"p12" },
   p12_trips:  { label:"12p Trips TE",      desc:"TE split wide in trips — coverage mismatch threat", base:"p12" },
+  // ── 13 Personnel ───────────────────────────────────────────────
+  p13_iForm:  { label:"13p I-Form",          desc:"3 TEs from I-Form — pure power run, every gap loaded", base:"p13" },
+  p13_gun:    { label:"13p Gun / Spread TE", desc:"3 TEs from shotgun — TEs as seam and flat receivers", base:"p13" },
   // ── 21 Personnel ───────────────────────────────────────────────
   p21_iForm:  { label:"21p I-Form",        desc:"FB lead from I-Form — MLB must take the FB every snap", base:"p21" },
   p21_pistol: { label:"21p Pistol",        desc:"FB + TE from pistol — outside run with lead blocker", base:"p21" },
@@ -1738,8 +1834,8 @@ const PERSONNEL_FAMILIES = {
 
 const FAMILY_ADJUSTMENTS = {
   // ── 10 Personnel ─────────────────────────────────────────────────────────
-  p10_gun:    { extra:"10p Gun spread — 5 WRs means every defender is a coverage player. Sub into Dime or 3-2-6 Mug immediately. CBs at 7 yards, never press. SS in the flat eliminates the bubble.", bias:["3-2-6 Mug","Dime Normal","Nickel Wide"] },
-  p10_trips:  { extra:"10p in a trips surface floods one side with 3 fast WRs. Rotate a safety to trips at the snap. Cover 4 Quarters is non-negotiable — 3 receivers on one side beats Cover 3.", bias:["3-3-5 Split","Nickel Wide","3-2-6 Mug"] },
+  p10_gun:    { extra:"10p Gun — 4 WRs with 1 RB. Sub into Nickel immediately. RB is still a run threat — do not go Dime unless it's obviously a passing down. CBs at 7 yards, never press. SS in the flat eliminates the bubble read.", bias:["Nickel 3-3 Over","Nickel Wide","3-3-5 Stack"] },
+  p10_trips:  { extra:"10p Trips — 4 WRs with trips surface and 1 RB. Rotate a safety to trips at the snap. Cover 4 Quarters handles the overload — 3 receivers on one side beats Cover 3 math. RB is a checkdown, not a non-factor.", bias:["3-3-5 Split","Nickel Wide","3-2-6 Mug"] },
   p10_empty:  { extra:"10p empty — 5 eligible, no back, no protection help. Sub into Dime Rush or 3-2-6 Mug. Blitz aggressively — the CPU cannot pick up extra rushers without a RB.", bias:["Dime Rush","3-2-6 Mug","Nickel 3-3 Dbl Mug"] },
   // ── 11 Personnel ─────────────────────────────────────────────────────────
   p11_gun:    { extra:"Gun 11p is the standard spread RPO look. CBs must stay at 7+ yards — never press. SS walks to the flat pre-snap to kill the bubble read. Show Cover 2 pre-snap, play Cover 3 at the snap.", bias:["Nickel 3-3 Over","Nickel 3-3 Stack","3-3-5 Stack"] },
@@ -1752,6 +1848,9 @@ const FAMILY_ADJUSTMENTS = {
   p12_pistol: { extra:"12p from Pistol is run-heavy — both TEs are blocking. HB Stretch and inside zone are primary threats. Tite front compresses both gaps. OLBs contain the perimeter; DEs never crash inside.", bias:["3-4 Tite","4-3 Under","4-3 Even 6-1"] },
   p12_under:  { extra:"12p under center is maximum physicality — power inside zone or FB lead guaranteed. Put 6+ in the box. OLB sets a hard edge; SS is the force player. Never base nickel vs this look.", bias:["4-3 Even 6-1","4-3 Under","3-4 Bear"] },
   p12_trips:  { extra:"12p with a TE split wide creates a coverage mismatch — a LB or safety must cover a TE in a WR alignment. Identify the mismatched TE pre-snap and put your best slot DB on him.", bias:["Nickel Load","3-4 Odd","3-3-5 Over Flex"] },
+  // ── 13 Personnel ─────────────────────────────────────────────────────────
+  p13_iForm:  { extra:"13p I-Form — three TEs and a RB. Maximum box defenders required. Sub into 5-2 or 4-4 immediately. Identify the pass-catching TE pre-snap — he will release to the seam while the other two block. MLB walls the seam; OLBs set hard edges.", bias:["5-2 Normal","4-4 Split","3-4 Bear"] },
+  p13_gun:    { extra:"13p from Gun — TEs are spread as receivers, not just blockers. All three can release to seams and flats simultaneously. Stay in base with LBs; use Cover 3 so each hook-curl zone accounts for a TE releasing underneath. Nickel DBs cannot match up physically with 3 TEs.", bias:["4-3 Under","3-4 Odd","4-3 Even 6-1"] },
   // ── 21 Personnel ─────────────────────────────────────────────────────────
   p21_iForm:  { extra:"I-Form 21p — MLB rule is absolute: take the FB on every snap. That frees your other LBs to attack the HB untouched. Never blitz the MLB. Cover 1 or Cover 3 behind — don't get cute.", bias:["4-3 Even 6-1","4-3 Under","3-4 Bear"] },
   p21_pistol: { extra:"21p from Pistol adds a FB blocker to the outside run game. SS must be the force player — attacks the outside arm of the lead blocker. OLB never folds inside. The run will bounce outside.", bias:["4-3 Under","3-4 Tite","4-3 Over"] },
@@ -1779,8 +1878,9 @@ function getAvailableFamilies(flat) {
     if (has("empty")) fams.push("p10_empty");
   }
 
-  // ── 11 Personnel — show if explicitly tagged OR if spread tendencies exist ──
-  const has11 = has("p11") || has("rpo") || has("outside_run") || has("quick_game") || has("play_action") || has("elite_wr");
+  // ── 11 Personnel — require p11 explicitly OR strong spread signal (2+ co-occurring tendencies) ──
+  const spreadSignals = [has("rpo"), has("outside_run"), has("quick_game"), has("motion_heavy"), has("hurry_up"), has("trips")].filter(Boolean).length;
+  const has11 = has("p11") || spreadSignals >= 2;
   if (has11) {
     // Pistol: run-based spread teams
     if (has("rpo") || has("option_run") || has("outside_run") || has("inside_run") || has("hb_stretch"))
@@ -1803,6 +1903,13 @@ function getAvailableFamilies(flat) {
     if (has("strong_oline") || has("fb_lead") || has("run_heavy_1st") || has("p21"))
       fams.push("p12_under");
     if (has("trips") || has("motion_heavy")) fams.push("p12_trips");
+  }
+
+  // ── 13 Personnel ──────────────────────────────────────────────
+  if (has("p13")) {
+    fams.push("p13_iForm");
+    if (has("play_action") || has("seam_routes") || has("elite_te") || has("west_coast"))
+      fams.push("p13_gun");
   }
 
   // ── 21 Personnel ──────────────────────────────────────────────
@@ -1840,6 +1947,7 @@ function getAvailableFamilies(flat) {
   if (fams.length === 0) {
     if (has("p11")) fams.push("p11_gun");
     else if (has("p12")) fams.push("p12_gun");
+    else if (has("p13")) fams.push("p13_iForm");
     else if (has("p21")) fams.push("p21_iForm");
     else if (has("p22")) fams.push("p22_iForm");
     else fams.push("p11_gun"); // fallback
@@ -2046,11 +2154,6 @@ function CFB26Schemes() {
   };
 
   // ── TEAMS SCREEN ─────────────────────────────────────────────────────────────
-  // ── FOOTER ──────────────────────────────────────────────────────────────────
-  const Footer = () => (
-    <div style={{ textAlign: "center", padding: "18px 10px 14px", fontSize: "10px", color: "#505a64", letterSpacing: "1px", fontFamily: "'IBM Plex Mono', monospace" }}>Designed by CK, 2026</div>
-  );
-
   if (step === "teams") {
     const filteredTeams = TEAMS.filter(t => {
       const matchConf = teamConf === "all" || t.conf === teamConf;
@@ -2137,7 +2240,7 @@ function CFB26Schemes() {
             </button>
           ))}
         </div>
-        <Footer />
+      <Footer />
       </div>
   );
   }
@@ -2261,7 +2364,7 @@ function CFB26Schemes() {
             ))}
           </div>
         </div>
-        <Footer />
+      <Footer />
       </div>
     );
   }
@@ -2428,7 +2531,7 @@ function CFB26Schemes() {
           </div>
         </div>
       )}
-        <Footer />
+      <Footer />
     </div>
   );
 
@@ -2744,8 +2847,7 @@ function CFB26Schemes() {
         </div>
       )}
 
-
-        <Footer />
+      <Footer />
     </div>
   );
 }
